@@ -793,4 +793,11 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
 11. 近现代史，悲哀！
 12. 学车
 
+
+# 20260319
+1. onlinealogrithm选择
+2. 不要再抱怨选课了
+3. The evaluation of policy is very difficult
+4. A* 算法！以及相关的最短路算法
+5. CS182
 ---
