@@ -800,4 +800,14 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
 3. The evaluation of policy is very difficult
 4. A* 算法！以及相关的最短路算法
 5. CS182
+
+# 20260320
+1. 判断CS182对我有价值的部分需要
+2. 接受自己的不完满》
+3. 入组考试，比较复杂，今日灵感：贪心切分，图的最小生成树处理
+4. pagerank
+5. seminar
+6. 定了个samplejava学习计划
+7. 选课？ 数院的课主要学完 ； xiehuimin主要关注每章最后的题目
+
 ---
