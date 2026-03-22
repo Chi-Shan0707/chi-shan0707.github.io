@@ -820,4 +820,13 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
   - python调用c
   - 理解最重要
 3. 学习c++的命令行？
+
+
+# 20260322
+1. 生病
+2. 上服务器，打磨工具，可视化
+3. 做数学
+4. 不要浮躁
+5. 发邮件了！！！
+
 ---
