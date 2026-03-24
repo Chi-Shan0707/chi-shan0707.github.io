@@ -835,4 +835,14 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
 2. dp
 3. 都是32 没有本质上区别？
 4. 看推理路径，走没走过相同的路？
+
+
+# 20260324
+1. 讲座is in notebooklm
+2. 逆天UCB
+3. 数学恢复状态？
+4. 强化学习阅读
+5. MoSeq
+6. 制定书阅读
+
 ---
