@@ -39,6 +39,9 @@ In second period, we have to intensively develop our product in two days. The fi
 <p>
 
 <p>
-And a question by the instructor inspired us: MBTI test is so long that it is almost disgusting. But why do we still want to finish? Cause we need it.  What kind of results do we thrive for?
+And a question by the instructor inspired us: MBTI test is so long that it is almost disgusting. But why do we still want to finish? Cause we need it.  What kind of results do we thrive for? We need to make players "need" it?
+<p>
 
+<p>
+So we conceived an idea: make a test to evaluate how much you have been assimilated by AI: become more reactive, become more impulsive and less empathetic.
 <p>
