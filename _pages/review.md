@@ -879,4 +879,11 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
   - 最重要的不是a->b的路，而是梯度，梯度的来源
   - 定义好问题，才能去创新
 2. 深层神经元数量和浅层神经元；剔除雷同部分;清洗掉没有必要的数据集；希望选择器是无偏的，；消融；problem 和 run 的混合；latent reasoning；nfs_weighted是什么方法; 2d->3d
+
+
+# 20260328
+1. 有点记不清今日播客听了什么了
+2. 今日软件基础的课没有学的很懂
+3. 今日seminar 学了一些有意思的概念，但是本质的东西要加强吸收能力
+4. 仔细回忆
 ---
