@@ -35,10 +35,10 @@ Research Interests
 Selected Open-Source Projects
 ======
 * **[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)**
-  * Independent open-source project on competitive-programming code generation
-  * Built a TinyLoRA + GRPO pipeline on Qwen2.5-Coder-3B-Instruct
-  * Designed compile-and-run based rewards for verifiable code generation
-  * Excellent reimplementation and adaptation of the original paper; has received 20 GitHub stars (predecessor project: 8 stars)(by 2026/03/29).
+  * Independent open-source reimplementation and adaptation of TinyLoRA + GRPO from *Learning to Reason in 13 Parameters*
+  * Migrated the method from math reasoning to verifiable competitive-programming code generation on Qwen2.5-Coder-3B
+  * Trained with only a tiny number of shared trainable parameters and real compile-and-run rewards instead of static heuristics
+  * Built the full pipeline end to end: data processing, training, multi-GPU setup, reward design, evaluation, and validation
 
 * **[NAD Next](https://github.com/Chi-Shan0707/NAD_Next)**
   * Collaborative framework for analyzing large-language-model neuron activations and reasoning processes
