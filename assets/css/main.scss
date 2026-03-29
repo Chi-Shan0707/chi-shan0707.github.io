@@ -134,3 +134,12 @@ iframe {
     align-items: flex-start;
   }
 }
+
+@media screen and (min-width: 1400px) {
+  #main > .sidebar {
+    position: sticky;
+    top: $masthead-height;
+    height: calc(100vh - #{$masthead-height});
+    overflow-y: auto;
+  }
+}
