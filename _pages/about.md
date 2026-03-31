@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-## 基本信息/Basic Info
+## Basic Info
 
 ***
 - 中国-上海 / China - Shanghai
@@ -23,7 +23,7 @@ At the same time, I have been actively self-studying interesting topics across c
 I am exploring the intersection I truly want to work on and study.<br>
 I hope to contribute to making society better.<br>
 
-### 我的仓库/My repos
+### My repos
 
 - 以下项目主要由我独立完成，AI 在部分环节作为辅助工具使用；这些工作并非依托实验室或课题组开展。换言之，它们代表了我在缺乏正式科研平台支持的情况下，主动探索、持续学习与独立实现的结果。<br>The following projects were primarily completed independently, with AI used only as an auxiliary tool where appropriate. These works were not conducted under a laboratory or research group; rather, they reflect my self-directed exploration, sustained learning, and independent implementation outside a formal research environment.
    1. [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)<br>
@@ -64,7 +64,14 @@ I hope to contribute to making society better.<br>
       
 ***
 
-### 技术工具栈/Tech stack and tools
+
+### Service and Community Involvement
+
+Beyond my personal projects, I also contribute to community-oriented open-source work.
+
+   1. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) 
+
+### Tech stack and tools
 
 | Domain         | Skills                                                                 |
 |----------------|------------------------------------------------------------------------|
