@@ -17,5 +17,8 @@ main:
   - title: "Plan"
     url: /plan/
 
+  - title: "Talks"
+    url: /talks/
+
   - title: "Posts"
     url: /posts/
