@@ -978,4 +978,26 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
 5. 系统性地完成工作！
 6. 写文章
 7. 
+
+# 20260409
+1. 最近的review都有点为了写而写了，所以明天补完
+2. 昨天SVD方法好，RL复习，遇到了关于G的瓶颈
+3. 数值代数研究
+4. 晚上的一无所事？
+5. 数学分析最后一段没有跟上吗 算？  要回看？
+
+
+
+# 20260420
+
+1. langchain React Langgraph学习
+2. 读论文， 那个论文
+3. 组会还是录音吧
+4. transformer归一
+5. 时间 确定感
+6. 脑分区
+7. 组会还是需要更多总结
+8. 不同图的观点
+9. agreement
+
 ---
