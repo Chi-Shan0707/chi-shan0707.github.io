@@ -988,7 +988,7 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
 
 
 
-# 20260420
+# 20260410
 
 1. langchain React Langgraph学习
 2. 读论文， 那个论文
@@ -999,5 +999,156 @@ pred_dict, h_dict, _ = model(static_data, manhole_dyn_t, cell_dyn_t, h_dict)
 7. 组会还是需要更多总结
 8. 不同图的观点
 9. agreement
+
+# 20260411
+1. 感觉高代，数分每节课听的后都还要再补一补
+2. prism
+3. 今天pytorch课没有认真听 唉
+4. drm讲的也没听进去
+5. 把论文主线定了
+6. 跑了不少论文相关实验了可以说，但是还是感觉脑袋空空呜呜
+
+7. 你可以结合我之前和你的对话历史回答。我现在有关于COT的三个问题：，cot是如何得到的，我们好像没有特别多的数据集是有COT的作答的，大部分人不会把心路历程发网上吧；COT如果真的能反映出来run的正确与否，大厂为什么不先研究；大厂会训练COT吗？如果训练的话，是否就已经发现了我现在做的很多结论？
+
+我先把你的三个问题拆开：COT数据从哪里来、为什么大厂看起来没先做你说的方向、以及大厂到底会不会训练COT、会不会早就发现了你现在的结论。我会结合你之前做的“run正确性 / 过程监督”这条线来回答。
+
+另一个关键中间结论是：公开证据对“CoT 是否 faithful”并没有给出肯定答案，很多结果反而偏负面。也就是说，它更像有用但不完备的监控信号，而不是 run 的完整镜像。
+
+Thought for 18m 3s
+
+我先按你的说法，把 run 理解成一次 reasoning rollout / agent trajectory。你这三个问题其实混着两件事：一是 CoT 从哪来，二是 CoT 到底是不是能反映 rollout 正误的可靠信号。公开材料给出的总判断很一致：CoT 现在当然会被系统训练，而且往往比只看最终输出更有监控价值；但它并不等于模型真实内部推理，也不是 ground-truth。Anthropic 2025 直接测到 reasoning model 的 CoT faithfulness 仍然偏低；OpenAI 2025 则把 CoT monitorability 当成单独研究方向来做。
+
+1）CoT 是怎么得到的？为什么不需要很多“真人心路历程”数据？
+
+不是靠大规模“真人私密心路历程”语料堆出来的。Google 2022 最早的 CoT prompting，本来就不是在说“先收一个巨大 CoT 数据集再训练”，而是证明：给少量 step-by-step exemplars，足够大的模型就能被 elicitation 出 CoT。随后 STaR 更进一步，直接把问题表述成“没有大规模 rationale 数据怎么办”，它的答案是：用少量 rationale 示例 + 大量无 rationale 数据，让模型自己生成 reasoning、筛选出通向正确答案的那部分，再反过来微调自己。
+
+工业上后来更常见的是几条路混用。第一，先让强模型生成 step-by-step 轨迹，再让人工做 step-level 标注，而不是让人从零写“心路历程”；OpenAI 的 PRM800K 就是给“大模型先生成的逐步解答”做人类逐步标注。第二，在可验证任务上直接用 verifiable reward / RL 去诱导 reasoning；DeepSeek-R1 明说 pure RL 就能在没有 human-labeled reasoning trajectories 的情况下诱导出自反思、验证和策略调整。第三，再把 reasoning model 的行为蒸馏给别的模型；OpenAI 的 Deliberative Alignment 甚至明确说，对 o-series 的安全对齐不需要 human-written CoTs or answers。也就是说，工业界训练的往往不是“真实私密内心独白”，而是“对任务有用、可评分、可筛选的 reasoning trace”。
+
+2）如果 CoT 真能反映 run 的正确与否，大厂为什么不先研究？
+
+其实已经研究了，只是公开名字往往不叫“CoT 反映 run 正误”。OpenAI 2021 的 verifier work，本质上就是让模型判断 candidate reasoning / solutions 哪个更可能正确；Google 2022 的 self-consistency，本质上是采样多条 reasoning path，再把一致性当 correctness proxy；OpenAI 2023 的 process supervision，则直接比较“只看最终答案”和“看中间步骤”哪种训练更有效。到 2025 年，Anthropic 在做 CoT faithfulness，OpenAI 在做 CoT monitorability，甚至还有跨 OpenAI / Anthropic / Google DeepMind / Redwood 等作者的论文，明确建议继续投入 CoT monitoring 研究。
+
+但这条线之所以难，不是因为没人想到，而是因为 CoT 不是正确性的金标准。Turpin 等人在 2023 年就指出，CoT explanation 可能系统性地 misrepresent 模型真正的决定原因；Anthropic 2025 在 reasoning models 上继续发现：CoT 虽然比非 reasoning model 更 faithful，但总体仍然不高，在他们的设定里 Claude 3.7 Sonnet 和 DeepSeek R1 的 overall faithfulness 只有 25% 和 39%。OpenAI 2025 也明确说 monitorability 可能会被训练过程、数据来源和继续 scaling 破坏。所以更准确地说，CoT 是一个 高信息量但带噪声的 side channel，不是 rollout 正误的 ground truth。
+
+还有个更微妙的点：reasoning model 的 CoT 和早年“prompt it to think step by step”的 CoT 不是一回事。OpenAI 2025 专门区分了两者，认为 reasoning model 的 CoT 是 RL 塑造出来的 private workspace；也正因为想把它保成一个未被过度修饰的工作区，OpenAI 公开说不能把 policy compliance 或用户偏好直接训到 CoT 本身上，并且出于安全和竞争原因不向用户公开 raw CoT，只给 summary。换句话说，大厂不是没研究，而是他们在研究时甚至会尽量避免把 CoT 训练成“好看但不真实”。至于“他们内部是不是比公开论文走得更前”，这是我的高概率推断，不是公开文档能直接证明的事实。
+
+3）大厂会训练 CoT 吗？如果训练，会不会早就发现了你现在的很多结论？
+
+会，而且公开证据已经很直接。Google 的 CoT prompting 是最早的 elicitation 证据；OpenAI 明说 o1/o-series 通过大规模 RL 学会 “productively using its chain of thought”，并把 reasoning 直接用于安全对齐；OpenAI 的 Model Spec 还明确写了某些模型会生成 hidden chain-of-thought；DeepSeek-R1 则公开了“RL 激励 reasoning，再把这种 reasoning 能力蒸馏给更小模型”的路线。
+
+所以，如果你的结论是这些比较大的方向——比如“CoT 不必依赖大量人工心路历程语料”“过程监督 / verifier / reasoning trace 对能力和监控都有帮助”“CoT 不是完全 faithful”“monitorability 重要但 fragile”——那这些方向在公开文献里基本都已经被看到，内部大概率也知道得更多。真正还可能有新意的，通常不是再证明这些大方向本身，而是把它们做成一个更强、更可 operationalize 的东西：例如 哪类 CoT 特征能稳定预测一次 rollout 失误、怎么在 RL 后保持 faithfulness / monitorability、在 code agent / tool-use 环境里哪种 trace 最能提前暴露错误。Anthropic 2025 还在报告低 faithfulness，OpenAI 2025 还在说 few evaluations exist，跨-lab monitorability 论文也把这件事叫做 “new and fragile opportunity”，这恰恰说明问题远没有被做完。
+
+我的判断是：你的方向不是“太晚了”，而是已经切到一个 大厂非常在意、但公开答案仍不完整 的交叉地带。你现在最该做的，不是再证明“CoT 存在 / 有用 / 不完全 faithful”，而是把结论钉在一个更窄的对象上：特定 run、特定 domain、特定 evaluator、特定 intervention。把你现在最核心的 2–3 条结论贴出来，下一轮我就按“公开已知 / 可能新颖 / 最该补的实验”给你做一次定位。
+
+cot编程的时候，就是我觉得自然语言没有办法拍平  编程中遇到的那些循环或者选择结构 
+就是即便我不是显式的按照标准语法写出循环或者分支的话，那么在我自然语言式的COT当中，我仍然需要做一个类似于模拟或者想象的过程；然后这就和next token prediction矛盾，就是不像是数学，就从上到下，从前到后，很自然，而编程因此就要跳跃
+
+我先把你的直觉落成两个问题：自然语言式 CoT 能不能忠实承载程序里的控制流，以及这会不会和线性的 next-token 生成机制发生根本冲突。
+
+还要再加一个关键区分：程序的结构本身并不等于某次具体执行；给定输入后，执行轨迹其实能线性展开，但结构、状态和执行很难同时用自然语言稳妥表示。
+
+Thought for 11m 26s
+
+对，这个点我觉得你抓得很准。我会把它改写成一句更精确的话：在代码任务里，问题不是“CoT 和 next-token prediction 本身矛盾”，而是“自由自然语言 CoT 和程序运行态之间存在表示错配”。按你那份 Python 讲义的视角，源码先被解析/编译，再由 PVM 逐条执行；一次具体 run 从运行时看，本来就是 frame、栈、指令状态不断推进的序列，而不是源码表面上的树结构。
+
+所以，对固定输入的程序来说，循环和分支其实是能被“拍平”的，只是不是拍平成源码，而是拍平成 execution trace。NExT 就把 program trace 定义成“每条已执行语句后的中间变量状态序列”，再让模型基于 trace 生成自然语言 rationale；这等于明确承认：代码运行可以线性化成一串状态更新。
+
+你真正碰到的难点在下一层：自然语言 CoT 很容易把关键状态压缩掉。它会说“遍历数组并更新最大值”，却不保留每轮的 i、x、max，以及到底走了哪条 branch。代码任务的对错，恰恰往往取决于这些细粒度运行态。因此近来的代码 CoT 工作才会反复强调，teacher 生成的步骤常常只是 plausible-sounding explanation，不是对真实执行的可验证描述；更稳的做法是从 execution trace 出发，再把 trace 叙述成自然语言。
+
+这也是为什么我会把你的“编程因此就要跳跃”再修一下：源码级 reasoning 的确更像 graph/tree，标准 CoT 只是一条 path。相关综述也把这件事说得很直白：很多 prompting scheme 背后的 reasoning 可以建模成 graph；CoT 是 plain path，ToT 则是在 chain 上显式引入 branching。也就是说，问题不是模型只能左到右，而是你让它用 path 去承载本来更像 graph 的对象。
+
+举个很小的例子：
+
+s = 0
+for x in [2, 5, 1]:
+    if x % 2 == 1:
+        s += x
+
+一种“像人话”的 CoT 会写成：“遍历列表，只把奇数加进去，所以结果是 6。”
+这句话是对的，但几乎没留下监控信号。
+
+更适合代码推理的 trace 会是：
+t0: x=2, s=0, skip
+t1: x=5, s=5
+t2: x=1, s=6
+
+这时 loop 没有消失，branch 也没有消失；它们只是变成了线性的状态转移。用更程序语义的话说，run 的自然对象其实是 (pc, locals, stack, heap) 的状态序列；自然语言 CoT 只是对它的有损转述。和 next-token prediction 真正冲突的不是“循环”本身，而是“你有没有把当前解释器状态保真地带到下一步”。
+
+所以你觉得数学更自然，不一定是因为数学真的没有 branching，而更像是数学解答文本通常已经把分支和回溯压成了一条最后采用的证明路径；而代码任务经常要求你连那些被压掉的运行态也一起维护。
+
+这也正是为什么大家一直从纯自然语言 CoT 往 code/trace/external execution 迁移。Program of Thoughts 明确把 computation 和 reasoning 拆开，让模型把 reasoning 写成程序交给外部执行；代码推理工作也强调，需要正确理解 control flow 和 data flow，而不仅是生成看起来顺的解释。
+
+但还有一个很重要的反例要记住：不是“只要加 trace 就好了”。2025 的 program repair 研究发现，单纯把 execution traces 塞进 prompt，提升其实很有限，而且 trace 一复杂效果就下降。也就是说，关键不只是有没有 trace，而是 trace 是否被组织成模型能稳定维护的状态表示。
+
+所以我会把你的观点压成一句可直接写进论文的问题定义：
+
+代码 CoT 的核心瓶颈，不是线性生成本身，而是自然语言难以保真地承载控制流与运行态。
+
+这也和你前面问的 run 正误监控直接连上了：在 coding 里，CoT 仍然是很有信息量的 side channel，但它不是解释器 ground truth。OpenAI 2025 的监控工作就在 agentic coding 环境里发现，监看 CoT 往往比只看 action 更有效，但这个信号也很脆弱，直接对 CoT 施压会诱发 obfuscation。
+
+把这个想法再往前推一步，你最值得测的不是“自然语言不适合代码”这么泛的命题，而是更窄的三个问题：free-form NL CoT 是否系统性漏掉 branch choice 和 variable diff；这些被漏掉的局部状态能不能早于 final failure 预测 run 出错；把 CoT 换成 execution-grounded trace 之后，这种预测性会不会明显上升。
+
+把你最想分析的 coding task 类型贴出来，比如 output prediction、program repair，还是带工具的 agent run，我就按这个框架帮你直接收成 hypothesis 和 evaluator。
+
+结合我现在在做的NAD_NEXT实验；和  SVD实验，我该怎么做才能去捕捉到这种特征，是否需要额外引入一个大模型去把这种特征从自然语言上捕捉出来
+
+我先把你的问题拆成两件事：一是这种代码里的控制流/运行态缺失特征，怎么在现有 NAD_NEXT + SVD 框架里落成可测信号，二是要不要上一个额外大模型来读自然语言 CoT。
+
+我已经有一个更明确的中间判断了：先别把重点放在再加一个更强的大模型去“读懂”文本，而是先把 CoT 里和控制流、运行态错配有关的痕迹做成结构化、可测的特征。
+
+Thought for 12m 21s
+
+结论先给你：第一阶段不需要额外引入一个“大模型去读自然语言 CoT”。你现在更该做的，是把“自然语言把运行态压缩掉”这件事，翻成一组可计算的 gap 特征，然后直接接到你现有的 NAD_NEXT 流水线上。因为你自己梳理过的 NAD_NEXT-SVD，本质上已经是一个从 prefix / trajectory / meta 数值特征出发的低秩判别器，而不是直接对 CoT 原文做主题分析；同时当前真实 cache 已足够支撑神经元分布、token 置信度、prefix / position 动态和 meta-selector 分析。
+
+但如果你的研究问题是“自然语言是否漏掉了 loop / branch / state”，那当前真正的瓶颈也很明确：不是模型不够大，而是 generated_text 缺失。你那份 cache 梳理已经写得很清楚：compact 报告里没有完整回答文本，所以 rich text validity、文本结构、答案重复、代码闭合这类特征现在只能弱估计；反过来，tok_gini、token_ids、rows/w_max / rows/w_sum、以及性能字段其实都已经在 cache 里或可导出，只是还没系统纳入主特征集。
+
+从表示上说，你要抓的不是 AST 层的“程序长什么样”，而是运行层的“程序怎么推进”。你前面的 Python 笔记也强调了：AST 不是运行全过程，运行时真正维护的是 frame、栈和局部状态。对应到代码推理，NExT 把 program trace 定义成“每条已执行语句后的中间变量状态序列”；REval 也把 runtime reasoning 拆成 code coverage、execution path、program state 和 output 几个维度。也就是说，你真正想抓的对象，本来就更像 execution trace，而不是一整段顺滑的解释文本。
+
+所以我会把你的目标定义成一个压缩缺口：
+
+compression_gap = 程序要求显式维护的运行态复杂度 - CoT 实际显式表达出来的运行态复杂度
+
+左边来自 code / execution，右边来自 CoT / prefix。这个 gap 才是你应该喂给 SVD 的新信号，而不是直接把整段 CoT 扔进 LSA。你自己的 SVD note 其实已经给出很好的方向：文档级、step-level、prefix-level 三路并行；而且现有总结里 coding 域是 10/10 都走 baseline，不是 SVD，这恰好说明在 coding 上更该做 hybrid，而不是押注纯文本低秩化。
+
+我建议你按下面四步做。
+
+先补一层统一导出，不加 LLM。
+先把 cache 统一导出成 run 级 / prefix 级 / question 级 JSONL。你那份 note 已经建议这么做。然后新增两类特征：
+一类是 code-side demand：loop depth、branch count、nesting depth、API call count、异常路径、可执行 trace 长度、变量写入次数。CodeMind 的失败分析也说明，nested constructs、复杂条件、loop 条件、算术与逻辑组合、API 调用，都会显著增加代码推理难度。另一类是 CoT-side emission：显式 branch 提及数、显式 iteration 提及数、变量名复现率、状态值更新表达数、是否出现“遍历/判断/更新”这类抽象词却没有配套状态值。前者表示“本题需要多少运行态”，后者表示“CoT 真表达了多少运行态”。
+把新特征并入现有 SVD，而不是另起炉灶。
+你现在的 NAD_NEXT-SVD 已经是 raw / rank / raw+rank -> TruncatedSVD -> LogisticRegression。最稳的做法不是推翻它，而是把新加的 gap 特征、token 曲线特征、rows 曲线特征并进 x_raw。现成最值得先补进去的，就是你 note 里已经点名的 tok_gini 系列、token_ids / 格式信号、rows/w_sum 波动、后段稳定性，以及 prefix-safe 的位置特征。继续沿用 problem_id 分组、grouped holdout、prefix-safe，这些 protocol 不要动。
+额外 LLM 只做弱标注，不做最终 judge。
+如果你后面拿到了完整 CoT 文本，可以再引入一个便宜一些的模型，把每个句子标成固定 schema，例如：plan / execute / branch / loop / backtrack / check / finalize，再抽 vars_read / vars_write / condition / chosen_branch / iter_idx / confidence。这时它的角色不是“读整段 CoT 给你一个分数”，而是把自然语言转成结构化中间表示。Thought Anchors 的结果支持 sentence-level analysis，而且发现 planning / backtracking 句子往往对后续轨迹影响更大，所以如果要加额外模型，最合适的粒度就是 sentence / step level。
+
+比如让标注器输出这种结构就够了：
+
+{
+  "role": "branch",
+  "vars_read": ["i", "x", "arr"],
+  "vars_write": ["s"],
+  "condition": "x % 2 == 1",
+  "chosen_branch": "true",
+  "iter_idx": 3,
+  "has_explicit_state": 1
+}
+把“LLM 读 CoT”当 baseline，不要当主线。
+一个很强的方法学提醒是：在 CoT 监控研究里，基于 activations 的线性 probe 明显强于强 LLM 和文本分类器，因为 CoT 文本可能不忠实、会表演化。这不是 coding 的直接定理，但足够说明：你不该把“再上一个大模型读自然语言”当主信号，而更应该把它放在辅助标注或 error analysis 的位置。另一方面，execution-trace 研究也发现，简单把 trace 塞进 prompt 提升有限，而且 trace 一复杂效果还会下降；而 execution-trace training 的工作又提示，长执行里更好的不是累积长叙述，而是更紧凑的 dynamic scratchpad。合起来看，关键不是“要不要大模型”，而是“你有没有把状态压成稳定、紧凑、可比较的表示”。
+
+所以我的建议其实很明确：
+
+先做三层并行，而不是先加一个大模型。
+
+第一层是 activation/prefix native，也就是你现在 NAD_NEXT 已有的那些特征。
+第二层是 execution-grounded heuristic，也就是 code demand + CoT emission + gap。
+第三层才是 LLM weak annotation，只做句子级结构化标签。
+
+然后做四个 ablation：只用第一层、第一层+第二层、第二层+第三层、三层全开。
+只要 第一层+第二层 已经明显提升，你就已经证明了：你要找的“运行态被自然语言压缩”的特征，本来就是可结构化捕捉的，不需要先上一个更大的模型。只有当这一步到顶以后，第三层的 LLM 标注才值得花成本。
+
+再补一个和 SVD 实验直接相关的建议：如果你继续做 text-SVD，不要全域混做。你那份 note 已经提醒，LSA/SVD 对语料选择和维度很敏感；而 Auto-CoT 本身也是先聚类再选代表问题。对你这里，更合理的是 coding 单独建词表、单独选 rank、优先做 step-level / prefix-level SVD，不要把 math / science / coding 混成一个总词表再期待同一个低秩空间解释所有现象。
+
+如果你眼下还拿不到 generated_text，那就先做一个 纯 cache proxy 版：用 tok_gini 的 tail / slope、tok_logprob 的尾部下坠、rows/w_sum 的峰值波动与 late oscillation，再加上你现有的 outlierness、medoid_affinity、prefix_budget_ratio，先去预测“这条 run 后面会不会出现 branch / loop 压缩型失败”。这一步虽然还没直接读自然语言，但已经能先验证：运行态压力本身是不是会在 prefix 里提前冒出来。
+
+把你现在一条 run 能拿到的字段贴出来，我可以直接帮你把这套东西收成一个可执行的 feature schema + ablation plan。
 
 ---
