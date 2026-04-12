@@ -24,14 +24,16 @@ I am exploring the intersection I truly want to work on and study.<br>
 I hope to contribute to making society better.<br>
 
 
-### My featured work
+### My featured works
 
 #### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
-<details>
-<summary>Domain-conditioned low-rank framework for chain-of-thought analysis</summary>
+**I propose SVDomain : a domain-conditioned low-rank framework for chain-of-thought analysis.**
 
-SVDomain is a domain-conditioned low-rank framework that builds feature views from token-level confidence and uncertainty statistics, trajectory summaries, and availability indicators, and learns a shared latent basis with a lightweight linear readout.
+<details>
+<summary>Overview</summary>
+
+I propose SVDomain: a domain-conditioned low-rank framework that builds feature views from token-level confidence and uncertainty statistics, trajectory summaries, and availability indicators, and learns a shared latent basis with a lightweight linear readout.
 
 - Canonical pipeline: StandardScaler → TruncatedSVD → LogisticRegression
 - Downstream tasks: EarlyStop, Best-of-N bridging, RL checkpoint ranking.
@@ -41,16 +43,16 @@ This repository contains a paper-style writeup and code to reproduce experiments
 
 </details>
 
+#### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 
-#### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)<br>
+**Low-parameter adaptation and reinforcement learning for code generation.**
 
-> low-parameter adaptation and reinforcement learning for code generation<br>
+<details>
+<summary>Overview</summary>
 
-   
-      An independent open-source reimplementation and adaptation of TinyLoRA + GRPO from *Learning to Reason in 13 Parameters*, migrated from math reasoning to verifiable competitive-programming code generation. Built on Qwen2.5-Coder-3B with only a tiny number of shared trainable parameters, the project uses real compile-and-run rewards rather than static heuristics. I developed the full pipeline end to end, including data processing, training, multi-GPU setup, reward design, evaluation, and validation, which significantly strengthened my ability to turn a paper into a working research system.<br>
+An independent open-source reimplementation and adaptation of TinyLoRA + GRPO from *Learning to Reason in 13 Parameters*, migrated from math reasoning to verifiable competitive-programming code generation. Built on Qwen2.5-Coder-3B with only a tiny number of shared trainable parameters, the project uses real compile-and-run rewards rather than static heuristics. I developed the full pipeline end to end, including data processing, training, multi-GPU setup, reward design, evaluation, and validation, which significantly strengthened my ability to turn a paper into a working research system.
 
-
-
+</details>
 I enjoy building small but complete research systems, writing technical notes, and turning vague ideas into runnable artifacts.
 
 ### My repos
@@ -105,7 +107,9 @@ I enjoy building small but complete research systems, writing technical notes, a
 </details>
 
 - The following project was completed in collaboration with others.<br>
-   1. [NAD Next](https://github.com/Chi-Shan0707/NAD_Next)<br>
+
+
+[NAD Next](https://github.com/Chi-Shan0707/NAD_Next)<br>
       A collaborative framework for analyzing large-language-model neuron activations and reasoning processes. The project covers activation-cache construction, selector evaluation, token-level statistics, and visualization. Our goal is to compare different runs on the same problem via CoT-, activation-, and ensemble-based signals, and estimate which run is more likely to be correct or incorrect. 
       My primary contribution to this project is algorithm construction and method design.<br>
       > Note: This project is currently a work in progress (WIP). Due to practical constraints, some content cannot be open-sourced on GitHub immediately; therefore, the current public repository is not yet complete. We will continue to add materials and update toward a more complete release as conditions permit.<br>
