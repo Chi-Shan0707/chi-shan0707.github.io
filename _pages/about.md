@@ -24,9 +24,9 @@ I am exploring the intersection I truly want to work on and study.<br>
 I hope to contribute to making society better.<br>
 
 
-### My featured works
+## My featured works
 
-#### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
+### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
 **I propose SVDomain : a domain-conditioned low-rank framework for chain-of-thought analysis.**
 
@@ -43,7 +43,7 @@ This repository contains a paper-style writeup and code to reproduce experiments
 
 </details>
 
-#### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
+### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 
 **Low-parameter adaptation and reinforcement learning for code generation.**
 
@@ -55,7 +55,7 @@ An independent open-source reimplementation and adaptation of TinyLoRA + GRPO fr
 </details>
 I enjoy building small but complete research systems, writing technical notes, and turning vague ideas into runnable artifacts.
 
-### My repos
+## My repos
 
 - The following projects were primarily completed independently, with AI used only as an auxiliary tool where appropriate. These works were not conducted under a laboratory or research group; rather, they reflect my self-directed exploration, sustained learning, and independent implementation outside a formal research environment.
 
@@ -118,6 +118,7 @@ I enjoy building small but complete research systems, writing technical notes, a
 > Note: This project is currently a work in progress (WIP). Due to practical constraints, some content cannot be open-sourced on GitHub immediately; therefore, the current public repository is not yet complete. We will continue to add materials and update toward a more complete release as conditions permit.
 
 </details>
+
 ***
 
 
