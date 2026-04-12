@@ -106,14 +106,18 @@ I enjoy building small but complete research systems, writing technical notes, a
 
 </details>
 
-- The following project was completed in collaboration with others.<br>
+ - The following project was completed in collaboration with others.
 
+<details>
+<summary><a href="https://github.com/Chi-Shan0707/NAD_Next" target="_blank" rel="noopener">NAD Next</a></summary>
 
-[NAD Next](https://github.com/Chi-Shan0707/NAD_Next)<br>
-      A collaborative framework for analyzing large-language-model neuron activations and reasoning processes. The project covers activation-cache construction, selector evaluation, token-level statistics, and visualization. Our goal is to compare different runs on the same problem via CoT-, activation-, and ensemble-based signals, and estimate which run is more likely to be correct or incorrect. 
-      My primary contribution to this project is algorithm construction and method design.<br>
-      > Note: This project is currently a work in progress (WIP). Due to practical constraints, some content cannot be open-sourced on GitHub immediately; therefore, the current public repository is not yet complete. We will continue to add materials and update toward a more complete release as conditions permit.<br>
-      
+<p>A collaborative framework for analyzing large-language-model neuron activations and reasoning processes. The project covers activation-cache construction, selector evaluation, token-level statistics, and visualization. Our goal is to compare different runs on the same problem via CoT-, activation-, and ensemble-based signals, and estimate which run is more likely to be correct or incorrect.</p>
+
+<p>My primary contribution: algorithm construction and method design.</p>
+
+> Note: This project is currently a work in progress (WIP). Due to practical constraints, some content cannot be open-sourced on GitHub immediately; therefore, the current public repository is not yet complete. We will continue to add materials and update toward a more complete release as conditions permit.
+
+</details>
 ***
 
 
