@@ -1,12 +1,14 @@
 ---
 title: "Neither Needed Nor Feared"
 date: 2026-04-08
-excerpt: "My notes of 马督公https://space.bilibili.com/316568752/upload/video   video https://www.bilibili.com/video/BV1YpZkBDEVo/?spm_id_from=333.1387.upload.video_card.click"
+excerpt: "My notes of 马督公's video: The fifth Modernization"
 tags:
   - AI
   - society
   - philosophy
 ---
+
+[Video Link](https://www.bilibili.com/video/BV1YpZkBDEVo/?spm_id_from=333.1387.upload.video_card.click)
 
 When were we first "endowed with" freedom?<br>
 
