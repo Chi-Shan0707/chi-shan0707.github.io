@@ -26,6 +26,12 @@ redirect_from:
 
 ## My featured works
 
+我乐于构建小而完整的研究系统、撰写技术笔记，将模糊的想法转化为可运行的成果。
+
+
+***
+
+
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
 **我提出了 SVDomain：一个面向思维链分析的领域条件低秩框架。**
@@ -50,10 +56,9 @@ redirect_from:
 <details>
 <summary>概述</summary>
 
-对 *Learning to Reason in 13 Parameters* 中的 TinyLoRA + GRPO 进行独立开源复现与适配，从数学推理迁移至可验证的竞技编程代码生成。基于 Qwen2.5-Coder-3B，仅使用极少共享可训练参数，采用真实编译运行奖励而非静态启发式。我独立完成了从数据处理、训练、多 GPU 配置、奖励设计、评估到验证的全流程，显著提升了我将论文转化为可运行研究系统的能力。
+对 [Learning to Reason in 13 Parameters](https://arxiv.org/abs/2602.04118) 中的 TinyLoRA + GRPO 进行独立开源复现与适配，从数学推理迁移至可验证的竞技编程代码生成。基于 Qwen2.5-Coder-3B，仅使用极少共享可训练参数，采用真实编译运行奖励而非静态启发式。我独立完成了从数据处理、训练、多 GPU 配置、奖励设计、评估到验证的全流程，显著提升了我将论文转化为可运行研究系统的能力。
 
 </details>
-我乐于构建小而完整的研究系统、撰写技术笔记，将模糊的想法转化为可运行的成果。
 
 ## My repos
 
