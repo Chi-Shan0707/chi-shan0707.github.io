@@ -10,15 +10,24 @@ excerpt: "A one-hour mathematical bridge from bandits to PPO, designed as prepar
 pdf_url: "/files/From%20Bandits%20to%20PPO.pdf"
 ---
 
-This seminar is designed as a clean mathematical prerequisite for the next-stage discussion of PPO-family LLM post-training methods (for example GRPO and DAPO), without diving into heavy engineering details.
+This page is the seminar detail page for "From Bandits to PPO". It is organized as a concise index of what the talk covers, while complete derivations and proofs are provided in the PDF notes.
 
 [Read Full Notes (PDF)](/files/From%20Bandits%20to%20PPO.pdf){: .btn .btn--primary }
 
+## Seminar Snapshot
+
+| Item | Detail |
+|---|---|
+| Theme | Mathematical path from bandits to PPO |
+| Positioning | Prerequisite for PPO-family LLM post-training methods (GRPO/DAPO) |
+| Duration | 1 hour |
+| Audience | Students with basic probability and linear algebra |
+| Output | Conceptual map + formulas needed for next seminar |
+
 ## Seminar At A Glance
 
-- Duration: 1 hour
-- Target audience: students who know basic probability and linear algebra
 - Goal: understand why modern policy optimization naturally leads to actor-critic, GAE, and PPO
+- Focus: theory and intuition first, engineering details later
 
 ## Simple Outline
 
@@ -42,7 +51,7 @@ This seminar is designed as a clean mathematical prerequisite for the next-stage
 
 PPO is the right endpoint for this seminar because it gives all the conceptual ingredients needed for understanding GRPO-like variants: policy gradient objective, advantage estimation, and controlled policy updates.
 
-## Detailed Version
+## Detailed Notes
 
 For full derivations, proofs, and algorithm boxes, see the complete note:
 

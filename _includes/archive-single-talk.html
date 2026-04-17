@@ -37,12 +37,6 @@
     {% endif %}
     {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
     {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{{ post.type }}, {{ post.venue }}, {{ post.location }}</p>{% endif %}
-    {% if post.pdf_url %}
-      <p class="archive__item-excerpt" itemprop="description">
-        <a href="{{ base_path }}{{ post.url }}">Outline</a> ·
-        <a href="{{ post.pdf_url }}">Full PDF</a>
-      </p>
-    {% endif %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>{% endif %}
   </article>
 </div>
