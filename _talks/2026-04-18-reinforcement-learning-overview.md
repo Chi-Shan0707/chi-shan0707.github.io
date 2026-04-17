@@ -1,29 +1,49 @@
 ---
-title: "A Quick Overview of Reinforcement Learning (RL)"
+title: "From Bandits to PPO: RL Prerequisite Seminar"
 collection: talks
 type: "Talk"
 permalink: /talks/2026-04-18-reinforcement-learning-overview
 venue: "Fudan University (internal seminar)"
 date: 2026-04-18
 location: "Shanghai, China"
+excerpt: "A one-hour mathematical bridge from bandits to PPO, designed as preparation for GRPO/DAPO discussions."
+pdf_url: "/files/From%20Bandits%20to%20PPO.pdf"
 ---
 
+This seminar is designed as a clean mathematical prerequisite for the next-stage discussion of PPO-family LLM post-training methods (for example GRPO and DAPO), without diving into heavy engineering details.
 
-Abstract<br>
-This seminar serves as a theoretical prerequisite for understanding modern Large Language Model (LLM) reinforcement learning alignment techniques, such as GRPO and DAPO. Rather than focusing on the heavy engineering pipelines of RLHF, this talk constructs a rigorous, uninterrupted mathematical narrative.<br>
+[Read Full Notes (PDF)](/files/From%20Bandits%20to%20PPO.pdf){: .btn .btn--primary }
 
-We begin with the minimal decision-making loop of Multi-Armed Bandits and naturally progress through Contextual Bandits, Markov Decision Processes (MDPs), and Policy Gradients, before culminating in Proximal Policy Optimization (PPO). The primary objective is to equip attendees with a clear intuition and mathematical understanding of core RL mechanisms—such as the log-derivative trick, advantage estimation, and ratio clipping—enabling them to seamlessly parse the objective functions of state-of-the-art LLM alignment algorithms.<br>
+## Seminar At A Glance
 
-Key Topics Covered
-- The Minimal Decision Loop: Multi-Armed Bandits and Contextual Bandits.
-- Credit Assignment: MDPs, Trajectories, and Value Functions.
-- Value Estimation: Monte Carlo (MC) vs. Temporal Difference (TD) learning.
-- Direct Policy Optimization: Policy Gradients (REINFORCE) and the log-derivative trick.
-- Variance Reduction: Baselines, Advantage functions, Actor-Critic architectures, and Generalized Advantage Estimation (GAE).
-- Stable Policy Updates: Proximal Policy Optimization (PPO) and importance ratio clipping.
-- Bridging the Gap: Why Q-learning/DQN is computationally prohibitive for LLMs, and how PPO lays the groundwork for GRPO/DAPO.
+- Duration: 1 hour
+- Target audience: students who know basic probability and linear algebra
+- Goal: understand why modern policy optimization naturally leads to actor-critic, GAE, and PPO
 
+## Simple Outline
 
+1. Bandits and contextual bandits
+2. MDPs, trajectories, and value functions
+3. Monte Carlo vs. Temporal Difference (TD)
+4. Tabular control: MC iteration, SARSA, Q-learning
+5. Function approximation fork: DQN vs. policy parameterization
+6. Policy gradient and REINFORCE
+7. Baselines, advantage, actor-critic, and GAE
+8. PPO clipping objective and practical training loop
 
+## Key Mathematical Threads
 
-You can get a pdf here.
+- Learning object: value function vs. policy
+- Learning signal: Monte Carlo returns vs. TD bootstrapping
+- Variance control: baseline subtraction and advantage estimation
+- Stability: importance ratio clipping in PPO
+
+## Why This Stop Point Matters
+
+PPO is the right endpoint for this seminar because it gives all the conceptual ingredients needed for understanding GRPO-like variants: policy gradient objective, advantage estimation, and controlled policy updates.
+
+## Detailed Version
+
+For full derivations, proofs, and algorithm boxes, see the complete note:
+
+- [From Bandits to PPO (PDF)](/files/From%20Bandits%20to%20PPO.pdf)
