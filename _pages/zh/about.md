@@ -37,8 +37,20 @@ redirect_from:
 
 ***
 
+### [Cot-Knot](https://github.com/Chi-Shan0707/cot-knot)
 
-### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
+**关于思维链（CoT）自我纠正中领域条件语义（domain-conditioned semantics）的论文级研究仓库。**
+
+<details>
+<summary>概述</summary>
+
+Cot-Knot 探讨了思维链（CoT）推理中的“自我纠正”究竟是一个普适的质量信号，还是一个受限于领域条件的局部特征。项目从“测量视阈（measurement perspective）”出发，不再局限于传统的验证器基准测试，而是去深究用于提取此类自我纠正特征的“标注协议”在数学（Math）和编程（Coding）等不同领域中是否本身具有效度。
+
+该项目的核心发现是：同一类表面上的“纠错”模式在不同领域的表现并不一致。数学中的“纠错节点（knots）”是显式、能通过文本观察到的局部状态中断，它可以可靠地预测正确率；但最初在编程领域设定的纠错节点则在标注效度和预测能力上表现极为薄弱。为此，该项目提出了一种基于执行语义中断（execution-semantic breaks）的代码替代协议，从概念精度和标注一致性上都带来了显著提升。
+
+</details>
+
+<!-- ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
 **我提出了 SVDomain：一个面向思维链分析的领域条件低秩框架。**
 
@@ -53,7 +65,7 @@ redirect_from:
 
 该仓库包含论文式技术文档以及可复现实验与分析的代码。
 
-</details>
+</details> -->
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 
@@ -117,9 +129,28 @@ redirect_from:
 
 </details>
 
- - 以下项目为合作完成。
+- 以下项目为合作完成。
+
+### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
+
+**我提出了 SVDomain：一个面向思维链分析的领域条件低秩框架。**
 
 <details>
+<summary>概述</summary>
+
+SVDomain 是一个领域条件低秩框架，从 token 级别的置信度与不确定性统计、轨迹摘要和可用性指标构建特征视图，并通过轻量线性读出学习共享潜基。
+
+- 标准流程：StandardScaler → TruncatedSVD → LogisticRegression
+- 下游任务：EarlyStop、Best-of-N 桥接、RL 检查点排序。
+- 重点：低秩结构何时变得具有预测性、基如何在不同锚点间迁移，以及同一个低秩对象如何同时支持预测与解释。
+
+该仓库包含论文式技术文档以及可复现实验与分析的代码。
+
+</details>
+
+该项目为合作完成。合作者提供了元级原始数据基础；我提出了框架，设计并完成了实验，进行了验证。
+
+<!-- <details>
 <summary><a href="https://github.com/Chi-Shan0707/NAD_Next" target="_blank" rel="noopener">NAD Next</a></summary>
 
 <p>一个用于分析大语言模型神经元激活与推理过程的协作框架。项目涵盖激活缓存构建、选择器评估、token 级别统计及可视化。我们的目标是通过思维链、激活和集成信号比较同一问题上的不同运行，估计哪次运行更可能正确或错误。</p>
@@ -128,7 +159,7 @@ redirect_from:
 
 > 备注：该项目目前仍在开发中（WIP）。由于实际限制，部分内容暂时无法在 GitHub 上开源，因此当前公开的仓库尚不完整。我们将在条件允许时继续补充材料，逐步完善发布。
 
-</details>
+</details> -->
 
 ***
 

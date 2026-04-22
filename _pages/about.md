@@ -127,6 +127,8 @@ An independent open-source reimplementation and adaptation of TinyLoRA + GRPO fr
 
 </details>
 
+- The following projects were completed in collaboration with others.
+
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
 **I propose SVDomain: a domain-conditioned low-rank framework for chain-of-thought analysis.**
