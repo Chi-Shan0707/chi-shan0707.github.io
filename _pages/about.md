@@ -23,6 +23,10 @@ At the same time, I have been actively self-studying interesting topics across c
 I am exploring the intersection I truly want to work on and study.<br>
 I hope to contribute to making society better.<br>
 
+## My research interests
+
+Currently, I am exploring the mathematical foundations of intelligence in large models and sequential decision-making. More specifically, I want to delve deeper into these areas through **Reinforcement Learning** methods.<br>
+See more of my motivation on my [plan](/plan/) page.
 
 ## My featured works
 

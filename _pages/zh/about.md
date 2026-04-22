@@ -24,6 +24,12 @@ redirect_from:
 做对人类有益的事。<br>
 
 
+## My research interests
+
+目前，我正在探索大模型与**序列决策（sequential decision-making）**中“智能涌现”的数理基础。更具体地说，我希望通过**强化学习（Reinforcement Learning）**相关方法去进一步深入这些领域。<br>
+我的motivation，参见 [plan](/plan/) 页面。
+
+
 ## My featured works
 
 我乐于构建小而完整的研究系统、撰写技术笔记，将模糊的想法转化为可运行的成果。
