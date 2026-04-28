@@ -35,7 +35,7 @@ Research Interests
 
 Selected Open-Source Projects
 ======
-* **[Cot-Knot](https://github.com/Chi-Shan0707/Cot-Knot)** — [Preprint (Zenodo)](https://zenodo.org/records/19690518)
+* **[Cot-Knot](https://github.com/Chi-Shan0707/Cot-Knot)** — [Preprint (Zenodo)](https://zenodo.org/records/19853537)
   * Paper-level research repository on domain-conditioned semantics of self-correction in chain-of-thought (CoT)
   * Investigated whether "self-correction" is a universal quality signal or domain-conditioned across Math and Coding tasks
   * Shifted focus from verifier benchmarking to structural measurement analysis of annotation protocols grounding self-correction probes
