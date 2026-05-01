@@ -2,6 +2,8 @@
 title: "Neither Needed Nor Feared"
 date: 2026-04-08
 excerpt: "My notes of 马督公's video: The fifth Modernization"
+categories:
+  - musings
 tags:
   - AI
   - society

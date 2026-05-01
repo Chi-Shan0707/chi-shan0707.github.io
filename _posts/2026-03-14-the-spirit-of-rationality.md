@@ -6,6 +6,8 @@ tags:
   - math
   - philosophy
   - logics
+categories:
+  - musings
 ---
 
 ## What is the spirit of rationality?

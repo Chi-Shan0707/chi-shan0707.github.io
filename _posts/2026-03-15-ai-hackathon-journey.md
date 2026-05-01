@@ -5,6 +5,8 @@ excerpt: "Record my experience in AI Hackathon"
 tags:
   - AI
   - hackathon
+categories:
+  - musings
 ---
 <P>
 Our design of the project evolved for 3 stages.

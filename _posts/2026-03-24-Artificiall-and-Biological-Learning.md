@@ -6,6 +6,8 @@ tags:
   - AI
   - math
   - cognition
+categories:
+  - notes
 ---
 
 

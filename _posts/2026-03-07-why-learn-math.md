@@ -5,6 +5,8 @@ excerpt: "Thoughts that emerged during Algebra class."
 tags:
   - math
   - reflection
+categories:
+  - musings
 ---
 
 <p>

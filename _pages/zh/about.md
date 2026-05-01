@@ -37,14 +37,14 @@ redirect_from:
 
 ***
 
-### [Cot-Knot](https://github.com/Chi-Shan0707/cot-knot)
+### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
 **关于思维链（CoT）自我纠正中领域条件语义（domain-conditioned semantics）的论文级研究仓库。**
 
 <details>
 <summary>概述</summary>
 
-Cot-Knot 探讨了思维链（CoT）推理中的“自我纠正”究竟是一个普适的质量信号，还是一个受限于领域条件的局部特征。项目从“测量视阈（measurement perspective）”出发，不再局限于传统的验证器基准测试，而是去深究用于提取此类自我纠正特征的“标注协议”在数学（Math）和编程（Coding）等不同领域中是否本身具有效度。
+code-not-text 探讨了思维链（CoT）推理中的”自我纠正”究竟是一个普适的质量信号，还是一个受限于领域条件的局部特征。项目从”测量视阈（measurement perspective）”出发，不再局限于传统的验证器基准测试，而是去深究用于提取此类自我纠正特征的”标注协议”在数学（Math）和编程（Coding）等不同领域中是否本身具有效度。
 
 该项目的核心发现是：同一类表面上的”纠错”模式在不同领域的表现并不一致。数学中的”纠错节点（knots）”是显式、能通过文本观察到的局部状态中断，它可以可靠地预测正确率；但最初在编程领域设定的纠错节点则在标注效度和预测能力上表现极为薄弱。为此，该项目提出了一种基于执行语义中断（execution-semantic breaks）的代码替代协议，从概念精度和标注一致性上都带来了显著提升。
 

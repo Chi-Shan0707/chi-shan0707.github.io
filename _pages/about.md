@@ -35,14 +35,14 @@ I enjoy building small but complete research systems, writing technical notes, a
 
 ***
 
-### [Cot-Knot](https://github.com/Chi-Shan0707/cot-knot)
+### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
 **A paper repository on the domain-conditioned semantics of self-correction in chain-of-thought.**
 
 <details>
 <summary>Overview</summary>
 
-Cot-Knot investigates whether "self-correction" in chain-of-thought (CoT) reasoning acts as a universal quality signal or if it is heavily domain-conditioned. By taking a structural measurement perspective, the project shifts the focus from standard verifier benchmarking to scrutinizing the validity of the annotation protocols themselves across Math and Coding domains.
+code-not-text investigates whether "self-correction" in chain-of-thought (CoT) reasoning acts as a universal quality signal or if it is heavily domain-conditioned. By taking a structural measurement perspective, the project shifts the focus from standard verifier benchmarking to scrutinizing the validity of the annotation protocols themselves across Math and Coding domains.
 
 The central finding is that "self-correction" does not behave identically across domains. While math "knots" (explicit, text-visible local state breaks) reliably predict correctness, originally formulated coding "knots" are annotation-invalid and predictively weak. To resolve this, the project proposes a replacement protocol based on execution-semantic breaks, improving both conceptual precision and annotation agreement.
 
