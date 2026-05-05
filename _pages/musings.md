@@ -1,7 +1,7 @@
 ---
 layout: archive
 title: "Musings"
-permalink: /musings/
+permalink: /posts/musings/
 author_profile: true
 ---
 

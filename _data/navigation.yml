@@ -20,11 +20,5 @@ main:
   - title: "Talks"
     url: /talks/
 
-  - title: "Musings"
-    url: /musings/
-
-  - title: "Notes"
-    url: /notes/
-
-  - title: "Tech"
-    url: /tech/
+  - title: "Posts"
+    url: /posts/
