@@ -14,8 +14,31 @@
             {% else %}
               {% assign domain = base_path %}
             {% endif %}
-            <li class="masthead__menu-item {% if page.url contains link.url and link.url != '/' %}selected{% endif %}">
-              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
+            {% assign is_selected = false %}
+            {% if link.url and link.url != '/' and page.url contains link.url %}
+              {% assign is_selected = true %}
+            {% endif %}
+            {% if link.children %}
+              {% for child in link.children %}
+                {% if child.url == page.url %}
+                  {% assign is_selected = true %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            <li class="masthead__menu-item {% if link.children %}masthead__menu-item--has-children{% endif %} {% if is_selected %}selected{% endif %}">
+              <a href="{{ domain }}{{ link.url }}"{% if link.children %} aria-haspopup="true" aria-expanded="false"{% endif %}>{{ link.title }}</a>
+              {% if link.children %}
+                <ul class="masthead__submenu">
+                  {% for child in link.children %}
+                    {% if child.url contains 'http' %}
+                      {% assign child_domain = '' %}
+                    {% else %}
+                      {% assign child_domain = base_path %}
+                    {% endif %}
+                    <li class="masthead__submenu-item"><a href="{{ child_domain }}{{ child.url }}">{{ child.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
             </li>
           {% endfor %}
           <li id="theme-toggle" class="masthead__menu-item">
