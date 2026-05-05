@@ -37,15 +37,15 @@ I enjoy building small but complete research systems, writing technical notes, a
 
 ### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**Cross-domain limits of hand-crafted CoT-surface features; The same CoT features that predict math correctness (0.958) are noise for coding (0.434).** [See demo here~](https://chi-shan0707.github.io/code-not-text/demo/)
+**Cross-domain limits of hand-crafted CoT-surface features; The same CoT features that predict math correctness (0.958) are noise for coding (0.434).** [See **demo** here~](https://chi-shan0707.github.io/code-not-text/demo/)
 
 <details>
 <summary>Overview</summary>
  A core probe of five hand-crafted features—token confidence, trajectory continuity, reflection count, novelty, neuron width—predicts solution correctness from the reasoning trace alone. On 31,040 runs across three domains:<br>
 
-      Math (AIME, HMMT)     AoA 0.958  — signal at 10% of trace
-      Science (GPQA)         AoA 0.799  — confidence, not structure
-      Coding (LiveCodeBench) AoA 0.434  — below token-confidence baseline
+*Math (AIME, HMMT)     AoA 0.958  — signal at 10% of trace*<br>
+*Science (GPQA)         AoA 0.799  — confidence, not structure*<br>
+*Coding (LiveCodeBench) AoA 0.434  — below token-confidence baseline*<br>
 
 This isn't a feature engineering problem. I swept 83+ coding-specific scalars, added SSL pre-training, nonlinear MLPs, de-knotting, and a coding-specific run judge—all fail. The features measure reasoning quality in math but mere text fluency in coding: a measurement invariance failure. Correctness lives in the runtime, not in the text.
 </details>
@@ -173,6 +173,7 @@ Beyond my personal projects, I also contribute to community-oriented open-source
       [view **website** here ~~~](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
       A Chinese playbook documenting GitHub account flagging/recovery experiences, appeal processes, and case archives for mainland China developers.
    2. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
+      [visit our **website** here](https://fduguidebook.com/)<br>
       Contribute to this navigation site for the Fudan community continuously.
 
 ## Tech stack and tools
