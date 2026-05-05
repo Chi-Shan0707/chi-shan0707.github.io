@@ -1,10 +1,10 @@
 ---
 layout: archive
 title: "Tech"
-permalink: /posts/tech/
+permalink: /tech/
 author_profile: true
 ---
 
-{% for post in site.collections.tech.docs %}
+{% for post in site.categories.tech %}
   {% include archive-single.html %}
 {% endfor %}
