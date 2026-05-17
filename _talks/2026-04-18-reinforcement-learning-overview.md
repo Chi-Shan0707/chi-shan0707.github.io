@@ -7,6 +7,8 @@ venue: "Fudan University (internal seminar)"
 date: 2026-04-18
 location: "Shanghai, China"
 excerpt: "A one-hour mathematical bridge from bandits to PPO, designed as preparation for GRPO/DAPO discussions."
+link: "/files/From Bandits to PPO.pdf"
+redirect_to: "/files/From Bandits to PPO.pdf"
 pdf_url: "/files/From%20Bandits%20to%20PPO.pdf"
 ---
 
