@@ -78,6 +78,17 @@ An independent open-source reimplementation and adaptation of TinyLoRA + GRPO fr
 
 </details>
 
+### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)
+
+**Minimal GPT implementation from first principles in C++**
+
+<details>
+<summary>Overview</summary>
+
+Minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level frameworks.
+
+</details>
+
 ## My repos
 
 - The following projects were primarily completed independently, with AI used only as an auxiliary tool where appropriate. These works were not conducted under a laboratory or research group; rather, they reflect my self-directed exploration, sustained learning, and independent implementation outside a formal research environment.
@@ -93,13 +104,6 @@ An independent open-source reimplementation and adaptation of TinyLoRA + GRPO fr
 <summary><a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a></summary>
 
 <p>Explorations of <strong>Advanced Algorithms</strong> and <strong>Modern C++</strong> can be found in <a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a>.</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/microgpt.cpp" target="_blank" rel="noopener">microgpt.cpp</a></summary>
-
-<p>A simple <code>microgpt.cpp</code> in ~300 lines (repo: <a href="https://github.com/Chi-Shan0707/microgpt.cpp" target="_blank" rel="noopener">microgpt.cpp</a>).</p>
 
 </details>
 

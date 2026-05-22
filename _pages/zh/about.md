@@ -81,6 +81,17 @@ redirect_from:
 
 </details>
 
+### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)
+
+**从第一性原理出发，用 C++ 实现的极简 GPT**
+
+<details>
+<summary>概述</summary>
+
+从第一性原理出发，用 C++ 实现的极简 GPT，旨在不依赖高层框架的情况下理解模型内部机制。
+
+</details>
+
 ## My repos
 
 - 以下项目主要由本人独立完成，仅在适当之处辅助使用 AI。这些工作并非在实验室或研究组指导下开展，而是反映了我在正式研究环境之外的自主探索、持续学习和独立实践。
@@ -96,13 +107,6 @@ redirect_from:
 <summary><a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a></summary>
 
 <p>对 <strong>高级算法</strong>与 <strong>现代 C++</strong>的探索见 <a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a>。</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/microgpt.cpp" target="_blank" rel="noopener">microgpt.cpp</a></summary>
-
-<p>一个约 300 行的简易 <code>microgpt.cpp</code>（仓库：<a href="https://github.com/Chi-Shan0707/microgpt.cpp" target="_blank" rel="noopener">microgpt.cpp</a>）。</p>
 
 </details>
 
