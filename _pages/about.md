@@ -89,11 +89,9 @@ Minimal GPT implementation from first principles in C++, built to understand mod
 
 </details>
 
-- The following projects were completed in collaboration with others.
-
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
-**I propose SVDomain: a domain-conditioned low-rank framework for chain-of-thought analysis.**
+**A domain-conditioned low-rank framework for chain-of-thought analysis.**
 
 <details>
 <summary>Overview</summary>

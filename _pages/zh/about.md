@@ -92,11 +92,9 @@ redirect_from:
 
 </details>
 
-- 以下项目为合作完成。
-
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
-**我提出了 SVDomain：一个面向思维链分析的领域条件低秩框架。**
+**一个面向思维链分析的领域条件低秩框架。**
 
 <details>
 <summary>概述</summary>
