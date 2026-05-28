@@ -92,50 +92,6 @@ redirect_from:
 
 </details>
 
-## My repos
-
-- 以下项目主要由本人独立完成，仅在适当之处辅助使用 AI。这些工作并非在实验室或研究组指导下开展，而是反映了我在正式研究环境之外的自主探索、持续学习和独立实践。
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/KaggleCompetitions" target="_blank" rel="noopener">KaggleCompetitions</a></summary>
-
-<p>参加了若干 <strong>Kaggle 比赛</strong>（见仓库：<a href="https://github.com/Chi-Shan0707/KaggleCompetitions" target="_blank" rel="noopener">KaggleCompetitions</a>），广泛接触并实践了各种机器学习工具。</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a></summary>
-
-<p>对 <strong>高级算法</strong>与 <strong>现代 C++</strong>的探索见 <a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a>。</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/Baseball" target="_blank" rel="noopener">Baseball</a></summary>
-
-<p>一个使用 CNN + ResNet18 进行棒球投球分析的 <strong>好球/坏球分类模型</strong>（仓库：<a href="https://github.com/Chi-Shan0707/Baseball" target="_blank" rel="noopener">Baseball</a>）。</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/Sample-Java" target="_blank" rel="noopener">Sample Java</a></summary>
-
-<p><strong>随机算法</strong>的精髓——"采样的艺术"，以及我初次接触 Java。仓库：<a href="https://github.com/Chi-Shan0707/Sample-Java" target="_blank" rel="noopener">Sample Java</a>。</p>
-
-</details>
-
-<details>
-<summary>DeepLearning / GenerativeModel / ReinforcementLearning</summary>
-
-<p>这三个仓库作为<strong>学习记录</strong>，涵盖理论 → 实现：</p>
-<ul>
-   <li><a href="https://github.com/Chi-Shan0707/DeepLearning" target="_blank" rel="noopener">DeepLearning</a></li>
-   <li><a href="https://github.com/Chi-Shan0707/GenerativeModel" target="_blank" rel="noopener">GenerativeModel</a></li>
-   <li><a href="https://github.com/Chi-Shan0707/ReinforcementLearning" target="_blank" rel="noopener">ReinforcementLearning</a></li>
-</ul>
-
-</details>
-
 - 以下项目为合作完成。
 
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)

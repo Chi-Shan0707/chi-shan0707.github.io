@@ -89,50 +89,6 @@ Minimal GPT implementation from first principles in C++, built to understand mod
 
 </details>
 
-## My repos
-
-- The following projects were primarily completed independently, with AI used only as an auxiliary tool where appropriate. These works were not conducted under a laboratory or research group; rather, they reflect my self-directed exploration, sustained learning, and independent implementation outside a formal research environment.
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/KaggleCompetitions" target="_blank" rel="noopener">KaggleCompetitions</a></summary>
-
-<p>Participated in several <strong>Kaggle competitions</strong> (see repo: <a href="https://github.com/Chi-Shan0707/KaggleCompetitions" target="_blank" rel="noopener">KaggleCompetitions</a>), gaining broad exposure to and practical experience with various machine learning tools.</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a></summary>
-
-<p>Explorations of <strong>Advanced Algorithms</strong> and <strong>Modern C++</strong> can be found in <a href="https://github.com/Chi-Shan0707/Hone-My-C-Plus-Plus-" target="_blank" rel="noopener">Hone My C Plus Plus</a>.</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/Baseball" target="_blank" rel="noopener">Baseball</a></summary>
-
-<p>A <strong>Strike/Ball Classification Model</strong> using CNN + ResNet18 for baseball pitch analysis (repo: <a href="https://github.com/Chi-Shan0707/Baseball" target="_blank" rel="noopener">Baseball</a>).</p>
-
-</details>
-
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/Sample-Java" target="_blank" rel="noopener">Sample Java</a></summary>
-
-<p>The essence of <strong>Randomized Algorithms</strong>—the "Art of Sampling"—and my first taste of Java. Repo: <a href="https://github.com/Chi-Shan0707/Sample-Java" target="_blank" rel="noopener">Sample Java</a>.</p>
-
-</details>
-
-<details>
-<summary>DeepLearning / GenerativeModel / ReinforcementLearning</summary>
-
-<p>These three repositories serve as <strong>learning records</strong> covering theory → implementation:</p>
-<ul>
-   <li><a href="https://github.com/Chi-Shan0707/DeepLearning" target="_blank" rel="noopener">DeepLearning</a></li>
-   <li><a href="https://github.com/Chi-Shan0707/GenerativeModel" target="_blank" rel="noopener">GenerativeModel</a></li>
-   <li><a href="https://github.com/Chi-Shan0707/ReinforcementLearning" target="_blank" rel="noopener">ReinforcementLearning</a></li>
-</ul>
-
-</details>
-
 - The following projects were completed in collaboration with others.
 
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
