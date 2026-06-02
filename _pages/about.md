@@ -123,7 +123,14 @@ This project was completed in collaboration with others. My collaborator contrib
 ***
 
 
-## Service and Community Involvement
+## Service
+
+Academic service and review roles.
+
+   1. [ICML 2026 Workshop AI4Math](https://openreview.net/group?id=ICML.cc/2026/Workshop/AI4Math) <br>
+      Reviewer, ICML 2026 Workshop AI4Math, 2026.
+
+## Community Involvement
 
 Beyond my personal projects, I also contribute to community-oriented open-source work.
 
