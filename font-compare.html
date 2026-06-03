@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>字体方案对比</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, sans-serif;
+    background: #f5f5f5; color: #333;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; padding: 2rem;
+  }
+  .card {
+    background: #fff; border-radius: 12px;
+    padding: 2.5rem 3rem; box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    max-width: 560px; width: 100%;
+  }
+  h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: .3rem; }
+  .sub { font-size: .8rem; color: #888; margin-bottom: 1.8rem; }
+  .group { margin-bottom: 1.5rem; }
+  .group-title { font-size: .65rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #aaa; margin-bottom: .6rem; }
+  .option {
+    display: block; padding: 1rem 1.2rem; margin-bottom: .6rem;
+    border: 1px solid #e5e5e5; border-radius: 8px;
+    text-decoration: none; color: inherit;
+    transition: all .15s ease;
+  }
+  .option:hover { border-color: #4a90a4; background: #f8fafb; }
+  .option .name { font-weight: 600; font-size: .92rem; margin-bottom: .2rem; }
+  .option .fonts { font-size: .72rem; color: #999; }
+  .tag { display: inline-block; font-size: .55rem; font-weight: 600; padding: .15em .5em; border-radius: 3px; margin-left: .4em; vertical-align: middle; }
+  .tag.soft { background: #fff0f5; color: #c2185b; }
+  .tag.hard { background: #e8f5e9; color: #388e3c; }
+  .tag.cn { background: #fff3e0; color: #e65100; }
+  .tag.current { background: #e3f2fd; color: #1565c0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>字体方案对比</h1>
+  <p class="sub">点击各方案在浏览器中打开，对比实际渲染效果</p>
+
+  <div class="group">
+    <div class="group-title">柔和风格（新）</div>
+
+    <a class="option" href="font-soft-1.html" target="_blank">
+      <div class="name">软方案 1 — Literata + Nunito Sans <span class="tag soft">柔和</span></div>
+      <div class="fonts">衬线: Literata · 无衬线: Nunito Sans · 等宽: JetBrains Mono</div>
+    </a>
+  </div>
+
+  <div class="group">
+    <div class="group-title">硬朗 / 学术风格（已有）</div>
+
+    <a class="option" href="font-preview-A.html" target="_blank">
+      <div class="name">方案 A — Lora + IBM Plex Sans <span class="tag current">当前已应用</span></div>
+      <div class="fonts">衬线: Lora · 无衬线: IBM Plex Sans · 等宽: IBM Plex Mono</div>
+    </a>
+
+    <a class="option" href="font-preview-B.html" target="_blank">
+      <div class="name">方案 B — Noto Serif SC + Noto Sans SC <span class="tag cn">中文优先</span></div>
+      <div class="fonts">衬线: Noto Serif SC · 无衬线: Noto Sans SC · 等宽: Noto Sans Mono</div>
+    </a>
+
+    <a class="option" href="font-preview-C.html" target="_blank">
+      <div class="name">方案 C — Crimson Pro + Source Sans 3</div>
+      <div class="fonts">衬线: Crimson Pro · 无衬线: Source Sans 3 · 等宽: Source Code Pro</div>
+    </a>
+
+    <a class="option" href="example.html" target="_blank">
+      <div class="name">方案 D — EB Garamond + Inter</div>
+      <div class="fonts">衬线: EB Garamond · 无衬线: Inter · 等宽: JetBrains Mono</div>
+    </a>
+  </div>
+</div>
+</body>
+</html>
