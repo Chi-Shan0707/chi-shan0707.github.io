@@ -7,16 +7,16 @@
    ========================================================================== */
 
 /* Used to set the size for <em> */
-$doc-font-size              : 16;
+$doc-font-size              : 17;
 
 /* Paragraph indention */
 $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
-/* Google Fonts - Source Serif 4 (academic serif) */
-$serif                      : "Source Serif 4", Georgia, "Times New Roman", serif;
-$sans-serif                 : "Source Sans 3", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace;
+/* Google Fonts */
+$serif                      : "EB Garamond", Georgia, "Times New Roman", serif;
+$sans-serif                 : "Inter", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$monospace                  : "JetBrains Mono", Monaco, Consolas, "Lucida Console", monospace;
 
 /* Sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;

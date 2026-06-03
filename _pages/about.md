@@ -141,6 +141,8 @@ Beyond my personal projects, I also contribute to community-oriented open-source
       [visit our **website** here](https://fduguidebook.com/)<br>
       Contribute to this navigation site for the Fudan community continuously.
 
+I have also signed the [Leiden Declaration on Artificial Intelligence and Mathematics](https://leidendeclaration.ai/), a community initiative endorsed by the International Mathematical Union (IMU) calling for responsible use of AI in mathematical research.
+
 ## Tech stack and tools
 
 | Domain         | Skills                                                                 |
