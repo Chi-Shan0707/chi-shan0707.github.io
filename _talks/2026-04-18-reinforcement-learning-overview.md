@@ -3,12 +3,10 @@ title: "From Bandits to PPO: RL Prerequisite Seminar"
 collection: talks
 type: "Talk"
 permalink: /talks/2026-04-18-reinforcement-learning-overview
-venue: "Fudan University (internal seminar)"
+venue: "Fudan University seminar"
 date: 2026-04-18
 location: "Shanghai, China"
 excerpt: "A one-hour mathematical bridge from bandits to PPO, designed as preparation for GRPO/DAPO discussions."
-link: "/files/From Bandits to PPO.pdf"
-redirect_to: "/files/From Bandits to PPO.pdf"
 pdf_url: "/files/From%20Bandits%20to%20PPO.pdf"
 ---
 
@@ -17,8 +15,6 @@ This page is the seminar detail page for "From Bandits to PPO".
 The PDF notes are the complete written version of this seminar. They include the full formulas, derivations, and algorithm summaries that are only briefly mentioned on this page.
 
 The content follows a single line: Bandits -> MDPs -> MC/TD -> policy gradient -> GAE -> PPO. The goal is to keep the concepts connected, so readers can see where each method comes from and why PPO is the endpoint of this prerequisite talk.
-
-[Read the Full LaTeX Notes (PDF)](/files/From%20Bandits%20to%20PPO.pdf){: .btn .btn--primary }
 
 If you want a quick reading path, focus on these four points:
 

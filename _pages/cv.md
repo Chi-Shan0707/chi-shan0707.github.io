@@ -9,13 +9,13 @@ redirect_from:
 
 {% include base_path %}
 
-[**View PDF version**]({{ base_path }}/files/Yuhan_Chi_CV.pdf)
+This page is the most up-to-date version of my CV. A PDF version may lag behind the website.
 
 Profile
 ======
-* First-year undergraduate at **Fudan University** (School of Mathematical Sciences), pursuing a double degree in **Information and Computing Science** and **Artificial Intelligence**.
+* Undergraduate at **Fudan University** (School of Mathematical Sciences), pursuing a double degree in **Information and Computing Science** and **Artificial Intelligence**.
 * GPA: **3.96/4.00** (most recent semester); ranked **10th (top 5%)** in cohort.
-* Research focus: mathematical foundations of intelligence, entrustable sequential decision-making, and reinforcement learning with world models.
+* Research interests: mathematical interpretability for AI trust, verification/evaluation of LLM reasoning, and reinforcement learning for sequential decision-making.
 
 Education
 ======
@@ -27,34 +27,49 @@ Education
 
 Research Interests
 ======
-* **Mathematical Foundations of Intelligence**: grounding AI trust in formal mathematical terms rather than empirical benchmarks
-* **Entrustable Sequential Decision-Making**: building agents that are mathematically verifiable and know when to act, defer, or bear consequences
-* **Reinforcement Learning & World Models**: RL as a language for trust, uncertainty, and structured interaction with environments
+* **Mathematical Interpretability and AI Trust**: grounding claims about model reliability in inspectable mathematical and statistical evidence
+* **Reasoning Verification and Evaluation**: studying when surface-level signals from LLM traces are diagnostic, misleading, or protocol-dependent
+* **Reinforcement Learning and Sequential Decision-Making**: using RL concepts to reason about uncertainty, feedback, and interaction with environments
 
 
 Selected Open-Source Projects
 ======
+* **[token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)** — [AI4Math Workshop](https://ai4math2026.github.io/)
+  * Controlled evaluation of token-level verification signals for LLM math reasoning
+  * Poster, **ICML 2026 Workshop on AI for Math (AI4Math)**
+  * Audits how evaluation protocol choices such as pooling, in-sample scoring, and direction-agnostic AUROC can change apparent verification performance
+  * Shows that shallow token statistics can be useful diagnostics, but should not be treated as stable standalone verifiers without stronger controls
+
 * **[code-not-text](https://github.com/chi-shan0707/code-not-text)** — [Interactive Demo](https://chi-shan0707.github.io/code-not-text/demo)
-  * Paper-level research on cross-domain limits of hand-crafted CoT-surface features for predicting solution correctness from reasoning traces
-  * Evaluated on DeepSeek-R1-0528-Qwen3-8B across math, science, and coding; strong in math (AoA 0.958), below-chance in coding (AoA 0.434)
-  * Five independent checks (probes, feature sweep, MLPs, SSL, de-knotting) all converge to the same coding ceiling, ruling out capacity, engineering, scarcity, and noise — code correctness is not in the text
-  * Argued that CoT traces are not entrustable correctness instruments: they signal reasoning failure in math but only text fluency in coding, making execution feedback essential for verifiable agents
-  * Interactive demo at [chi-shan0707.github.io/code-not-text/demo](https://chi-shan0707.github.io/code-not-text/demo)
+  * Study of cross-domain behavior of hand-crafted CoT-surface features for predicting solution correctness from reasoning traces
+  * Evaluated feature behavior across math, science, and coding settings, where the same feature family is strong for math but weak for coding
+  * Interprets the gap as a measurement issue: coding correctness depends more directly on executable behavior than on text-level trace features
+  * Includes an interactive demo and ablations around feature families and domain transfer
 
 * **[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)**
-  * Independent reimplementation and adaptation of TinyLoRA + GRPO from *Learning to Reason in 13 Parameters*
-  * Migrated the method from math reasoning to verifiable competitive-programming code generation on Qwen2.5-Coder-3B
-  * Trained with a minimal number of shared trainable parameters; replaced static heuristics with real compile-and-run rewards
-  * Built the full pipeline end to end: data processing, training, multi-GPU setup, reward design, evaluation, and validation
+  * Independent reimplementation and adaptation inspired by *Learning to Reason in 13 Parameters*
+  * Moved a small-parameter adaptation and GRPO-style training pipeline toward verifiable competitive-programming code generation on Qwen2.5-Coder-3B
+  * Uses compile-and-run rewards rather than static heuristics
+  * Built as a full research-system exercise: data processing, training, multi-GPU setup, reward design, evaluation, and validation
 
 * **[microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)**
   * Minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level frameworks
+
+* **[SVDomain](https://github.com/Chi-Shan0707/SVDomain)**
+  * Domain-conditioned low-rank analysis for chain-of-thought features
+  * Builds feature views from token-level confidence, uncertainty statistics, trajectory summaries, and availability indicators
+  * Completed in collaboration with others; my role focused on framework proposal, experiment design, execution, and validation
+
+
+Academic Service
+======
+* **Reviewer**, [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/), 2026
 
 
 Skills
 ======
 * **Programming:** Python, C++, C, Java, Node.js, Lean 4
-* **ML/AI:** PyTorch, deep learning, LLM fine-tuning, reinforcement learning, computer vision
+* **ML/AI:** PyTorch, ML experimentation, LLM evaluation, reinforcement-learning basics
 * **Tools:** Git, GitHub, Linux, LaTeX, Markdown, VS Code
 * **Other:** Mathematical proof writing, technical writing, self-directed learning, competitive programming
 

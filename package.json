@@ -1,28 +1,13 @@
 {
-  "name": "academic-pages",
-  "version": "0.8.1.1",
-  "description": "Academic Pages Mistakes Jekyll theme npm build scripts",
+  "name": "yuhan-chi-homepage",
+  "version": "1.0.0",
+  "description": "Personal academic homepage for Yuhan Chi, built with AcademicPages / Minimal Mistakes.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/academicpages/academicpages.github.io"
+    "url": "https://github.com/Chi-Shan0707/Chi-Shan0707.github.io"
   },
-  "keywords": [
-    "jekyll",
-    "theme",
-    "minimal"
-  ],
-  "contributors": [
-    "Michael Rose",
-    "Robert Zupko"
-  ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/academicpages/academicpages.github.io/issues"
-  },
-  "homepage": "https://github.com/academicpages/academicpages.github.io",
-  "engines": {
-    "node": ">= 0.10.0"
-  },
+  "homepage": "https://chi-shan0707.github.io/",
   "dependencies": {
     "fitvids": "^2.1.1",
     "jquery": "^3.7.1",

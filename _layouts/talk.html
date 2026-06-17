@@ -35,13 +35,19 @@ layout: default
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
         {% endif %}
-        {% if page.talk_type %}<p>{{page.talk_type}} at {{ page.venue }},  {{page.location}} {% endif %}
+        {% if page.talk_type or page.type or page.venue or page.location %}
+          <p>
+            {% if page.talk_type %}{{ page.talk_type }}{% elsif page.type %}{{ page.type }}{% endif %}
+            {% if page.venue %} at {{ page.venue }}{% endif %}{% if page.location %}, {{ page.location }}{% endif %}
+          </p>
+        {% endif %}
 
         </header>
       {% endunless %}
 
       <section class="page__content" itemprop="text">
         {{ content }}
+        {% if page.pdf_url %}<div><a href="{{ page.pdf_url }}" class="btn btn--primary">PDF notes</a></div>{% endif %}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 

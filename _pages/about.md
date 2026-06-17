@@ -25,113 +25,92 @@ I hope to contribute to making society better.<br>
 
 ## My research interests
 
-Currently, I am exploring the mathematical foundations of intelligence in large models and sequential decision-making. More specifically, I want to ground the concept of AI trust in **mathematical interpretability** rather than philosophy, and delve deeper into these areas through **Reinforcement Learning** methods.<br>
+Currently, I am exploring the mathematical foundations of intelligence in large models and sequential decision-making. More specifically, I want to ground the concept of AI trust in **mathematical interpretability** rather than philosophy, and study these questions through **Reinforcement Learning** methods.<br>
 See more of my motivation on my [plan](/plan/) page.
 
 ## My featured works
 
-I enjoy building small but complete research systems, writing technical notes, and turning vague ideas into runnable artifacts.
-
+I enjoy building small but complete research systems: a question, a dataset or artifact, code that runs, and a write-up that makes the failure modes visible. I try to keep the claims modest and the artifacts inspectable.
 
 ***
 
-### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
-
-**Cross-domain limits of hand-crafted CoT-surface features; The same CoT features that predict math correctness (0.958) are noise for coding (0.434).** [See **demo** here~](https://chi-shan0707.github.io/code-not-text/demo/)
-
-<details>
-<summary>Overview</summary>
- A core probe of five hand-crafted features—token confidence, trajectory continuity, reflection count, novelty, neuron width—predicts solution correctness from the reasoning trace alone. On 31,040 runs across three domains:<br>
-
-*Math (AIME, HMMT)     AoA 0.958  — signal at 10% of trace*<br>
-*Science (GPQA)         AoA 0.799  — confidence, not structure*<br>
-*Coding (LiveCodeBench) AoA 0.434  — below token-confidence baseline*<br>
-
-This isn't a feature engineering problem. I swept 83+ coding-specific scalars, added SSL pre-training, nonlinear MLPs, de-knotting, and a coding-specific run judge—all fail. The features measure reasoning quality in math but mere text fluency in coding: a measurement invariance failure. Correctness lives in the runtime, not in the text.
-</details>
-
 ### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
 
-**Controlled evaluation of token-level verification for LLM math reasoning: evaluation protocol shifts AUROC more than feature design.** Accepted as a poster at ICML 2026 Workshop AI4Math.
+**Controlled evaluation of token-level verification signals for LLM math reasoning.**  
+Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/).
 
 <details>
 <summary>Overview</summary>
 
-An audit of what shallow token-level statistics—entropy, log-probabilities, confidence trajectories—can extract for verifying LLM math reasoning without additional model calls or training. Under a controlled protocol (within-problem leave-one-out, GroupKFold by problem, permutation-null calibration), evaluation-protocol artifacts shift AUROC by 0.04–0.18—larger than the genuine variation among the 12 analyzed methods, which converge to a narrow 0.60–0.75 range on hard problems. Final-token entropy looks strong under direction-agnostic scoring but collapses to chance (0.47–0.48) under fixed-direction evaluation.
+This project asks whether shallow token-level signals—entropy, log-probability, confidence trajectories—can distinguish correct from incorrect math reasoning traces without extra model calls. The focus is not to propose a new verifier, but to audit how much apparent performance depends on the evaluation protocol.
 
-This is a deliberately "dull," academically ordinary piece of work, and I leaned on AI assistance throughout. Its value to me is not the headline finding but that I walked the entire research pipeline end to end—data collection and generation, literature search, experiment design and execution, and defending the claims—completely on my own.
+Across MATH and BigMath experiments with Qwen and Llama models, protocol choices such as global pooling, in-sample scoring, and direction-agnostic AUROC can shift reported AUROC by up to about 0.18. Final-token entropy reaches 0.72--0.75 direction-agnostic AUROC, but drops to 0.47--0.48 under fixed-direction evaluation.
+
+**Takeaway:** shallow token statistics are useful diagnostics, but they should not be treated as stable standalone verifiers without within-problem evaluation, fixed-direction baselines, and permutation-null calibration.
+
+Links: [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [workshop](https://ai4math2026.github.io/)
 
 </details>
 
-<!-- ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
+### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**I propose SVDomain : a domain-conditioned low-rank framework for chain-of-thought analysis.**
+**Cross-domain behavior of hand-crafted CoT-surface features.** [Interactive demo](https://chi-shan0707.github.io/code-not-text/demo/)
 
 <details>
 <summary>Overview</summary>
 
-SVDomain is a domain-conditioned low-rank framework that builds feature views from token-level confidence and uncertainty statistics, trajectory summaries, and availability indicators, and learns a shared latent basis with a lightweight linear readout.
+This project studies whether hand-crafted features from reasoning traces—token confidence, trajectory continuity, reflection count, novelty, and related statistics—predict correctness across domains. On one experimental setting, the same feature family is strong for math, narrower for science, and weak for coding:
 
-- Canonical pipeline: StandardScaler → TruncatedSVD → LogisticRegression
-- Downstream tasks: EarlyStop, Best-of-N bridging, RL checkpoint ranking.
-- Focus: when low-rank structure becomes predictive, how bases transfer across anchors, and how the same low-rank object can support both prediction and explanation.
+*Math (AIME, HMMT): AoA 0.958*  
+*Science (GPQA): AoA 0.799*  
+*Coding (LiveCodeBench): AoA 0.434*
 
-This repository contains a paper-style writeup and code to reproduce experiments and analyses.
+I treat this as a measurement problem rather than a universal negative result: the features appear to capture useful reasoning dynamics in math, but coding correctness depends more directly on executable behavior. The project includes an interactive demo and a set of ablations around feature families and domain transfer.
 
-</details> -->
+Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/)
+
+</details>
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 
-**Low-parameter adaptation and reinforcement learning for code generation**
+**A small-parameter adaptation and RL training pipeline for code generation.**
 
 <details>
 <summary>Overview</summary>
 
-An independent open-source reimplementation and adaptation of TinyLoRA + GRPO from [Learning to Reason in 13 Parameters](https://arxiv.org/abs/2602.04118), migrated from math reasoning to verifiable competitive-programming code generation. Built on Qwen2.5-Coder-3B with only a tiny number of shared trainable parameters, the project uses real compile-and-run rewards rather than static heuristics. I developed the full pipeline end to end, including data processing, training, multi-GPU setup, reward design, evaluation, and validation, which significantly strengthened my ability to turn a paper into a working research system.
+An independent open-source reimplementation and adaptation inspired by [Learning to Reason in 13 Parameters](https://arxiv.org/abs/2602.04118), moved from math reasoning toward verifiable competitive-programming code generation. The project uses Qwen2.5-Coder-3B, a tiny shared-parameter adaptation mechanism, and compile-and-run rewards rather than static heuristics.
+
+The main value of this project for me was engineering a full research loop: data processing, training, multi-GPU setup, reward design, evaluation, and validation. It is a systems-building project rather than a claim that the method is a general solution for code reasoning.
 
 </details>
 
 ### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)
 
-**Minimal GPT implementation from first principles in C++**
+**A minimal GPT implementation from first principles in C++.**
 
 <details>
 <summary>Overview</summary>
 
-Minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level frameworks.
+A compact C++ implementation built to understand transformer internals without relying on high-level deep-learning frameworks. The goal is educational: make the data flow, tensor operations, and model components explicit enough to inspect and modify.
 
 </details>
 
 ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
 
-**A domain-conditioned low-rank framework for chain-of-thought analysis.**
+**Domain-conditioned low-rank analysis for chain-of-thought features.**
 
 <details>
 <summary>Overview</summary>
 
-SVDomain is a domain-conditioned low-rank framework that builds feature views from token-level confidence and uncertainty statistics, trajectory summaries, and availability indicators, and learns a shared latent basis with a lightweight linear readout.
+SVDomain builds feature views from token-level confidence and uncertainty statistics, trajectory summaries, and availability indicators, then learns a shared low-rank representation with a lightweight linear readout.
 
 - Canonical pipeline: StandardScaler → TruncatedSVD → LogisticRegression
-- Downstream tasks: EarlyStop, Best-of-N bridging, RL checkpoint ranking.
-- Focus: when low-rank structure becomes predictive, how bases transfer across anchors, and how the same low-rank object can support both prediction and explanation.
-
-This repository contains a paper-style writeup and code to reproduce experiments and analyses.
-
-</details>
+- Downstream tasks: early stopping, Best-of-N bridging, and checkpoint ranking
+- Focus: when low-rank structure is predictive, how bases transfer across anchors, and how one representation can support both prediction and interpretation
 
 This project was completed in collaboration with others. My collaborator contributed the meta-level raw data foundation; I proposed the framework, designed and ran the experiments, and conducted the validation.
 
-<!-- - The following project was completed in collaboration with others.
-<details>
-<summary><a href="https://github.com/Chi-Shan0707/NAD_Next" target="_blank" rel="noopener">NAD Next</a></summary>
-
-<p>A collaborative framework for analyzing large-language-model neuron activations and reasoning processes. The project covers activation-cache construction, selector evaluation, token-level statistics, and visualization. Our goal is to compare different runs on the same problem via CoT-, activation-, and ensemble-based signals, and estimate which run is more likely to be correct or incorrect.</p>
-
-<p>My primary contribution: algorithm construction and method design.</p>
-
-> Note: This project is currently a work in progress (WIP). Due to practical constraints, some content cannot be open-sourced on GitHub immediately; therefore, the current public repository is not yet complete. We will continue to add materials and update toward a more complete release as conditions permit.
-
-</details> -->
+</details>
 
 ***
 
@@ -140,8 +119,8 @@ This project was completed in collaboration with others. My collaborator contrib
 
 Academic service and review roles.
 
-   1. [ICML 2026 Workshop AI4Math](https://openreview.net/group?id=ICML.cc/2026/Workshop/AI4Math) <br>
-      Reviewer, ICML 2026 Workshop AI4Math, 2026.
+   1. [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/) <br>
+      Reviewer, ICML 2026 Workshop on AI for Math (AI4Math), 2026.
 
 ## Community Involvement
 
