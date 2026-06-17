@@ -18,35 +18,35 @@ redirect_from:
 - GitHub: [Chi-Shan0707](https://github.com/Chi-Shan0707)
 
 
-I am currently an undergraduate student at the School of Mathematical Sciences, Fudan University, pursuing a double degree in Information and Computing Science and Artificial Intelligence.<br>
-At the same time, I have been actively self-studying interesting topics across computer science.<br>
-I am exploring the intersection I truly want to work on and study.<br>
-I hope to contribute to making society better.<br>
+I am an undergraduate at the School of Mathematical Sciences, Fudan University, pursuing a double degree in Information and Computing Science and Artificial Intelligence.<br>
+My current work centers on evaluation, verification, and small research systems for LLM reasoning.<br>
 
 ## My research interests
 
-Currently, I am exploring the mathematical foundations of intelligence in large models and sequential decision-making. More specifically, I want to ground the concept of AI trust in **mathematical interpretability** rather than philosophy, and study these questions through **Reinforcement Learning** methods.<br>
-See more of my motivation on my [plan](/plan/) page.
+I am interested in how to make claims about AI reasoning more inspectable: what signals are reliable, which evaluations are protocol-sensitive, and how sequential decision-making can be studied with mathematical tools.<br>
+See also my [plan](/plan/) page for longer-term motivation.
 
 ## My featured works
 
-I enjoy building small but complete research systems: a question, a dataset or artifact, code that runs, and a write-up that makes the failure modes visible. I try to keep the claims modest and the artifacts inspectable.
+Selected solo projects. I list them by the question they test, the artifact they provide, and the main limitation they reveal.
 
 ***
 
 ### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
 
-**Controlled evaluation of token-level verification signals for LLM math reasoning.**  
+**Solo author.** Controlled evaluation of token-level verification signals for LLM math reasoning.  
 Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/).
 
-<details>
+<details markdown="1">
 <summary>Overview</summary>
 
-This project asks whether shallow token-level signals—entropy, log-probability, confidence trajectories—can distinguish correct from incorrect math reasoning traces without extra model calls. The focus is not to propose a new verifier, but to audit how much apparent performance depends on the evaluation protocol.
+**Question.** Can shallow token-level signals such as entropy, log-probability, and confidence trajectories separate correct from incorrect math reasoning traces without extra model calls?
 
-Across MATH and BigMath experiments with Qwen and Llama models, protocol choices such as global pooling, in-sample scoring, and direction-agnostic AUROC can shift reported AUROC by up to about 0.18. Final-token entropy reaches 0.72--0.75 direction-agnostic AUROC, but drops to 0.47--0.48 under fixed-direction evaluation.
+**Method.** I compare token statistics across MATH and BigMath traces from Qwen and Llama models, with controls for within-problem evaluation, fixed-direction scoring, and permutation-null calibration.
 
-**Takeaway:** shallow token statistics are useful diagnostics, but they should not be treated as stable standalone verifiers without within-problem evaluation, fixed-direction baselines, and permutation-null calibration.
+**Finding.** Protocol choices such as global pooling, in-sample scoring, and direction-agnostic AUROC can shift reported AUROC by up to about 0.18. Final-token entropy reaches 0.72--0.75 direction-agnostic AUROC, but drops to 0.47--0.48 under fixed-direction evaluation.
+
+**Takeaway.** Shallow token statistics are useful diagnostics, not stable standalone verifiers unless the evaluation protocol is controlled.
 
 Links: [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [workshop](https://ai4math2026.github.io/)
 
@@ -54,18 +54,22 @@ Links: [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [wor
 
 ### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**Cross-domain behavior of hand-crafted CoT-surface features.** [Interactive demo](https://chi-shan0707.github.io/code-not-text/demo/)
+**Solo project.** Cross-domain behavior of hand-crafted CoT-surface features. [Interactive demo](https://chi-shan0707.github.io/code-not-text/demo/)
 
-<details>
+<details markdown="1">
 <summary>Overview</summary>
 
-This project studies whether hand-crafted features from reasoning traces—token confidence, trajectory continuity, reflection count, novelty, and related statistics—predict correctness across domains. On one experimental setting, the same feature family is strong for math, narrower for science, and weak for coding:
+**Question.** Do hand-crafted reasoning-trace features transfer across math, science, and coding tasks?
 
-*Math (AIME, HMMT): AoA 0.958*  
-*Science (GPQA): AoA 0.799*  
-*Coding (LiveCodeBench): AoA 0.434*
+**Method.** I use features such as token confidence, trajectory continuity, reflection count, and novelty, then test how their predictive behavior changes across domains.
 
-I treat this as a measurement problem rather than a universal negative result: the features appear to capture useful reasoning dynamics in math, but coding correctness depends more directly on executable behavior. The project includes an interactive demo and a set of ablations around feature families and domain transfer.
+**Result in one setting.**
+
+- Math (AIME, HMMT): AoA 0.958
+- Science (GPQA): AoA 0.799
+- Coding (LiveCodeBench): AoA 0.434
+
+**Takeaway.** The features can capture useful reasoning dynamics in math-like traces, but coding correctness depends more directly on executable behavior. I treat this as a measurement issue, not a universal negative claim.
 
 Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/)
 
@@ -73,45 +77,27 @@ Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://c
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 
-**A small-parameter adaptation and RL training pipeline for code generation.**
+**Solo project.** A small-parameter adaptation and RL training pipeline for code generation.
 
-<details>
+<details markdown="1">
 <summary>Overview</summary>
 
-An independent open-source reimplementation and adaptation inspired by [Learning to Reason in 13 Parameters](https://arxiv.org/abs/2602.04118), moved from math reasoning toward verifiable competitive-programming code generation. The project uses Qwen2.5-Coder-3B, a tiny shared-parameter adaptation mechanism, and compile-and-run rewards rather than static heuristics.
+An independent reimplementation and adaptation inspired by [Learning to Reason in 13 Parameters](https://arxiv.org/abs/2602.04118), moved from math reasoning toward verifiable competitive-programming code generation.
 
-The main value of this project for me was engineering a full research loop: data processing, training, multi-GPU setup, reward design, evaluation, and validation. It is a systems-building project rather than a claim that the method is a general solution for code reasoning.
+The project uses Qwen2.5-Coder-3B, a tiny shared-parameter adaptation mechanism, and compile-and-run rewards rather than static heuristics. Its main value is the full research loop: data processing, training, multi-GPU setup, reward design, evaluation, and validation.
 
 </details>
 
 ### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)
 
-**A minimal GPT implementation from first principles in C++.**
+**Solo project.** A minimal GPT implementation from first principles in C++.
 
-<details>
+<details markdown="1">
 <summary>Overview</summary>
 
 A compact C++ implementation built to understand transformer internals without relying on high-level deep-learning frameworks. The goal is educational: make the data flow, tensor operations, and model components explicit enough to inspect and modify.
 
 </details>
-
-### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
-
-**Domain-conditioned low-rank analysis for chain-of-thought features.**
-
-<details>
-<summary>Overview</summary>
-
-SVDomain builds feature views from token-level confidence and uncertainty statistics, trajectory summaries, and availability indicators, then learns a shared low-rank representation with a lightweight linear readout.
-
-- Canonical pipeline: StandardScaler → TruncatedSVD → LogisticRegression
-- Downstream tasks: early stopping, Best-of-N bridging, and checkpoint ranking
-- Focus: when low-rank structure is predictive, how bases transfer across anchors, and how one representation can support both prediction and interpretation
-
-This project was completed in collaboration with others. My collaborator contributed the meta-level raw data foundation; I proposed the framework, designed and ran the experiments, and conducted the validation.
-
-</details>
-
 ***
 
 

@@ -5,12 +5,25 @@ permalink: /talks/
 author_profile: true
 ---
 
+{% include base_path %}
+
 {% if site.talkmap_link == true %}
 
 <p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
 
 {% endif %}
 
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
-{% endfor %}
+<div class="list__item">
+  <article class="archive__item">
+    <h2 class="archive__item-title">
+      <a href="{{ base_path }}/talks/2026-04-18-reinforcement-learning-overview">From Bandits to PPO: RL Prerequisite Seminar</a>
+    </h2>
+    <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> April 18, 2026</p>
+    <p class="archive__item-excerpt">Talk, Fudan University seminar, Shanghai, China.</p>
+    <p class="archive__item-excerpt">A one-hour mathematical bridge from bandits to PPO, designed as preparation for GRPO/DAPO discussions.</p>
+    <p>
+      <a href="{{ base_path }}/talks/2026-04-18-reinforcement-learning-overview" class="btn">Details</a>
+      <a href="{{ base_path }}/files/From%20Bandits%20to%20PPO.pdf" class="btn btn--primary">PDF notes</a>
+    </p>
+  </article>
+</div>

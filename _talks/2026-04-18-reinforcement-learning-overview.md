@@ -59,9 +59,3 @@ If you want a quick reading path, focus on these four points:
 ## Why This Stop Point Matters
 
 PPO is the right endpoint for this seminar because it gives all the conceptual ingredients needed for understanding GRPO-like variants: policy gradient objective, advantage estimation, and controlled policy updates.
-
-## Detailed Notes
-
-For full derivations, proofs, and algorithm boxes, see the complete note:
-
-- [From Bandits to PPO (PDF)](/files/From%20Bandits%20to%20PPO.pdf)

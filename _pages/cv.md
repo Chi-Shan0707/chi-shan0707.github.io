@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-This page is the most up-to-date version of my CV. A PDF version may lag behind the website.
+[**View PDF version**]({{ base_path }}/files/Yuhan_Chi_CV.pdf)
 
 Profile
 ======
@@ -35,30 +35,25 @@ Research Interests
 Selected Open-Source Projects
 ======
 * **[token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)** — [AI4Math Workshop](https://ai4math2026.github.io/)
-  * Controlled evaluation of token-level verification signals for LLM math reasoning
+  * Solo-author project; controlled evaluation of token-level verification signals for LLM math reasoning
   * Poster, **ICML 2026 Workshop on AI for Math (AI4Math)**
   * Audits how evaluation protocol choices such as pooling, in-sample scoring, and direction-agnostic AUROC can change apparent verification performance
   * Shows that shallow token statistics can be useful diagnostics, but should not be treated as stable standalone verifiers without stronger controls
 
 * **[code-not-text](https://github.com/chi-shan0707/code-not-text)** — [Interactive Demo](https://chi-shan0707.github.io/code-not-text/demo)
-  * Study of cross-domain behavior of hand-crafted CoT-surface features for predicting solution correctness from reasoning traces
+  * Solo project; study of cross-domain behavior of hand-crafted CoT-surface features for predicting solution correctness from reasoning traces
   * Evaluated feature behavior across math, science, and coding settings, where the same feature family is strong for math but weak for coding
   * Interprets the gap as a measurement issue: coding correctness depends more directly on executable behavior than on text-level trace features
   * Includes an interactive demo and ablations around feature families and domain transfer
 
 * **[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)**
-  * Independent reimplementation and adaptation inspired by *Learning to Reason in 13 Parameters*
+  * Solo project; independent reimplementation and adaptation inspired by *Learning to Reason in 13 Parameters*
   * Moved a small-parameter adaptation and GRPO-style training pipeline toward verifiable competitive-programming code generation on Qwen2.5-Coder-3B
   * Uses compile-and-run rewards rather than static heuristics
   * Built as a full research-system exercise: data processing, training, multi-GPU setup, reward design, evaluation, and validation
 
 * **[microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)**
-  * Minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level frameworks
-
-* **[SVDomain](https://github.com/Chi-Shan0707/SVDomain)**
-  * Domain-conditioned low-rank analysis for chain-of-thought features
-  * Builds feature views from token-level confidence, uncertainty statistics, trajectory summaries, and availability indicators
-  * Completed in collaboration with others; my role focused on framework proposal, experiment design, execution, and validation
+  * Solo project; minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level frameworks
 
 
 Academic Service
