@@ -1,6 +1,6 @@
 ---
 title: "When CoT Surface Features Transfer"
-date: 2026-04-08
+date: 2026-05-04
 excerpt: "A technical note on measurement non-invariance across math, science, and coding reasoning traces."
 permalink: /tech/code-not-text/
 categories:
@@ -21,11 +21,11 @@ I study one deliberately narrow feature family: hand-crafted CoT-surface and tok
 
 ## Setup
 
-The experiments use **DeepSeek-R1-0528-Qwen3-8B** across three domains:
+The experiments use **DeepSeek-R1-0528-Qwen3-8B** at temperature 1.0 across three domains:
 
-- **Math:** AIME / HMMT-style tasks
-- **Science:** GPQA-style tasks
-- **Coding:** LiveCodeBench-v5 tasks
+- **Math:** AIME24, AIME25, BRUMO25, and HMMT25; **7,680 aligned runs**
+- **Science:** GPQA-style tasks; **12,672 runs**
+- **Coding:** LiveCodeBench-v5 tasks; **10,688 runs**
 
 The feature family includes token-confidence summaries, token-trajectory statistics, trajectory continuity, novelty, reflection count, and a small activation-derived descriptor. Evaluation uses problem-grouped splits. I report AoA (AUC-of-AUROC across trace anchors), AUROC@100%, and best-of-N reranking.
 
@@ -61,6 +61,18 @@ The coding result is not just one failed probe. I tested several possible explan
 - token-level de-knotting.
 
 None produced a strong generalizable coding verifier from this feature family.
+
+## Semantic Knots
+
+I also ran a smaller semantic analysis around what I call **semantic knots**: local places in the visible reasoning prose where the trace appears to lose state control and does not immediately repair itself. Ordinary uncertainty, normal exploration, and clean one-step self-correction do not count.
+
+This analysis supports the same cross-domain story:
+
+- **Math:** knots are common and strongly associated with incorrect answers.
+- **Science:** knots appear less often, and the correctness relationship is weaker.
+- **Coding:** knots are rare and do not meaningfully separate correct from incorrect solutions.
+
+The de-knotting check is especially useful. Removing knot spans reduces math signal, which suggests that those spans carry failure information. In coding, de-knotting does not reveal a hidden verifier; it leaves the weak signal essentially weak. That is why I read the result as measurement non-invariance rather than a missing preprocessing trick.
 
 ## Boundary
 

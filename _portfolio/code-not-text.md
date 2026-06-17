@@ -1,6 +1,6 @@
 ---
-title: "Cross-Domain Behavior of CoT Surface Features"
-excerpt: "A study of when hand-crafted reasoning-trace features are diagnostic across math, science, and coding tasks."
+title: "Cross-Domain Limits of CoT Surface Features"
+excerpt: "A single-model measurement study showing that cheap reasoning-trace features are strong for math, partial for science, and weak for executable coding correctness."
 collection: portfolio
 link: https://chi-shan0707.github.io/code-not-text/demo/
 header:
@@ -14,10 +14,12 @@ sidebar:
 ---
 
 ### The Core Inquiry
-Can cheap summaries of a chain-of-thought trace predict whether a solution is correct? This project studies one narrow, interpretable feature family across math, science, and coding rather than claiming that all text-based verifiers succeed or fail.
+Can cheap summaries of a chain-of-thought trace predict whether a solution is correct? This project studies one narrow, interpretable feature family across math, science, and coding. The claim is deliberately scoped: it is not that text-based verification succeeds or fails in general, but that this feature family is not invariant across domains.
 
 ### Setup
-The study uses DeepSeek-R1-0528-Qwen3-8B and features such as token-confidence summaries, token-trajectory statistics, trajectory continuity, novelty, reflection count, and a small activation-derived descriptor. Evaluation uses problem-grouped splits, AoA across trace anchors, AUROC@100%, and best-of-N reranking.
+The study uses **DeepSeek-R1-0528-Qwen3-8B** at temperature 1.0. It covers **7,680 math runs**, **12,672 science runs**, and **10,688 coding runs**. Math includes AIME24/AIME25/BRUMO25/HMMT25, science uses GPQA-style questions, and coding uses LiveCodeBench-v5.
+
+The features include token-confidence summaries, token-trajectory statistics, trajectory continuity, novelty, reflection count, self-certainty, and a small activation-derived descriptor. Evaluation uses problem-grouped splits, AoA across trace anchors, AUROC@100%, and best-of-64 reranking.
 
 ### Main Result
 The feature family behaves differently by domain:
@@ -28,6 +30,9 @@ The feature family behaves differently by domain:
 
 ### Interpretation
 The same feature names do not necessarily measure the same latent construct. In math, reflection count and continuity can track failure-to-converge. In science, the signal is narrower and confidence-heavy. In coding, executable correctness is farther from the surface form of the reasoning trace.
+
+### Semantic Knots
+I also annotated **semantic knots**: local visible reasoning breaks where the trace shows unstable state control and does not immediately repair itself. In math, knots are strongly associated with failure; in science the relationship is weaker; in coding they are rare and do not separate correct from incorrect solutions. Token-level de-knotting supports the same reading: removing knot spans damages math signal but does not uncover a hidden coding verifier.
 
 ### Robustness Checks
 The coding result is not just one failed probe. I tested an 83-scalar coding feature sweep, grouped feature ablations, a coding-specific CoT-only judge, nonlinear MLPs, SSL pre-training on 42K unlabeled traces, and token-level de-knotting. None produced a strong generalizable coding verifier from this feature family.

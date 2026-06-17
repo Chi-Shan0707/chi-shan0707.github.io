@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Talks and presentations"
+title: "Talks"
 permalink: /talks/
 author_profile: true
 ---
@@ -13,17 +13,8 @@ author_profile: true
 
 {% endif %}
 
-<div class="list__item">
-  <article class="archive__item">
-    <h2 class="archive__item-title">
-      <a href="{{ base_path }}/talks/2026-04-18-reinforcement-learning-overview">From Bandits to PPO: RL Prerequisite Seminar</a>
-    </h2>
-    <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> April 18, 2026</p>
-    <p class="archive__item-excerpt">Talk, Fudan University seminar, Shanghai, China.</p>
-    <p class="archive__item-excerpt">A one-hour mathematical bridge from bandits to PPO, designed as preparation for GRPO/DAPO discussions.</p>
-    <p>
-      <a href="{{ base_path }}/talks/2026-04-18-reinforcement-learning-overview" class="btn">Details</a>
-      <a href="{{ base_path }}/files/From%20Bandits%20to%20PPO.pdf" class="btn btn--primary">PDF notes</a>
-    </p>
-  </article>
-</div>
+{% assign talks = site.talks | sort: "date" | reverse %}
+
+{% for post in talks %}
+  {% include archive-single-talk.html %}
+{% endfor %}

@@ -1,4 +1,4 @@
-# Yuhan Chi's Homepage
+# About Yuhan Chi
 
 Personal academic homepage for [Yuhan Chi](https://chi-shan0707.github.io/), built on AcademicPages / Minimal Mistakes and hosted with GitHub Pages.
 

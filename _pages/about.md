@@ -48,24 +48,21 @@ Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4
 
 **Takeaway.** Shallow token statistics are useful diagnostics, not stable standalone verifiers unless the evaluation protocol is controlled.
 
-Links: [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [workshop](https://ai4math2026.github.io/)
+Links: [paper](/files/token-verification-mirage.pdf) · [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [workshop](https://ai4math2026.github.io/)
 
 </details>
 
 ### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**Solo project.** Cheap CoT-surface features transfer strongly to math, partially to science, and poorly to coding. [Interactive demo](https://chi-shan0707.github.io/code-not-text/demo/)
+**Solo measurement study.** Can cheap, hand-crafted features from reasoning traces predict correctness across math, science, and coding?
 
-<details markdown="1">
-<summary>Overview</summary>
+I test one deliberately narrow feature family on **DeepSeek-R1-0528-Qwen3-8B**: token-confidence summaries, token-trajectory statistics, continuity, novelty, reflection count, and a small activation-derived descriptor. The study covers **7,680 math runs**, **12,672 science runs**, and **10,688 coding runs**, with problem-grouped splits and best-of-64 reranking.
 
-A focused measurement study on DeepSeek-R1-0528-Qwen3-8B. The same hand-crafted CoT-surface feature family reaches strong math signal (AoA 0.958, AUROC@100% 0.982), partial science signal (AoA 0.799), and weak coding transfer (AoA 0.434).
+**Result.** The same feature family is highly diagnostic for math reasoning, partly useful for GPQA-style science questions, and weak on LiveCodeBench-v5 coding tasks: AoA moves from **0.958** in math to **0.799** in science and **0.434** in coding; best-of-64 reranking changes from **+10.0 pp** to **+8.0 pp** and then **-0.6 pp**.
 
-The main reading is measurement non-invariance: these features can track convergence-like behavior in math, but they do not reliably track executable correctness in coding.
+**Takeaway.** The result is not “text cannot verify code.” It is narrower: these cheap CoT-surface features are domain-specific measurement instruments. They can track convergence-like behavior in math, but they do not reliably track executable correctness in code. Robustness checks include an 83-scalar coding sweep, grouped ablations, a CoT-only judge, MLPs, SSL pretraining, semantic-knot annotation, and token-level de-knotting.
 
 Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [technical note](/tech/code-not-text/)
-
-</details>
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 

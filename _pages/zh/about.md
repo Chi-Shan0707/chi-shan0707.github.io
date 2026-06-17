@@ -50,24 +50,21 @@ redirect_from:
 
 **Takeaway。** 浅层 token 统计可以作为诊断信号，但不能在缺少协议控制时直接当作稳定的独立 verifier。
 
-链接：[代码](https://github.com/Chi-Shan0707/token-verification-mirage) · [Workshop](https://ai4math2026.github.io/)
+链接：[论文 PDF](/files/token-verification-mirage.pdf) · [代码](https://github.com/Chi-Shan0707/token-verification-mirage) · [Workshop](https://ai4math2026.github.io/)
 
 </details>
 
 ### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**独立项目。** cheap CoT-surface features 在数学中强，在科学问答中部分有效，在代码任务中迁移很弱。 [交互式 demo](https://chi-shan0707.github.io/code-not-text/demo/)
+**独立测量研究。** 便宜、手工构造的 reasoning-trace 特征，能否跨数学、科学问答和代码任务预测答案正确性？
 
-<details markdown="1">
-<summary>概述</summary>
+我在 **DeepSeek-R1-0528-Qwen3-8B** 上测试同一组特征：token confidence summaries、token trajectory statistics、continuity、novelty、reflection count，以及一个小的 activation-derived descriptor。数据包括 **7,680 条数学 runs**、**12,672 条科学问答 runs**、**10,688 条代码 runs**，并使用 problem-grouped splits 与 best-of-64 reranking。
 
-这是一个基于 DeepSeek-R1-0528-Qwen3-8B 的测量研究。同一组手工 CoT-surface features 在数学中信号很强（AoA 0.958，AUROC@100% 0.982），在科学问答中部分有效（AoA 0.799），但在代码任务中很弱（AoA 0.434）。
+**结果。** 同一组特征在数学推理中很强，在 GPQA 风格科学问答中部分有效，但在 LiveCodeBench-v5 代码任务上很弱：AoA 从数学的 **0.958**，到科学问答的 **0.799**，再到代码的 **0.434**；best-of-64 reranking 分别是 **+10.0 pp**、**+8.0 pp**、**-0.6 pp**。
 
-主要结论是 measurement non-invariance：这些特征在数学中可能追踪 reasoning 是否收敛，但在代码中不能可靠追踪可执行正确性。
+**Takeaway。** 这不是在说“文本不能验证代码”。结论更窄：这些 cheap CoT-surface features 是 domain-specific measurement instruments。它们能追踪数学中的收敛式行为，但不能可靠追踪代码的可执行正确性。稳健性检查包括 83 个代码特征 sweep、分组 ablation、CoT-only judge、MLP、SSL pretraining、semantic-knot 标注和 token-level de-knotting。
 
 链接：[代码](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [技术笔记](/tech/code-not-text/)
-
-</details>
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 
