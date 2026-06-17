@@ -41,10 +41,10 @@ Selected Open-Source Projects
   * Shows that shallow token statistics can be useful diagnostics, but should not be treated as stable standalone verifiers without stronger controls
 
 * **[code-not-text](https://github.com/chi-shan0707/code-not-text)** — [Interactive Demo](https://chi-shan0707.github.io/code-not-text/demo)
-  * Solo project; study of cross-domain behavior of hand-crafted CoT-surface features for predicting solution correctness from reasoning traces
-  * Evaluated feature behavior across math, science, and coding settings, where the same feature family is strong for math but weak for coding
-  * Interprets the gap as a measurement issue: coding correctness depends more directly on executable behavior than on text-level trace features
-  * Includes an interactive demo and ablations around feature families and domain transfer
+  * Solo project; cross-domain measurement study of cheap CoT-surface and token-trajectory features on DeepSeek-R1-0528-Qwen3-8B
+  * Reports strong math signal (AoA 0.958, AUROC@100% 0.982), partial science signal (AoA 0.799), and weak coding transfer (AoA 0.434)
+  * Tests coding-side robustness through an 83-scalar feature sweep, grouped ablations, a CoT-only judge, nonlinear MLPs, SSL pre-training, and token-level de-knotting
+  * Frames the result as measurement non-invariance: the same feature family tracks convergence-like behavior in math but not executable correctness in coding
 
 * **[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)**
   * Solo project; independent reimplementation and adaptation inspired by *Learning to Reason in 13 Parameters*

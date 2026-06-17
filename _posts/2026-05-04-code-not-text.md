@@ -1,7 +1,7 @@
 ---
-title: "Cross-Domain Behavior of CoT Surface Features"
+title: "When CoT Surface Features Transfer"
 date: 2026-04-08
-excerpt: "A demo and write-up on when reasoning-trace surface features transfer across domains."
+excerpt: "A demo and report on measurement non-invariance across math, science, and coding reasoning traces."
 link: https://chi-shan0707.github.io/code-not-text/demo/
 redirect_to: https://chi-shan0707.github.io/code-not-text/demo/
 categories:
