@@ -34,7 +34,7 @@ Selected solo projects. I list them by the question they test, the artifact they
 
 ### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
 
-**Solo author.** Controlled evaluation of token-level verification signals for LLM math reasoning.  
+**Solo-author project with full pipeline ownership.** Controlled evaluation of token-level verification signals for LLM math reasoning.  
 Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/).
 
 <details markdown="1">
@@ -42,7 +42,7 @@ Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4
 
 **Question.** Can shallow token-level signals such as entropy, log-probability, and confidence trajectories separate correct from incorrect math reasoning traces without extra model calls?
 
-**Method.** I compare token statistics across MATH and BigMath traces from Qwen and Llama models, with controls for within-problem evaluation, fixed-direction scoring, and permutation-null calibration.
+**Method.** I carried out the full pipeline: dataset selection, model deployment, trace generation, evaluation design, analysis, figure refinement, related-work organization, and writing. The experiments compare token statistics across MATH and BigMath traces from Qwen and Llama models, with controls for within-problem evaluation, fixed-direction scoring, and permutation-null calibration.
 
 **Finding.** Protocol choices such as global pooling, in-sample scoring, and direction-agnostic AUROC can shift reported AUROC by up to about 0.18. Final-token entropy reaches 0.72--0.75 direction-agnostic AUROC, but drops to 0.47--0.48 under fixed-direction evaluation.
 

@@ -36,7 +36,7 @@ redirect_from:
 
 ### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
 
-**单作者项目。** 对 LLM 数学推理中 token-level verification 信号的受控评估。  
+**单作者项目，完整流程由我负责。** 对 LLM 数学推理中 token-level verification 信号的受控评估。  
 [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/) 的 workshop poster。
 
 <details markdown="1">
@@ -44,7 +44,7 @@ redirect_from:
 
 **问题。** entropy、log-probability、confidence trajectory 这类浅层 token 信号，能否在不额外调用模型的情况下区分数学推理轨迹的正确与错误？
 
-**方法。** 我在 MATH 与 BigMath、Qwen 与 Llama 的实验中比较 token 统计，并加入 within-problem evaluation、fixed-direction scoring 和 permutation-null calibration 等控制。
+**方法。** 我独立走通完整研究流程，包括数据集选择、模型部署、推理轨迹生成、评估设计、分析、图表调整、related work 组织与写作。实验在 MATH 与 BigMath、Qwen 与 Llama 的设置中比较 token 统计，并加入 within-problem evaluation、fixed-direction scoring 和 permutation-null calibration 等控制。
 
 **结果。** global pooling、in-sample scoring、direction-agnostic AUROC 等协议选择可以使 AUROC 变化最高约 0.18。Final-token entropy 在 direction-agnostic AUROC 下达到 0.72--0.75，但在 fixed-direction evaluation 下下降到 0.47--0.48。
 
