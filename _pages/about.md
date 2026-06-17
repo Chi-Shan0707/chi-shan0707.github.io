@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Do interesting things"
+title: "Yuhan Chi's Homepage"
 author_profile: true
 redirect_from:
   - /about/
@@ -48,6 +48,19 @@ I enjoy building small but complete research systems, writing technical notes, a
 *Coding (LiveCodeBench) AoA 0.434  — below token-confidence baseline*<br>
 
 This isn't a feature engineering problem. I swept 83+ coding-specific scalars, added SSL pre-training, nonlinear MLPs, de-knotting, and a coding-specific run judge—all fail. The features measure reasoning quality in math but mere text fluency in coding: a measurement invariance failure. Correctness lives in the runtime, not in the text.
+</details>
+
+### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
+
+**Controlled evaluation of token-level verification for LLM math reasoning: evaluation protocol shifts AUROC more than feature design.** Accepted as a poster at ICML 2026 Workshop AI4Math.
+
+<details>
+<summary>Overview</summary>
+
+An audit of what shallow token-level statistics—entropy, log-probabilities, confidence trajectories—can extract for verifying LLM math reasoning without additional model calls or training. Under a controlled protocol (within-problem leave-one-out, GroupKFold by problem, permutation-null calibration), evaluation-protocol artifacts shift AUROC by 0.04–0.18—larger than the genuine variation among the 12 analyzed methods, which converge to a narrow 0.60–0.75 range on hard problems. Final-token entropy looks strong under direction-agnostic scoring but collapses to chance (0.47–0.48) under fixed-direction evaluation.
+
+This is a deliberately "dull," academically ordinary piece of work, and I leaned on AI assistance throughout. Its value to me is not the headline finding but that I walked the entire research pipeline end to end—data collection and generation, literature search, experiment design and execution, and defending the claims—completely on my own.
+
 </details>
 
 <!-- ### [SVDomain](https://github.com/Chi-Shan0707/SVDomain)
