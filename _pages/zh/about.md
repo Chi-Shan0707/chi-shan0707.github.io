@@ -56,28 +56,16 @@ redirect_from:
 
 ### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**独立项目。** 关于 cheap CoT-surface features 的跨领域测量研究。 [交互式 demo](https://chi-shan0707.github.io/code-not-text/demo/)
+**独立项目。** cheap CoT-surface features 在数学中强，在科学问答中部分有效，在代码任务中迁移很弱。 [交互式 demo](https://chi-shan0707.github.io/code-not-text/demo/)
 
 <details markdown="1">
 <summary>概述</summary>
 
-**问题。** 当模型写出 chain-of-thought trace 时，便宜的表面统计特征是否能跨领域预测正确性？还是说，同一组特征在数学、科学问答、代码任务中其实测量的是不同东西？
+这是一个基于 DeepSeek-R1-0528-Qwen3-8B 的测量研究。同一组手工 CoT-surface features 在数学中信号很强（AoA 0.958，AUROC@100% 0.982），在科学问答中部分有效（AoA 0.799），但在代码任务中很弱（AoA 0.434）。
 
-**设置。** 我在 DeepSeek-R1-0528-Qwen3-8B 上研究一组刻意限定的特征族：token confidence summaries、token-trajectory statistics、continuity / novelty / reflection count 等简单轨迹特征，以及一个 activation-derived descriptor。评估使用 problem-grouped splits，并报告跨 trace anchor 的 AoA (AUC-of-AUROC)、AUROC@100% 与 best-of-N reranking。
+主要结论是 measurement non-invariance：这些特征在数学中可能追踪 reasoning 是否收敛，但在代码中不能可靠追踪可执行正确性。
 
-**主要结果。** 同一组特征在数学中很强，在科学问答中部分有用，但在代码任务的 unseen problems 上很弱。
-
-- 数学：AoA 0.958，AUROC@100% 0.982，best-of-N=64 pass@1 +10.0 pp
-- 科学：AoA 0.799，AUROC@100% 0.841，best-of-N=64 pass@1 +8.0 pp
-- 编程：AoA 0.434，AUROC@100% 0.407，best-of-N=64 pass@1 -0.6 pp
-
-**为什么重要。** 在数学中，reflection count、continuity 这类轨迹特征似乎能捕捉 reasoning 是否收敛；在科学问答中，信号更窄，主要由 confidence 驱动；在代码中，同一组特征很难追踪可执行正确性——一段 trace 可以看起来结构清晰、信心很高，但实际程序逻辑仍然错误。
-
-**稳健性检查。** 我检查了多个“也许只是工程没做好”的解释：83 个 coding-specific scalar 的 sweep、grouped feature ablations、coding-specific CoT-only judge、非线性 MLP、42K unlabeled traces 上的 SSL pre-training，以及 token-level de-knotting。它们都没有从这组特征中得到强的、可泛化的代码 verifier。
-
-**边界。** 这不是说所有 text-based 或 code-aware verifier 都失败。更窄的结论是：这组便宜、可解释的 CoT-surface features 是 domain-specific measurement instruments，而不是 general-purpose correctness proxy。
-
-链接：[代码](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [report](https://github.com/Chi-Shan0707/code-not-text/blob/main/project_report/project_report.pdf)
+链接：[代码](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [技术笔记](/tech/code-not-text/)
 
 </details>
 

@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Yuhan Chi's Homepage"
+title: "About Yuhan Chi"
 author_profile: true
 redirect_from:
   - /about/
@@ -54,28 +54,16 @@ Links: [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [wor
 
 ### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
 
-**Solo project.** A cross-domain measurement study of cheap CoT-surface features. [Interactive demo](https://chi-shan0707.github.io/code-not-text/demo/)
+**Solo project.** Cheap CoT-surface features transfer strongly to math, partially to science, and poorly to coding. [Interactive demo](https://chi-shan0707.github.io/code-not-text/demo/)
 
 <details markdown="1">
 <summary>Overview</summary>
 
-**Question.** When a model writes a chain-of-thought trace, do cheap surface summaries of that trace actually predict correctness across domains, or do they measure different things in math, science, and coding?
+A focused measurement study on DeepSeek-R1-0528-Qwen3-8B. The same hand-crafted CoT-surface feature family reaches strong math signal (AoA 0.958, AUROC@100% 0.982), partial science signal (AoA 0.799), and weak coding transfer (AoA 0.434).
 
-**Setup.** I study one intentionally narrow feature family on DeepSeek-R1-0528-Qwen3-8B: token-confidence summaries, token-trajectory statistics, simple trajectory features such as continuity/novelty/reflection count, and a small activation-derived descriptor. Evaluation uses problem-grouped splits and AoA (AUC-of-AUROC) across trace anchors, plus AUROC@100% and best-of-N reranking.
+The main reading is measurement non-invariance: these features can track convergence-like behavior in math, but they do not reliably track executable correctness in coding.
 
-**Main result.** The same feature family is highly informative for math, partly useful for science, and weak for coding on unseen problems.
-
-- Math: AoA 0.958, AUROC@100% 0.982, best-of-N=64 pass@1 +10.0 pp
-- Science: AoA 0.799, AUROC@100% 0.841, best-of-N=64 pass@1 +8.0 pp
-- Coding: AoA 0.434, AUROC@100% 0.407, best-of-N=64 pass@1 -0.6 pp
-
-**Why this matters.** In math, trajectory features such as reflection count and continuity appear to track failure-to-converge. In science, the signal is narrower and mostly confidence-driven. In coding, the same features mostly fail to track executable correctness: a trace can look structured and confident while implementing the wrong program logic.
-
-**Robustness checks.** I tested several possible “maybe it is just engineering” explanations: an 83-scalar coding feature sweep, grouped feature ablations, a coding-specific CoT-only judge, nonlinear MLPs, SSL pre-training on 42K unlabeled traces, and token-level de-knotting. None produced a strong generalizable coding verifier from this feature family.
-
-**Boundary.** This is not a claim that all text-based or code-aware verifiers fail. The claim is narrower: this cheap, interpretable CoT-surface feature family is a domain-specific measurement instrument, not a general-purpose correctness proxy.
-
-Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [report](https://github.com/Chi-Shan0707/code-not-text/blob/main/project_report/project_report.pdf)
+Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [technical note](/tech/code-not-text/)
 
 </details>
 
