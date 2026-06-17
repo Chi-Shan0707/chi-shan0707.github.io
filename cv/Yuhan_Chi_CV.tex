@@ -1,0 +1,103 @@
+\documentclass[10pt,letterpaper]{article}
+
+\usepackage[margin=0.68in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{array}
+
+\definecolor{linkblue}{HTML}{1F4E79}
+\hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{leftmargin=1.25em,itemsep=1.5pt,topsep=2pt,parsep=0pt}
+\titleformat{\section}{\large\bfseries\scshape}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\pagenumbering{gobble}
+
+\newcommand{\entry}[4]{%
+  \textbf{#1}\hfill #2\\
+  \textit{#3}\hfill \textit{#4}\vspace{1pt}
+}
+\newcommand{\project}[2]{\textbf{#1}\hfill #2}
+
+\begin{document}
+
+{\LARGE \textbf{Yuhan Chi}}\\[-1pt]
+Undergraduate, School of Mathematical Sciences, Fudan University\\
+\href{mailto:yhchi25@m.fudan.edu.cn}{yhchi25@m.fudan.edu.cn} \;|\;
+\href{https://chi-shan0707.github.io}{chi-shan0707.github.io} \;|\;
+\href{https://github.com/Chi-Shan0707}{github.com/Chi-Shan0707} \;|\;
+\href{https://chi-shan0707.github.io/cv}{Online CV}
+
+\section*{Profile}
+First-year undergraduate at Fudan University, majoring in Mathematical Sciences and pursuing a double degree in Information and Computing Science and Artificial Intelligence. My current research direction is math-first AI evaluation and trustworthy sequential decision-making: when model signals are reliable, when they are protocol- or domain-dependent, and how optimization, control, and reinforcement learning can give sharper language for trust and action under uncertainty.
+
+\section*{Education}
+\entry{Fudan University}{Shanghai, China}{B.S. Candidate, Information and Computing Science \& Artificial Intelligence, School of Mathematical Sciences}{Sep. 2025 -- Present}
+\begin{itemize}
+  \item GPA: \textbf{3.96/4.00} in the most recent semester; ranked \textbf{10th} in cohort, top \textbf{5\%}.
+  \item Coursework and self-study interests: mathematical analysis, linear algebra, probability, optimization, algorithms, reinforcement learning, and LLM evaluation.
+\end{itemize}
+
+\section*{Research Interests}
+\begin{itemize}
+  \item \textbf{Mathematical interpretability and AI trust:} grounding claims about model reliability in inspectable mathematical and statistical evidence.
+  \item \textbf{Reasoning verification and evaluation:} studying when trace-level signals are diagnostic, misleading, protocol-dependent, or domain-specific.
+  \item \textbf{Optimization, control, and sequential decision-making:} using mathematical tools to reason about uncertainty, feedback, constraints, and interaction with environments.
+\end{itemize}
+
+\section*{Selected Research and Open-Source Projects}
+
+\project{token-verification-mirage}{\href{https://chi-shan0707.github.io/files/token-verification-mirage.pdf}{Paper} \;|\; \href{https://github.com/Chi-Shan0707/token-verification-mirage}{GitHub} \;|\; \href{https://ai4math2026.github.io/}{AI4Math Workshop}}
+\begin{itemize}
+  \item Solo-author project with full pipeline ownership: dataset selection, model deployment, trace generation, evaluation design, analysis, figures, related-work organization, and writing.
+  \item Poster at the \textbf{ICML 2026 Workshop on AI for Math (AI4Math)}.
+  \item Audits how evaluation protocol choices such as pooling, in-sample scoring, and direction-agnostic AUROC can change apparent token-level verification performance.
+  \item Finds that shallow token statistics can be useful diagnostics, but should not be treated as stable standalone verifiers without within-problem evaluation, fixed-direction baselines, and permutation-null calibration.
+\end{itemize}
+
+\project{code-not-text}{\href{https://github.com/Chi-Shan0707/code-not-text}{GitHub} \;|\; \href{https://chi-shan0707.github.io/code-not-text/demo/}{Interactive Demo}}
+\begin{itemize}
+  \item Solo measurement study of cheap CoT-surface and token-trajectory features on \textbf{DeepSeek-R1-0528-Qwen3-8B} across \textbf{31,040} math, science, and coding runs.
+  \item Reports strong math signal (AoA \textbf{0.958}, AUROC@100\% \textbf{0.982}), partial science signal (AoA \textbf{0.799}), and weak coding transfer (AoA \textbf{0.434}).
+  \item Tests coding-side robustness through an 83-scalar feature sweep, grouped ablations, a CoT-only judge, nonlinear MLPs, SSL pre-training, semantic-knot annotation, and token-level de-knotting.
+  \item Frames the result as \textbf{measurement non-invariance}: the same feature family tracks convergence-like behavior in math but not executable correctness in coding.
+\end{itemize}
+
+\project{TinyLoRA-GRPO-Coder}{\href{https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder}{GitHub}}
+\begin{itemize}
+  \item Solo project adapting a small-parameter training idea toward verifiable competitive-programming code generation on Qwen2.5-Coder-3B.
+  \item Uses compile-and-run rewards rather than static heuristics; built as a full research-system exercise covering data processing, training, multi-GPU setup, reward design, evaluation, and validation.
+\end{itemize}
+
+\project{microgpt.cpp}{\href{https://github.com/Chi-Shan0707/microgpt.cpp}{GitHub}}
+\begin{itemize}
+  \item Minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level deep-learning frameworks.
+\end{itemize}
+
+\section*{Academic Service}
+\begin{itemize}
+  \item Reviewer, \href{https://ai4math2026.github.io/}{ICML 2026 Workshop on AI for Math (AI4Math)}, 2026.
+\end{itemize}
+
+\section*{Technical Skills}
+\begin{tabularx}{\textwidth}{@{}>{\bfseries}p{0.22\textwidth}X@{}}
+Programming & Python, C++, C, Java, Node.js, Lean 4 \\
+ML / AI & PyTorch, ML experimentation, LLM evaluation, reinforcement-learning basics \\
+Tools & Git, GitHub, Linux, LaTeX, Markdown, VS Code \\
+Other & Mathematical proof writing, technical writing, self-directed research, competitive programming \\
+\end{tabularx}
+
+\section*{Community and Additional Information}
+\begin{itemize}
+  \item Maintains \href{https://chi-shan0707.github.io/github-unflag-playbook-cn}{github-unflag-playbook-cn}, a Chinese playbook documenting GitHub account flagging, recovery cases, and appeal workflows.
+  \item Contributor to \href{https://github.com/FDUGuideBook/nav-site}{FDUGuideBook/nav-site}, a Fudan community navigation project.
+  \item Public work and notes are maintained at \href{https://chi-shan0707.github.io}{chi-shan0707.github.io} and \href{https://github.com/Chi-Shan0707}{github.com/Chi-Shan0707}.
+\end{itemize}
+
+\end{document}

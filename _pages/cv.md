@@ -15,7 +15,7 @@ Profile
 ======
 * Undergraduate at **Fudan University** (School of Mathematical Sciences), pursuing a double degree in **Information and Computing Science** and **Artificial Intelligence**.
 * GPA: **3.96/4.00** (most recent semester); ranked **10th (top 5%)** in cohort.
-* Research interests: mathematical interpretability for AI trust, verification/evaluation of LLM reasoning, and reinforcement learning for sequential decision-making.
+* Research interests: mathematical interpretability for AI trust, verification/evaluation of LLM reasoning, optimization, control, and reinforcement learning for sequential decision-making.
 
 Education
 ======
@@ -28,22 +28,22 @@ Education
 Research Interests
 ======
 * **Mathematical Interpretability and AI Trust**: grounding claims about model reliability in inspectable mathematical and statistical evidence
-* **Reasoning Verification and Evaluation**: studying when surface-level signals from LLM traces are diagnostic, misleading, or protocol-dependent
-* **Reinforcement Learning and Sequential Decision-Making**: using RL concepts to reason about uncertainty, feedback, and interaction with environments
+* **Reasoning Verification and Evaluation**: studying when trace-level signals are diagnostic, misleading, protocol-dependent, or domain-specific
+* **Optimization, Control, and Sequential Decision-Making**: using mathematical tools to reason about uncertainty, feedback, constraints, and interaction with environments
 
 
 Selected Open-Source Projects
 ======
-* **[token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)** — [AI4Math Workshop](https://ai4math2026.github.io/)
+* **[token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)** — [Paper PDF]({{ base_path }}/files/token-verification-mirage.pdf) · [AI4Math Workshop](https://ai4math2026.github.io/)
   * Solo-author project; led the full pipeline from dataset selection and model deployment to trace generation, evaluation design, analysis, figures, related-work organization, and writing
   * Poster, **ICML 2026 Workshop on AI for Math (AI4Math)**
   * Audits how evaluation protocol choices such as pooling, in-sample scoring, and direction-agnostic AUROC can change apparent verification performance
   * Shows that shallow token statistics can be useful diagnostics, but should not be treated as stable standalone verifiers without stronger controls
 
 * **[code-not-text](https://github.com/chi-shan0707/code-not-text)** — [Interactive Demo](https://chi-shan0707.github.io/code-not-text/demo)
-  * Solo project; cross-domain measurement study of cheap CoT-surface and token-trajectory features on DeepSeek-R1-0528-Qwen3-8B
+  * Solo project; cross-domain measurement study of cheap CoT-surface and token-trajectory features on DeepSeek-R1-0528-Qwen3-8B across 31,040 math, science, and coding runs
   * Reports strong math signal (AoA 0.958, AUROC@100% 0.982), partial science signal (AoA 0.799), and weak coding transfer (AoA 0.434)
-  * Tests coding-side robustness through an 83-scalar feature sweep, grouped ablations, a CoT-only judge, nonlinear MLPs, SSL pre-training, and token-level de-knotting
+  * Tests coding-side robustness through an 83-scalar feature sweep, grouped ablations, a CoT-only judge, nonlinear MLPs, SSL pre-training, semantic-knot annotation, and token-level de-knotting
   * Frames the result as measurement non-invariance: the same feature family tracks convergence-like behavior in math but not executable correctness in coding
 
 * **[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)**
