@@ -101,14 +101,17 @@ redirect_from:
 
 ## Community Involvement
 
-除了个人项目之外，我也参与面向社区的公益性开源工作。
+除了个人项目之外，我也参与面向社区的公益性开源工作，希望让有用的信息更容易被看见、被传递。
 
    1. [github-unflag-playbook-cn](https://github.com/Chi-Shan0707/github-unflag-playbook-cn) <br>
       [查看 **网站** 这里 ~~~](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
       面向中国大陆开发者的 GitHub 账号 flagged / hidden 自救手册与案例档案，系统整理申诉流程与案例。
    2. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
       [访问 **网站** 这里](https://fduguidebook.com/)<br>
-      持续为复旦社区贡献导航网站。
+      参与维护由学生共同建设的复旦导航网站，让校内相关信息更容易被找到。
+   3. [FDU-Sharing](https://github.com/victkk/FDU-Sharing) <br>
+      [访问 **网站** 这里](https://fdu-sharing.vercel.app/)<br>
+      为复旦课程资料共享项目贡献资料、维护文档并补充小功能，希望帮助同学们更平等、方便地获取学习资料。
 
 我也签署了 [《莱顿人工智能与数学宣言》](https://leidendeclaration.ai/)（Leiden Declaration on Artificial Intelligence and Mathematics）——这是一项由国际数学联盟（IMU）认可的社区倡议，呼吁对人工智能在数学研究中的使用采取负责任的态度。
 

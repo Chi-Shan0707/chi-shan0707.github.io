@@ -99,14 +99,17 @@ Academic service and review roles.
 
 ## Community Involvement
 
-Beyond my personal projects, I also contribute to community-oriented open-source work.
+Beyond my personal projects, I also contribute to community-oriented open-source work that keeps useful information easier to find and freely accessible.
 
    1. [github-unflag-playbook-cn](https://github.com/Chi-Shan0707/github-unflag-playbook-cn) <br>
       [view **website** here ~~~](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
       A Chinese playbook documenting GitHub account flagging/recovery experiences, appeal processes, and case archives for mainland China developers.
    2. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
       [visit our **website** here](https://fduguidebook.com/)<br>
-      Contribute to this navigation site for the Fudan community continuously.
+      Help maintain a student-built navigation site that makes Fudan-related resources easier to discover.
+   3. [FDU-Sharing](https://github.com/victkk/FDU-Sharing) <br>
+      [visit **website** here](https://fdu-sharing.vercel.app/)<br>
+      Contribute course materials, maintain documentation, and add small features for an open, mutual-aid learning space among Fudan students.
 
 
 

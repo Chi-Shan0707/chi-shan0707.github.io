@@ -73,7 +73,8 @@ Skills
 Additional Information
 ======
 * Maintains **[github-unflag-playbook-cn](https://chi-shan0707.github.io/github-unflag-playbook-cn)**, a Chinese playbook documenting GitHub account flagging, recovery cases, and appeal workflows
-* Contributor to **[FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site)**, a Fudan community site
+* Contributor to **[FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site)**, a student-built navigation site for the Fudan community
+* Contributor to **[FDU-Sharing](https://github.com/victkk/FDU-Sharing)**, contributing course materials, documentation, and small features for an open, mutual-aid course-material sharing project
 * Personal website: [chi-shan0707.github.io](https://chi-shan0707.github.io/)
 * GitHub: [Chi-Shan0707](https://github.com/Chi-Shan0707)
 * Actively self-studying mathematics, algorithms, and AI beyond formal coursework, with ongoing work documented in public repositories
