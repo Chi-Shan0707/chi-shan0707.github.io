@@ -34,7 +34,7 @@ Research Interests
 
 Selected Open-Source Projects
 ======
-* **[token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)** — [Paper PDF]({{ base_path }}/files/token-verification-mirage.pdf) · [AI4Math Workshop](https://ai4math2026.github.io/)
+* **[token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)** — [Paper PDF](https://openreview.net/pdf?id=wRImV3kfR1) · [AI4Math Workshop](https://ai4math2026.github.io/)
   * Solo-author project; led the full pipeline from dataset selection and model deployment to trace generation, evaluation design, analysis, figures, related-work organization, and writing
   * Poster, **ICML 2026 Workshop on AI for Math (AI4Math)**
   * Audits how evaluation protocol choices such as pooling, in-sample scoring, and direction-agnostic AUROC can change apparent verification performance

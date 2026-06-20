@@ -48,7 +48,7 @@ Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4
 
 **Takeaway.** Shallow token statistics are useful diagnostics, not stable standalone verifiers unless the evaluation protocol is controlled.
 
-Links: [paper](/files/token-verification-mirage.pdf) · [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [workshop](https://ai4math2026.github.io/)
+Links: [paper](https://openreview.net/pdf?id=wRImV3kfR1) · [code](https://github.com/Chi-Shan0707/token-verification-mirage) · [workshop](https://ai4math2026.github.io/)
 
 </details>
 

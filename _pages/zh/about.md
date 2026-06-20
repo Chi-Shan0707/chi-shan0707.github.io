@@ -50,7 +50,7 @@ redirect_from:
 
 **Takeaway。** 浅层 token 统计可以作为诊断信号，但不能在缺少协议控制时直接当作稳定的独立 verifier。
 
-链接：[论文 PDF](/files/token-verification-mirage.pdf) · [代码](https://github.com/Chi-Shan0707/token-verification-mirage) · [Workshop](https://ai4math2026.github.io/)
+链接：[论文 PDF](https://openreview.net/pdf?id=wRImV3kfR1) · [代码](https://github.com/Chi-Shan0707/token-verification-mirage) · [Workshop](https://ai4math2026.github.io/)
 
 </details>
 
