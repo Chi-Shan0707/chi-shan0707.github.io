@@ -175,3 +175,28 @@ iframe {
 .archive__item-title {
   letter-spacing: -0.01em;
 }
+
+.github-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+  margin-left: 0.28rem;
+  padding: 0.06rem 0.42rem;
+  border: 1px solid rgba(74, 84, 66, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 248, 220, 0.72);
+  color: #7a5200;
+  font-family: $sans-serif;
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.35;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+html[data-theme="dark"] .github-stars {
+  border-color: rgba(255, 220, 120, 0.22);
+  background: rgba(94, 74, 28, 0.5);
+  color: #f4cf72;
+}

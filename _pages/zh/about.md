@@ -40,26 +40,7 @@ redirect_from:
 
 ***
 
-### [IntuitMath.skill](https://github.com/Chi-Shan0707/IntuitMath.skill)
-
-**独立开源 agent skill。** 一个面向 AI coding/CLI agents 的可移植数学推理 skill，让数学解释先从直觉、动机与 proof repair 开始，而不是只给定义。
-
-<details markdown="1">
-<summary>概述</summary>
-
-**问题。** 能否把 AI agent 调整成一个数学 thinking partner：先重建一个概念为什么必须被发明，用例子和反例测试想法，再逐步走向严格证明？
-
-**方法。** 我设计了可移植的 `SKILL.md` 工作流，包括 routing rules、slash-command specs、domain subskills、HTML/KaTeX note generation，以及面向 Codex-like、Claude Code、OpenCode、Gemini CLI 和通用命令行 agent 的 adapters。
-
-**使用场景。** 概念动机、证明/反证、proof repair、解题、学习规划，以及从中学数学到高等数学的 polished math notes。
-
-**Takeaway。** 这个项目把数学理解视为 crisis、naive attempt、breakdown、repair、rigorous version 的序列，使 agent 输出更适合检查和学习。
-
-链接：[代码](https://github.com/Chi-Shan0707/IntuitMath.skill) · [README](https://github.com/Chi-Shan0707/IntuitMath.skill#readme)
-
-</details>
-
-### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
+### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage) <span class="github-stars" data-github-stars="Chi-Shan0707/token-verification-mirage" aria-label="GitHub stars">★ 3</span>
 
 **单作者项目，完整流程由我负责。** 对 LLM 数学推理中 token-level verification 信号的受控评估。  
 [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/) 的 workshop poster。
@@ -79,7 +60,7 @@ redirect_from:
 
 </details>
 
-### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
+### [code-not-text](https://github.com/Chi-Shan0707/code-not-text) <span class="github-stars" data-github-stars="Chi-Shan0707/code-not-text" aria-label="GitHub stars">★ 3</span>
 
 **独立测量研究。** 便宜、手工构造的 reasoning-trace 特征，能否跨数学、科学问答和代码任务预测答案正确性？
 
@@ -91,7 +72,7 @@ redirect_from:
 
 链接：[代码](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [技术笔记](/tech/code-not-text/)
 
-### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
+### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder) <span class="github-stars" data-github-stars="Chi-Shan0707/TinyLoRA-GRPO-Coder" aria-label="GitHub stars">★ 40</span>
 
 **独立项目。** 面向代码生成的小参数适配与强化学习训练管线。
 
@@ -104,7 +85,24 @@ redirect_from:
 
 </details>
 
-### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)
+### [IntuitMath.skill](https://github.com/Chi-Shan0707/IntuitMath.skill) <span class="github-stars" data-github-stars="Chi-Shan0707/IntuitMath.skill" aria-label="GitHub stars">★ 4</span>
+
+**独立开源 agent skill。** 一个面向 AI agents 的数学学习 skill：把数学当作“概念为什么被发明”的故事，而不是定义列表。
+
+<details markdown="1">
+<summary>概述</summary>
+
+**动机。** 很多教材从漂亮的定义开始，但学习者真正需要的往往是前面的那段路：什么问题卡住了，旧工具哪里不够，新的概念到底修补了什么。IntuitMath 想把这条从好奇到严格的路径补回来。
+
+**工作方式。** 它引导 agent 先讲动机、例子、失败尝试和反例，再做 proof repair，最后进入严格版本。一个定义应该像是某个真实问题的答案，而不是课本第一页突然出现的句子。
+
+**使用方法。** 把它安装成 agent skill 后，可以用普通 prompt 或 `/intuit-explain`、`/intuit-solve`、`/intuit-proof`、`/intuit-study`、`/intuit-note` 这类命令。它适合概念解释、解题、证明修补、反例寻找、学习规划，以及生成 Markdown 或 HTML/KaTeX 数学笔记。
+
+链接：[代码](https://github.com/Chi-Shan0707/IntuitMath.skill) · [README](https://github.com/Chi-Shan0707/IntuitMath.skill#readme)
+
+</details>
+
+### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp) <span class="github-stars" data-github-stars="Chi-Shan0707/microgpt.cpp" aria-label="GitHub stars">★ 7</span>
 
 **独立项目。** 从第一性原理出发，用 C++ 实现的极简 GPT。
 
@@ -116,7 +114,6 @@ redirect_from:
 </details>
 ***
 
-
 ## Service
 
 学术服务与审稿工作。
@@ -126,16 +123,19 @@ redirect_from:
 
 ## Community Involvement
 
-除了个人项目之外，我也参与面向社区的公益性开源工作，希望让有用的信息更容易被看见、被传递。
+除了个人研究项目，我也维护一些面向社区的开源资料与工具，尤其关注那些信息分散、但对同学或开发者很有用的领域。
 
-   1. [github-unflag-playbook-cn](https://github.com/Chi-Shan0707/github-unflag-playbook-cn) <br>
-      [查看 **网站** 这里 ~~~](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
+   1. [github-unflag-playbook-cn](https://github.com/Chi-Shan0707/github-unflag-playbook-cn) <span class="github-stars" data-github-stars="Chi-Shan0707/github-unflag-playbook-cn" aria-label="GitHub stars">★ 16</span><br>
+      [在线手册](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
       面向中国大陆开发者的 GitHub 账号 flagged / hidden 自救手册与案例档案，系统整理申诉流程与案例。
-   2. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
-      [访问 **网站** 这里](https://fduguidebook.com/)<br>
+   2. [ic-guide](https://github.com/Chi-Shan0707/ic-guide) <br>
+      [在线指南](https://crys-chen.github.io/ic-guide/)<br>
+      一张仍在生长的集成电路与微电子自学地图，整理科研方向导览、课程地图、工程工具教程和学习资源，帮助新人更快找到方向。
+   3. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
+      [项目网站](https://fduguidebook.com/)<br>
       参与维护由学生共同建设的复旦导航网站，让校内相关信息更容易被找到。
-   3. [FDU-Sharing](https://github.com/victkk/FDU-Sharing) <br>
-      [访问 **网站** 这里](https://fdu-sharing.vercel.app/)<br>
+   4. [FDU-Sharing](https://github.com/victkk/FDU-Sharing) <br>
+      [项目网站](https://fdu-sharing.vercel.app/)<br>
       为复旦课程资料共享项目贡献资料、维护文档并补充小功能，希望帮助同学们更平等、方便地获取学习资料。
 
 我也签署了 [《莱顿人工智能与数学宣言》](https://leidendeclaration.ai/)（Leiden Declaration on Artificial Intelligence and Mathematics）——这是一项由国际数学联盟（IMU）认可的社区倡议，呼吁对人工智能在数学研究中的使用采取负责任的态度。

@@ -38,26 +38,7 @@ Selected solo projects. I list them by the question they test, the artifact they
 
 ***
 
-### [IntuitMath.skill](https://github.com/Chi-Shan0707/IntuitMath.skill)
-
-**Solo open-source agent skill.** A portable mathematics reasoning skill for AI coding/CLI agents that makes mathematical explanations start from intuition, motivation, and proof repair rather than definitions alone.
-
-<details markdown="1">
-<summary>Overview</summary>
-
-**Question.** Can an AI agent be steered to teach mathematics as a thinking partner: reconstructing why an idea had to be invented, testing examples and counterexamples, then moving toward rigorous proof?
-
-**Method.** I designed a portable `SKILL.md` workflow with routing rules, slash-command specs, domain subskills, HTML/KaTeX note generation, and adapters for Codex-like, Claude Code, OpenCode, Gemini CLI, and generic command-line agents.
-
-**Use cases.** Concept motivation, proof/disproof, proof repair, problem solving, study planning, and polished math notes from middle-school topics to higher mathematics.
-
-**Takeaway.** The project treats mathematical understanding as a sequence of crisis, naive attempt, breakdown, repair, and rigorous version, making agent outputs easier to inspect and learn from.
-
-Links: [code](https://github.com/Chi-Shan0707/IntuitMath.skill) · [README](https://github.com/Chi-Shan0707/IntuitMath.skill#readme)
-
-</details>
-
-### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
+### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage) <span class="github-stars" data-github-stars="Chi-Shan0707/token-verification-mirage" aria-label="GitHub stars">★ 3</span>
 
 **Solo-author project with full pipeline ownership.** Controlled evaluation of token-level verification signals for LLM math reasoning.  
 Workshop poster at the [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/).
@@ -77,7 +58,7 @@ Links: [paper](https://openreview.net/pdf?id=wRImV3kfR1) · [code](https://githu
 
 </details>
 
-### [code-not-text](https://github.com/Chi-Shan0707/code-not-text)
+### [code-not-text](https://github.com/Chi-Shan0707/code-not-text) <span class="github-stars" data-github-stars="Chi-Shan0707/code-not-text" aria-label="GitHub stars">★ 3</span>
 
 **Solo measurement study.** Can cheap, hand-crafted features from reasoning traces predict correctness across math, science, and coding?
 
@@ -89,7 +70,7 @@ I test one deliberately narrow feature family on **DeepSeek-R1-0528-Qwen3-8B**: 
 
 Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [technical note](/tech/code-not-text/)
 
-### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
+### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder) <span class="github-stars" data-github-stars="Chi-Shan0707/TinyLoRA-GRPO-Coder" aria-label="GitHub stars">★ 40</span>
 
 **Solo project.** A small-parameter adaptation and RL training pipeline for code generation.
 
@@ -102,7 +83,24 @@ The project uses Qwen2.5-Coder-3B, a tiny shared-parameter adaptation mechanism,
 
 </details>
 
-### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)
+### [IntuitMath.skill](https://github.com/Chi-Shan0707/IntuitMath.skill) <span class="github-stars" data-github-stars="Chi-Shan0707/IntuitMath.skill" aria-label="GitHub stars">★ 4</span>
+
+**Solo open-source agent skill.** A math-learning skill for AI agents that treats mathematics as a story of invention, not a list of definitions.
+
+<details markdown="1">
+<summary>Overview</summary>
+
+**Motivation.** Textbooks often begin with a polished definition, but a learner usually needs the problem first: what broke, why older tools were not enough, and what the new idea repairs. IntuitMath is built around that path from curiosity to rigor.
+
+**How it works.** The skill guides an agent to explain concepts through motivation, examples, failed attempts, counterexamples, proof repair, and then the rigorous version. A definition should feel like the answer to a real problem, not the first line of a textbook.
+
+**How to use it.** Install it as an agent skill and use prompts or slash-style commands such as `/intuit-explain`, `/intuit-solve`, `/intuit-proof`, `/intuit-study`, and `/intuit-note`. It can help with concept explanations, problem solving, proof repair, counterexample hunting, study planning, and polished Markdown or HTML/KaTeX notes.
+
+Links: [code](https://github.com/Chi-Shan0707/IntuitMath.skill) · [README](https://github.com/Chi-Shan0707/IntuitMath.skill#readme)
+
+</details>
+
+### [microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp) <span class="github-stars" data-github-stars="Chi-Shan0707/microgpt.cpp" aria-label="GitHub stars">★ 7</span>
 
 **Solo project.** A minimal GPT implementation from first principles in C++.
 
@@ -114,7 +112,6 @@ A compact C++ implementation built to understand transformer internals without r
 </details>
 ***
 
-
 ## Service
 
 Academic service and review roles.
@@ -124,17 +121,22 @@ Academic service and review roles.
 
 ## Community Involvement
 
-Beyond my personal projects, I also contribute to community-oriented open-source work that keeps useful information easier to find and freely accessible.
+Beyond my personal projects, I also maintain community-facing open-source notes and tools, especially where scattered information is hard for students or developers to find.
 
-   1. [github-unflag-playbook-cn](https://github.com/Chi-Shan0707/github-unflag-playbook-cn) <br>
-      [view **website** here ~~~](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
+   1. [github-unflag-playbook-cn](https://github.com/Chi-Shan0707/github-unflag-playbook-cn) <span class="github-stars" data-github-stars="Chi-Shan0707/github-unflag-playbook-cn" aria-label="GitHub stars">★ 16</span><br>
+      [Project website](https://chi-shan0707.github.io/github-unflag-playbook-cn/)<br>
       A Chinese playbook documenting GitHub account flagging/recovery experiences, appeal processes, and case archives for mainland China developers.
-   2. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
-      [visit our **website** here](https://fduguidebook.com/)<br>
+   2. [ic-guide](https://github.com/Chi-Shan0707/ic-guide) <br>
+      [Project website](https://crys-chen.github.io/ic-guide/)<br>
+      An open-source self-learning guide for integrated circuits and microelectronics, collecting research-direction overviews, course maps, engineering-tool tutorials, and learning resources for students entering a fragmented field.
+   3. [FDUGuideBook/nav-site](https://github.com/FDUGuideBook/nav-site) <br>
+      [Project website](https://fduguidebook.com/)<br>
       Help maintain a student-built navigation site that makes Fudan-related resources easier to discover.
-   3. [FDU-Sharing](https://github.com/victkk/FDU-Sharing) <br>
-      [visit **website** here](https://fdu-sharing.vercel.app/)<br>
+   4. [FDU-Sharing](https://github.com/victkk/FDU-Sharing) <br>
+      [Project website](https://fdu-sharing.vercel.app/)<br>
       Contribute course materials, maintain documentation, and add small features for an open, mutual-aid learning space among Fudan students.
+
+I have also signed the [Leiden Declaration on Artificial Intelligence and Mathematics](https://leidendeclaration.ai/), a community initiative recognized by the International Mathematical Union (IMU) that calls for responsible use of AI in mathematical research.
 
 
 
