@@ -16,20 +16,20 @@ redirect_from:
 ***
 - China - Shanghai
 - GitHub: [Chi-Shan0707](https://github.com/Chi-Shan0707)
+- Chinese name: 裕涵 池
 
 
 I am an undergraduate at the School of Mathematical Sciences, Fudan University, pursuing a double degree in Information and Computing Science and Artificial Intelligence.<br>
-My current work centers on evaluation, verification, and small research systems for LLM reasoning.<br>
 
 ## Experience
 
 ***
 - **Sep 2025--Present** — School of Mathematical Sciences, Fudan University.
-- **Jul--Aug 2026** — UC Berkeley Summer Sessions.
+- **Jul--Aug 2026** — UC Berkeley.
 
 ## My research interests
 
-I am interested in how to make claims about AI reasoning more inspectable: what signals are reliable, which evaluations are protocol-sensitive, and how sequential decision-making can be studied with mathematical tools.<br>
+I am first a mathematics student, and I am interested in applied mathematics: how to model, reason, and make decisions under uncertainty. This leads me to decision-making, especially decisions made by artificial intelligence systems and robots. I want to understand when these decisions can be interpreted and when they are trustworthy.<br>
 See also my [plan](/plan/) page for longer-term motivation.
 
 ## My featured works

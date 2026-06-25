@@ -16,21 +16,21 @@ redirect_from:
 ***
 - China - Shanghai
 - GitHub: [Chi-Shan0707](https://github.com/Chi-Shan0707)
+- 中文名：裕涵 池
 
 
 我目前就读于复旦大学数学科学学院，修读信息与计算科学及人工智能双学位。<br>
-我现在主要关注 LLM reasoning 的评估、验证，以及可以完整运行的小型研究系统。<br>
 
 ## Experience
 
 ***
 - **2025 年 9 月--至今** — 复旦大学数学科学学院。
-- **2026 年 7--8 月** — UC Berkeley Summer Sessions。
+- **2026 年 7--8 月** — UC Berkeley。
 
 
 ## My research interests
 
-我关心如何让关于 AI 推理能力的判断更可检查：哪些信号可靠，哪些结果依赖评估协议，以及如何用数学工具理解 sequential decision-making。<br>
+我首先是一个数学学生，兴趣在应用数学：如何在不确定性中建模、推理并做出决策。这也引向我对 decision-making 的兴趣，尤其是人工智能系统或机器人做出的决策。我想理解这些决策什么时候可以被解释，什么时候值得信任。<br>
 更长期的 motivation 参见 [plan](/plan/) 页面。
 
 
