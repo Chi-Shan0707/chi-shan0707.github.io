@@ -24,8 +24,8 @@ redirect_from:
 ## Experience
 
 ***
-- **UC Berkeley Summer Sessions** — 2026 年 7--8 月暑期学习。  
-  我将参加 Berkeley Summer Sessions，进一步接触高阶课程、研究文化，以及 AI 系统背后的数学与计算基础。
+- **2025 年 9 月--至今** — 复旦大学数学科学学院。
+- **2026 年 7--8 月** — UC Berkeley Summer Sessions。
 
 
 ## My research interests
@@ -153,14 +153,6 @@ redirect_from:
 
 
 ***
-
-## Education
-
-<!-- - <img src="/icons/fdfzlogo.jpg" alt="FDFZ" width="64" style="vertical-align:middle; margin-right:8px;" /> 复旦大学附属中学 — [官网](https://www.fdfz.cn/)
-- <img src="/icons/fudanlogo.png" alt="Fudan Math" width="64" style="vertical-align:middle; margin-right:8px;" /> 复旦大学数学科学学院 — [官网](https://math.fudan.edu.cn/) -->
-
-School of Mathematical Sciences, Fudan University
-
 
 *云来山更佳，云去山如画；*<br>
 *山因云晦明，云山共高下。*<br>

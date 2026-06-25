@@ -24,8 +24,8 @@ My current work centers on evaluation, verification, and small research systems 
 ## Experience
 
 ***
-- **UC Berkeley Summer Sessions** — Summer study, July--August 2026.  
-  I will attend Berkeley Summer Sessions to broaden my exposure to advanced coursework, research culture, and the mathematical/computational foundations behind AI systems.
+- **Sep 2025--Present** — School of Mathematical Sciences, Fudan University.
+- **Jul--Aug 2026** — UC Berkeley Summer Sessions.
 
 ## My research interests
 
@@ -152,14 +152,6 @@ Beyond my personal projects, I also contribute to community-oriented open-source
 
 
 ***
-
-## Education
-
-<!-- - <img src="/icons/fdfzlogo.jpg" alt="FDFZ" width="64" style="vertical-align:middle; margin-right:8px;" /> 复旦大学附属中学 — [官网](https://www.fdfz.cn/)
-- <img src="/icons/fudanlogo.png" alt="Fudan Math" width="64" style="vertical-align:middle; margin-right:8px;" /> 复旦大学数学科学学院 — [官网](https://math.fudan.edu.cn/) -->
-
-School of Mathematical Sciences, Fudan University
-
 
 *When clouds gather, the mountain grows lovelier still; when they part, it stands like a painting.*<br>
 *Clouds lend it shadow and light, and give shape to its height.*<br>
