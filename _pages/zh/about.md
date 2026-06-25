@@ -21,6 +21,12 @@ redirect_from:
 我目前就读于复旦大学数学科学学院，修读信息与计算科学及人工智能双学位。<br>
 我现在主要关注 LLM reasoning 的评估、验证，以及可以完整运行的小型研究系统。<br>
 
+## Experience
+
+***
+- **UC Berkeley Summer Sessions** — 2026 年 7--8 月暑期学习。  
+  我将参加 Berkeley Summer Sessions，进一步接触高阶课程、研究文化，以及 AI 系统背后的数学与计算基础。
+
 
 ## My research interests
 
@@ -33,6 +39,25 @@ redirect_from:
 以下是我独立完成的几个项目。我更想突出每个项目要回答的问题、给出的 artifact，以及它暴露出的边界。
 
 ***
+
+### [IntuitMath.skill](https://github.com/Chi-Shan0707/IntuitMath.skill)
+
+**独立开源 agent skill。** 一个面向 AI coding/CLI agents 的可移植数学推理 skill，让数学解释先从直觉、动机与 proof repair 开始，而不是只给定义。
+
+<details markdown="1">
+<summary>概述</summary>
+
+**问题。** 能否把 AI agent 调整成一个数学 thinking partner：先重建一个概念为什么必须被发明，用例子和反例测试想法，再逐步走向严格证明？
+
+**方法。** 我设计了可移植的 `SKILL.md` 工作流，包括 routing rules、slash-command specs、domain subskills、HTML/KaTeX note generation，以及面向 Codex-like、Claude Code、OpenCode、Gemini CLI 和通用命令行 agent 的 adapters。
+
+**使用场景。** 概念动机、证明/反证、proof repair、解题、学习规划，以及从中学数学到高等数学的 polished math notes。
+
+**Takeaway。** 这个项目把数学理解视为 crisis、naive attempt、breakdown、repair、rigorous version 的序列，使 agent 输出更适合检查和学习。
+
+链接：[代码](https://github.com/Chi-Shan0707/IntuitMath.skill) · [README](https://github.com/Chi-Shan0707/IntuitMath.skill#readme)
+
+</details>
 
 ### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
 

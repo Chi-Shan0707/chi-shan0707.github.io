@@ -148,3 +148,30 @@ iframe {
     overflow-y: auto;
   }
 }
+
+/* Portfolio cards: classic academic texture with clearer visual hierarchy */
+.archive__item-teaser {
+  border: 1px solid rgba(74, 84, 66, 0.22);
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, rgba(255, 251, 240, 0.9), rgba(232, 242, 226, 0.65)),
+    #fbf8ef;
+  box-shadow: 0 10px 26px rgba(42, 52, 36, 0.10);
+  overflow: hidden;
+}
+
+.archive__item-teaser img {
+  display: block;
+  width: 100%;
+  transform: scale(1.01);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.archive__item:hover .archive__item-teaser img {
+  transform: scale(1.035);
+  filter: saturate(1.04) contrast(1.02);
+}
+
+.archive__item-title {
+  letter-spacing: -0.01em;
+}

@@ -21,6 +21,12 @@ redirect_from:
 I am an undergraduate at the School of Mathematical Sciences, Fudan University, pursuing a double degree in Information and Computing Science and Artificial Intelligence.<br>
 My current work centers on evaluation, verification, and small research systems for LLM reasoning.<br>
 
+## Experience
+
+***
+- **UC Berkeley Summer Sessions** — Summer study, July--August 2026.  
+  I will attend Berkeley Summer Sessions to broaden my exposure to advanced coursework, research culture, and the mathematical/computational foundations behind AI systems.
+
 ## My research interests
 
 I am interested in how to make claims about AI reasoning more inspectable: what signals are reliable, which evaluations are protocol-sensitive, and how sequential decision-making can be studied with mathematical tools.<br>
@@ -31,6 +37,25 @@ See also my [plan](/plan/) page for longer-term motivation.
 Selected solo projects. I list them by the question they test, the artifact they provide, and the main limitation they reveal.
 
 ***
+
+### [IntuitMath.skill](https://github.com/Chi-Shan0707/IntuitMath.skill)
+
+**Solo open-source agent skill.** A portable mathematics reasoning skill for AI coding/CLI agents that makes mathematical explanations start from intuition, motivation, and proof repair rather than definitions alone.
+
+<details markdown="1">
+<summary>Overview</summary>
+
+**Question.** Can an AI agent be steered to teach mathematics as a thinking partner: reconstructing why an idea had to be invented, testing examples and counterexamples, then moving toward rigorous proof?
+
+**Method.** I designed a portable `SKILL.md` workflow with routing rules, slash-command specs, domain subskills, HTML/KaTeX note generation, and adapters for Codex-like, Claude Code, OpenCode, Gemini CLI, and generic command-line agents.
+
+**Use cases.** Concept motivation, proof/disproof, proof repair, problem solving, study planning, and polished math notes from middle-school topics to higher mathematics.
+
+**Takeaway.** The project treats mathematical understanding as a sequence of crisis, naive attempt, breakdown, repair, and rigorous version, making agent outputs easier to inspect and learn from.
+
+Links: [code](https://github.com/Chi-Shan0707/IntuitMath.skill) · [README](https://github.com/Chi-Shan0707/IntuitMath.skill#readme)
+
+</details>
 
 ### [token-verification-mirage](https://github.com/Chi-Shan0707/token-verification-mirage)
 
