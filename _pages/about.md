@@ -136,10 +136,6 @@ Beyond my personal projects, I also maintain community-facing open-source notes 
       [Project website](https://fdu-sharing.vercel.app/)<br>
       Contribute course materials, maintain documentation, and add small features for an open, mutual-aid learning space among Fudan students.
 
-I have also signed the [Leiden Declaration on Artificial Intelligence and Mathematics](https://leidendeclaration.ai/), a community initiative recognized by the International Mathematical Union (IMU) that calls for responsible use of AI in mathematical research.
-
-
-
 ## Tech stack and tools
 
 | Domain         | Skills                                                                 |

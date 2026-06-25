@@ -138,8 +138,6 @@ redirect_from:
       [项目网站](https://fdu-sharing.vercel.app/)<br>
       为复旦课程资料共享项目贡献资料、维护文档并补充小功能，希望帮助同学们更平等、方便地获取学习资料。
 
-我也签署了 [《莱顿人工智能与数学宣言》](https://leidendeclaration.ai/)（Leiden Declaration on Artificial Intelligence and Mathematics）——这是一项由国际数学联盟（IMU）认可的社区倡议，呼吁对人工智能在数学研究中的使用采取负责任的态度。
-
 ## Tech stack and tools
 
 | Domain         | Skills                                                                 |
