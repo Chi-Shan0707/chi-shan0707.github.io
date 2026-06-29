@@ -38,7 +38,7 @@
       </p>
     {% endif %}
     {% if post.excerpt %}
-      <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html }}</p>
+      <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
     {% endif %}
     {% if post.pdf_url %}
       <p><a href="{{ post.pdf_url }}" class="btn btn--primary">PDF notes</a></p>
