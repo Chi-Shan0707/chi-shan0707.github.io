@@ -1,6 +1,6 @@
 ---
 title: "Token-Level Verification under Controlled Evaluation"
-excerpt: "A controlled audit of shallow token-level verification signals for LLM math reasoning."
+excerpt: "A controlled audit of shallow token-level verification signals for LLM math reasoning.Accepted at the ICML 2026 Workshop on AI for Math (AI4Math)."
 collection: portfolio
 link: https://openreview.net/forum?id=wRImV3kfR1
 header:
