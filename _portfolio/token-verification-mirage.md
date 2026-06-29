@@ -12,6 +12,8 @@ sidebar:
     text: "[OpenReview](https://openreview.net/forum?id=wRImV3kfR1) · [PDF](https://openreview.net/pdf?id=wRImV3kfR1) · [Code](https://github.com/Chi-Shan0707/token-verification-mirage) · [Workshop](https://ai4math2026.github.io/)"
 ---
 
+**Accepted at the ICML 2026 Workshop on AI for Math (AI4Math).**
+
 This project asks whether shallow token-level signals—entropy, log-probability, and confidence trajectories—can distinguish correct from incorrect math reasoning traces without extra model calls.
 
 The emphasis is not on proposing a new verifier. Instead, the project audits how much apparent verification performance depends on evaluation protocol choices such as global pooling, in-sample scoring, direction-agnostic AUROC, and within-problem controls.
