@@ -25,23 +25,25 @@
           alt="">
       </div>
     {% endif %}
-    <h2 class="archive__item-title" itemprop="headline">
-      <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
-    </h2>
-    {% if post.read_time %}
-      <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-    {% endif %}
-    {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
-    {% if post.venue %}
-      <p class="archive__item-excerpt" itemprop="description">
-        {% if post.type %}{{ post.type }}{% else %}Talk{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}{% if post.location %}, {{ post.location }}{% endif %}
-      </p>
-    {% endif %}
-    {% if post.excerpt %}
-      <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
-    {% endif %}
-    {% if post.pdf_url %}
-      <p><a href="{{ post.pdf_url }}" class="btn btn--primary">PDF notes</a></p>
-    {% endif %}
+    <div class="archive__item-body">
+      <h2 class="archive__item-title" itemprop="headline">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+      </h2>
+      {% if post.read_time %}
+        <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
+      {% endif %}
+      {% if post.date %}<p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {{ post.date | date: '%B %d, %Y' }}</p>{% endif %}
+      {% if post.venue %}
+        <p class="archive__item-excerpt" itemprop="description">
+          {% if post.type %}{{ post.type }}{% else %}Talk{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}{% if post.location %}, {{ post.location }}{% endif %}
+        </p>
+      {% endif %}
+      {% if post.excerpt %}
+        <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
+      {% endif %}
+      {% if post.pdf_url %}
+        <p><a href="{{ post.pdf_url }}" class="btn btn--primary">PDF notes</a></p>
+      {% endif %}
+    </div>
   </article>
 </div>
