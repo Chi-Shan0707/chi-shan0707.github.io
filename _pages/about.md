@@ -16,7 +16,7 @@ redirect_from:
 ***
 - China - Shanghai
 - GitHub: [Chi-Shan0707](https://github.com/Chi-Shan0707)
-- Chinese name: 裕涵 池
+- Chinese name: 池 裕涵 (Chee Yu-han)
 
 
 I am an undergraduate at the School of Mathematical Sciences, Fudan University, pursuing a double degree in Information and Computing Science and Artificial Intelligence.<br>

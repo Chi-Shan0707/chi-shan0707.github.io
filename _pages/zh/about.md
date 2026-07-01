@@ -16,7 +16,7 @@ redirect_from:
 ***
 - China - Shanghai
 - GitHub: [Chi-Shan0707](https://github.com/Chi-Shan0707)
-- 中文名：裕涵 池
+- 中文名：池 裕涵
 
 
 我目前就读于复旦大学数学科学学院，修读信息与计算科学及人工智能双学位。<br>

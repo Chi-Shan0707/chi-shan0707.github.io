@@ -5,7 +5,6 @@ collection: publications
 date: 2026-07-01
 venue: "ICML 2026 Workshop on AI for Math (AI4Math)"
 paperurl: "https://openreview.net/pdf?id=wRImV3kfR1"
-citation: 'Yuhan Chi. "Token-Level Verification under Controlled Evaluation." ICML 2026 Workshop on AI for Math (AI4Math), 2026.'
 category: workshops
 link: https://openreview.net/forum?id=wRImV3kfR1
 header:
@@ -16,8 +15,6 @@ sidebar:
   - title: "Links"
     text: "[OpenReview](https://openreview.net/forum?id=wRImV3kfR1) · [PDF](https://openreview.net/pdf?id=wRImV3kfR1) · [Code](https://github.com/Chi-Shan0707/token-verification-mirage) · [Workshop](https://ai4math2026.github.io/)"
 ---
-
-**Accepted at the ICML 2026 Workshop on AI for Math (AI4Math).**
 
 This project asks whether shallow token-level signals—entropy, log-probability, and confidence trajectories—can distinguish correct from incorrect math reasoning traces without extra model calls.
 
