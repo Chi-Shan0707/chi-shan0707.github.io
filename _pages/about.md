@@ -62,6 +62,9 @@ Links: [paper](https://openreview.net/pdf?id=wRImV3kfR1) · [code](https://githu
 
 **Solo measurement study.** Can cheap, hand-crafted features from reasoning traces predict correctness across math, science, and coding?
 
+<details markdown="1">
+<summary>Overview</summary>
+
 I test one deliberately narrow feature family on **DeepSeek-R1-0528-Qwen3-8B**: token-confidence summaries, token-trajectory statistics, continuity, novelty, reflection count, and a small activation-derived descriptor. The study covers **7,680 math runs**, **12,672 science runs**, and **10,688 coding runs**, with problem-grouped splits and best-of-64 reranking.
 
 **Result.** The same feature family is highly diagnostic for math reasoning, partly useful for GPQA-style science questions, and weak on LiveCodeBench-v5 coding tasks: AoA moves from **0.958** in math to **0.799** in science and **0.434** in coding; best-of-64 reranking changes from **+10.0 pp** to **+8.0 pp** and then **-0.6 pp**.
@@ -69,6 +72,8 @@ I test one deliberately narrow feature family on **DeepSeek-R1-0528-Qwen3-8B**: 
 **Takeaway.** The result is not “text cannot verify code.” It is narrower: these cheap CoT-surface features are domain-specific measurement instruments. They can track convergence-like behavior in math, but they do not reliably track executable correctness in code. Robustness checks include an 83-scalar coding sweep, grouped ablations, a CoT-only judge, MLPs, SSL pretraining, semantic-knot annotation, and token-level de-knotting.
 
 Links: [code](https://github.com/Chi-Shan0707/code-not-text) · [demo](https://chi-shan0707.github.io/code-not-text/demo/) · [technical note](/tech/code-not-text/)
+
+</details>
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder) <span class="github-stars" data-github-stars="Chi-Shan0707/TinyLoRA-GRPO-Coder" aria-label="GitHub stars">★ 40</span>
 
