@@ -1,7 +1,12 @@
 ---
 title: "Token-Level Verification under Controlled Evaluation"
-excerpt: "A controlled audit of shallow token-level verification signals for LLM math reasoning.Accepted at the ICML 2026 Workshop on AI for Math (AI4Math)."
-collection: portfolio
+excerpt: "A controlled audit of shallow token-level verification signals for LLM math reasoning. Accepted at the ICML 2026 Workshop on AI for Math (AI4Math)."
+collection: publications
+date: 2026-07-01
+venue: "ICML 2026 Workshop on AI for Math (AI4Math)"
+paperurl: "https://openreview.net/pdf?id=wRImV3kfR1"
+citation: 'Yuhan Chi. "Token-Level Verification under Controlled Evaluation." ICML 2026 Workshop on AI for Math (AI4Math), 2026.'
+category: workshops
 link: https://openreview.net/forum?id=wRImV3kfR1
 header:
   teaser: "portfolio/token-verification-overview.png"
