@@ -8,7 +8,7 @@ tags:
   - cognition
   - neuroscience
 categories:
-  - notes
+  - tech
 ---
 
 Where does intelligence emerge? This fundamental question was at the heart of a fascinating lecture I recently attended by **Dr. Yongping Cui** from Princeton University. In a compelling synthesis of statistical physics and neuroscience, Dr. Cui bridged the gap between the "black box" of Large Language Models (LLMs) and the complex behavioral patterns of rats, suggesting that silicon and carbon may follow remarkably similar underlying principles of learning.

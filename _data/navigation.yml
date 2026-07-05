@@ -28,7 +28,5 @@ main:
     children:
       - title: "Musings"
         url: /musings/
-      - title: "Notes"
-        url: /notes/
       - title: "Tech"
         url: /tech/
