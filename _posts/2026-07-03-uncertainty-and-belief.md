@@ -1,7 +1,7 @@
 ---
-title: "Embrace the Uncertainty"
-date: 2026-06-29
-permalink: /posts/2026/06/embrace-the-uncertainty/
+title: "Uncertainty and Belief"
+date: 2026-07-03
+permalink: /posts/2026/06/recent-thoughts/
 tags:
   - life
   - reflections
@@ -32,4 +32,9 @@ This progress takes time. It resembles an Odyssey, a psychological and philosoph
 
 But I want to say: we have to learn to embrace uncertainties. I have suffered three times in OI. I was hit by a great failure in the English Spring Gaokao, and in Chinese in the Gaokao. But nothing matters. With time, I survive and thrive. In Mathematics, that is mean reversion. Time always brings you to where you deserve. During this period, you are destined to face uncertainties and setbacks.
 
-Actually, stochasticity can make algorithms more robust. So are humans. We become robust in mind after setbacks. We gain experience from exploration. Nothing is useless, because all of it can be converted into experience. I once wavered much over whether I should learn more about CV or NLP, and worried that if I finally chose CV, my time and effort in NLP would become a waste. That's ridiculous. No experience is a waste. You gain insight, you gain dexterity, you gain positive or negative information. Nothing will be a waste, if you truly exploit your exploration with care.
+Actually, stochasticity can make algorithms more robust. So are humans. We become robust in mind after setbacks. We gain experience from exploration. Nothing is useless, because all of it can be converted into experience. I once wavered much over whether I should learn more about CV or NLP, and worried that if I finally chose CV, my time and effort in NLP would become a waste. That's ridiculous. No experience is a waste. You gain insight, you gain dexterity, you gain positive or negative information. Nothing will be a waste, if you truly hold firm your belief inside. All experience will make for your belief. On the otherhand, it is poisonous to always thinking of rank, GPA, or postgraduate recommendation. Such narrow and shallow things could easily erupt your mind and your belief and leave you shackled by boring things.
+
+So I hope all of us to keep pure and explore widely. Purity is like: pure thirst for knowledge; pure care for the society and the country; pure hope for the peace across the world. When I conducted the mock interview, I happily found such students so I genuinely encourage them to follow their belief and enjoy their journey with wide exploration and uncertainty sometimes. 
+
+And I want to give best wishes to me, too. Recently, I found the atmosphere in some departments not so good. I am interested in Applied Math, which needs us to pool our wits and discuss openly. I have always been hoping to leaving the world better. So maybe, I can, act as the "sage"? And shed light, or "enlightment" on others? I don't know if I am too naive, though many people remark on me or my opensource projects naive. Nevertheless, I have this wish. I want to realize it.
+

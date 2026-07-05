@@ -6,7 +6,10 @@ redirect_from:
   - /plan.html
 ---
 
-Though I am exploring broadly, I am deeply drawn to the mathematical foundations of intelligence, particularly how it emerges in large models and applies to real-world interactions. Amid this exploration, two questions keep returning:
+Firstly, I major in Mathematics and I love it. I plan to establish a solid mathematical foundation during my undergraduate life and I am firmly convinced that with the proficiency in Mathematics(like optimization, computation and statistics), I will always have the courage to wrestle with almost all problems from the view of Mathematics.
+
+
+With such belief, I explore widely. Currently, I am deeply drawn to the mathematical foundations of intelligence, particularly how it emerges in large models and applies to real-world interactions. Amid this exploration, two questions keep returning:
 
 1. AI is already highly capable. But beyond benchmark performance, **when is it actually worthy of our trust?**
 2. If AI is to matter in the real world, what ultimately matters is not only capability, but **decision-making under consequences**.
