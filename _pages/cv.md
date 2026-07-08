@@ -14,7 +14,7 @@ redirect_from:
 Profile
 ======
 * Undergraduate at **Fudan University** (School of Mathematical Sciences), pursuing a double degree in **Information and Computing Science** and **Artificial Intelligence**.
-* GPA: **3.96/4.00** (most recent semester); ranked **10th (top 5%)** in cohort.
+* GPA: **3.96** (Fall 2025), **4.00/4.00** (Spring 2026); Cumulative Rank: **3/213** in cohort.
 * Research interests: mathematical interpretability for AI trust, verification/evaluation of LLM reasoning, optimization, control, and reinforcement learning for sequential decision-making.
 
 Education
@@ -22,8 +22,8 @@ Education
 * **Fudan University**, Shanghai, China
   * **B.S. Candidate** in Information and Computing Science & Artificial Intelligence (Double Degree), School of Mathematical Sciences
   * **Sep. 2025 -- Present**
-  * GPA: **3.96/4.00** (most recent semester)
-  * Rank: **10th (top 5%)** in cohort
+  * GPA: **3.96** (Fall 2025), **4.00/4.00** (Spring 2026)
+  * Cumulative Rank: **3/213** in cohort
 
 Research Interests
 ======

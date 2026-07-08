@@ -153,10 +153,22 @@ redirect_from:
 | **Other**      | <img src="https://cdn.jsdelivr.net/npm/devicon@2.15.1/icons/markdown/markdown-original.svg" width="20"> Markdown &nbsp; <img src="https://cdn.jsdelivr.net/npm/devicon@2.15.1/icons/latex/latex-original.svg" width="20"> LaTeX &nbsp; <img src="/icons/redstone.jpg" width="20"> Redstone |
 
 
+## 课程成绩 (Selected Course Grades)
 
+| 学期 (Semester) | 课程 (Course) | 成绩 (Grade) |
+|:---|:---|:---:|
+| **2025 秋季 (Fall 2025)** | 程序设计 (Programming) | A |
+| | 解析几何 (Analytic Geometry) | A |
+| | 数学分析 I (Mathematical Analysis I) | A |
+| | 高等代数 I (Advanced Algebra I) | A- |
+| **2026 春季 (Spring 2026)** | 数学分析 II (Mathematical Analysis II) | A+ |
+| | 高等代数 II (Advanced Algebra II) | A |
+| | 人工智能软件基础 (Foundations of Software for Artificial Intelligence) | A |
+| | 人工智能引论 (Introduction to Artificial Intelligence) | A |
 
 ***
 
 *云来山更佳，云去山如画；*<br>
 *山因云晦明，云山共高下。*<br>
 ---
+

@@ -151,11 +151,22 @@ Beyond my personal projects, I also maintain community-facing open-source notes 
 | **Other**      | <img src="https://cdn.jsdelivr.net/npm/devicon@2.15.1/icons/markdown/markdown-original.svg" width="20"> Markdown &nbsp; <img src="https://cdn.jsdelivr.net/npm/devicon@2.15.1/icons/latex/latex-original.svg" width="20"> LaTeX &nbsp; <img src="/icons/redstone.jpg" width="20"> Redstone |
 
 
+## Selected Course Grades
 
-
+| Semester | Course | Grade |
+|:---|:---|:---:|
+| **Fall 2025** | Programming | A |
+| | Analytic Geometry | A |
+| | Mathematical Analysis I | A |
+| | Advanced Algebra I | A- |
+| **Spring 2026** | Mathematical Analysis II | A+ |
+| | Advanced Algebra II | A |
+| | Foundations of Software for Artificial Intelligence | A |
+| | Introduction to Artificial Intelligence | A |
 
 ***
 
 *When clouds gather, the mountain grows lovelier still; when they part, it stands like a painting.*<br>
 *Clouds lend it shadow and light, and give shape to its height.*<br>
 ---
+
