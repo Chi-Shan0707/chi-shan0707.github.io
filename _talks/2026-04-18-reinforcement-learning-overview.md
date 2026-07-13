@@ -10,6 +10,8 @@ excerpt: "A one-hour mathematical bridge from bandits to PPO... <br/><br/> Desig
 pdf_url: "/files/From%20Bandits%20to%20PPO.pdf"
 ---
 
+[**[Download / View Seminar PDF Notes]**](/files/From%20Bandits%20to%20PPO.pdf)
+
 This page is the seminar detail page for "From Bandits to PPO".
 
 The PDF notes are the complete written version of this seminar. They include the full formulas, derivations, and algorithm summaries that are only briefly mentioned on this page.
@@ -66,3 +68,6 @@ If you want a quick reading path, focus on these four points:
 ## Why This Stop Point Matters
 
 PPO is the right endpoint for this seminar because it gives all the conceptual ingredients needed for understanding GRPO-like variants: policy gradient objective, advantage estimation, and controlled policy updates.
+
+---
+[**[Download / View Seminar PDF Notes]**](/files/From%20Bandits%20to%20PPO.pdf)
