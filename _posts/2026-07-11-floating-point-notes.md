@@ -1,5 +1,5 @@
 ---
-title: "Floating Point Notes: IEEE 754 from First Principles"
+title: "Floating Point Notes in Computers"
 date: 2026-07-11
 permalink: /posts/2026/07/floating-point-notes/
 tags:
@@ -9,7 +9,9 @@ categories:
   - tech
 ---
 
-Let's build the concept of floating-point numbers from first principles. We will follow a logical progression: from the physical limitations of computers, to the mathematical decisions, and finally to the engineering trade-offs that shaped the IEEE 754 standard, ultimately examining how modern CPUs execute common operations.
+Let's build the concept of floating-point numbers in computers from first principles. 
+
+<!-- We will follow a logical progression: from the physical limitations of computers, to the mathematical decisions, and finally to the engineering trade-offs that shaped the IEEE 754 standard, ultimately examining how modern CPUs execute common operations. -->
 
 ## 1. The Core Conflict: The Finite Cannot Represent the Infinite
 
@@ -71,7 +73,16 @@ If we used two's complement for negative exponents, a negative exponent (like `1
 
 **Solution:** We use a **bias (offset)**. By adding a constant (e.g., 127 for single precision) to the actual exponent, all stored exponents become strictly positive. This preserves the integer sorting order!
 
-## 5. Key Examples to Test Your Understanding
+## 5. Special Numbers: 0, Inf, NaN
+
+Because our system is finite, operations can overflow or yield mathematically undefined results. To preserve our fast integer sorting trick, where should infinity live? At the very top (the largest possible exponent).
+
+- **Exponent = All 1s**: 
+  - If **Fraction == 0**: **Infinity** (`+Inf` or `-Inf`).
+  - If **Fraction != 0**: **NaN** (Not a Number, e.g., for $\sqrt{-1}$).
+- **Exponent = All 0s**: Reserved for **Zero** (if the fraction is 0) and **Subnormals** (if the fraction is non-zero).
+
+## 6. Key Examples to Test Your Understanding
 
 **Example 1: What is the smallest single-precision number strictly greater than 2?**
 - To find this, we examine how $2.0$ is represented.
@@ -91,15 +102,6 @@ If we used two's complement for negative exponents, a negative exponent (like `1
 - The maximum value of this form is $1.111\dots111_2 \times 2^{23} = 2^{24} - 1 = 16,777,215$.
 - What if we go larger? At $E - 127 = 24$, the value is $1.F \times 2^{24}$. The least significant bit now represents $2^{-23} \times 2^{24} = 2^1 = 2$. This means numbers in this range can only represent **EVEN** integers (the spacing is 2).
 - So, the largest odd integer in single precision is **$2^{24} - 1 = 16,777,215$**. (For double precision, it is $2^{53} - 1 = 9,007,199,254,740,991$).
-
-## 6. Special Numbers: 0, Inf, NaN
-
-Because our system is finite, operations can overflow or yield mathematically undefined results. To preserve our fast integer sorting trick, where should infinity live? At the very top (the largest possible exponent).
-
-- **Exponent = All 1s**: 
-  - If **Fraction == 0**: **Infinity** (`+Inf` or `-Inf`).
-  - If **Fraction != 0**: **NaN** (Not a Number, e.g., for $\sqrt{-1}$).
-- **Exponent = All 0s**: Reserved for **Zero** (if the fraction is 0) and **Subnormals** (if the fraction is non-zero).
 
 ## 7. How Does the Computer Actually Calculate?
 
