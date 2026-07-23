@@ -58,11 +58,12 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== TWO-COLUMN LAYOUT ===== */
 .site-wrapper {
-  display: grid;
-  grid-template-columns: 240px 1fr;
+  display: grid !important;
+  grid-template-columns: 240px 1fr !important;
   max-width: 980px;
   margin: 0 auto;
   min-height: 100vh;
+  width: 100%;
 }
 
 /* ===== SIDEBAR ===== */
@@ -73,6 +74,8 @@ h1, h2, h3, h4, h5, h6 {
   top: 0;
   height: 100vh;
   overflow-y: auto;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .sidebar__inner {
@@ -81,11 +84,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar__avatar {
-  width: 100px;
-  height: 100px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.2rem;
+  flex-shrink: 0;
 }
 
 .sidebar__avatar img {
@@ -93,6 +97,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%;
 }
 
 .sidebar__name {
@@ -165,6 +170,8 @@ h1, h2, h3, h4, h5, h6 {
 .main-content {
   padding: 3rem 2.5rem 2rem;
   min-width: 0;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 /* ===== PAGE ELEMENTS ===== */
@@ -473,8 +480,8 @@ details[open] summary {
   }
 
   .sidebar__avatar {
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     margin-bottom: 0;
   }
 
