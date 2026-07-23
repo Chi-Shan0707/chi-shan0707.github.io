@@ -2,6 +2,7 @@
 title: "My Visit to Professor Ziad Obermeyer at UC Berkeley"
 date: 2026-07-15
 categories: tech
+excerpt: "Takeaways from meeting Professor Obermeyer at UC Berkeley School of Public Health — on applied math, interpretability, and mathematical models in healthcare."
 ---
 
 ## Meeting with Professor Ziad Obermeyer (School of Public Health)
