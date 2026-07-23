@@ -81,14 +81,6 @@ static heuristics.
 
 <div class="home-section" markdown="1">
 
-## Talks
-
-**[From Bandits to PPO: RL Prerequisite Seminar](/talks/2026-04-18-reinforcement-learning-overview)** --- Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))
-
-</div>
-
-<div class="home-section" markdown="1">
-
 ## Publications
 
 <div class="pub" markdown="1">

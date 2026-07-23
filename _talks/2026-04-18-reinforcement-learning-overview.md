@@ -10,8 +10,6 @@ excerpt: "A one-hour mathematical bridge from bandits to PPO... <br/><br/> Desig
 pdf_url: "/files/From%20Bandits%20to%20PPO.pdf"
 ---
 
-[**[Download / View Seminar PDF Notes]**](/files/From%20Bandits%20to%20PPO.pdf)
-
 This page is the seminar detail page for "From Bandits to PPO".
 
 The PDF notes are the complete written version of this seminar. They include the full formulas, derivations, and algorithm summaries that are only briefly mentioned on this page.
