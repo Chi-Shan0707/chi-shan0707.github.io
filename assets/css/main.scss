@@ -10,6 +10,17 @@
  *   #3d5a80 — links, accent
  */
 
+/* Variables required by _syntax.scss */
+$border-radius: 5px;
+$box-shadow: none;
+$type-size-4: 1.25em;
+$type-size-6: 0.75em;
+
+:root {
+  --global-border-color: #888;
+  --global-code-background-color: #1d1d1d;
+}
+
 @import
     "vendor/font-awesome/fontawesome",
     "vendor/font-awesome/solid",
