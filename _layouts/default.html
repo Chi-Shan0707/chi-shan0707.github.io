@@ -87,6 +87,7 @@ layout: compress
         {{ content }}
 
         <footer class="site-footer">
+          {% include footer/custom.html %}
           &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
         </footer>
       </div>

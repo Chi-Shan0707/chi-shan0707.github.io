@@ -505,6 +505,59 @@ details[open] summary {
   }
 }
 
+/* ===== PAGINATION ===== */
+.pagination {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #888;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination--pager {
+  font-size: 0.85rem;
+  color: #3d5a80;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+}
+
+.pagination--pager:hover {
+  text-decoration: underline;
+}
+
+.pagination--pager.disabled {
+  color: #888;
+  pointer-events: none;
+}
+
+/* ===== SITEMAP LINK IN FOOTER ===== */
+.site-footer a {
+  color: #3d5a80;
+  font-size: 0.75rem;
+}
+
+/* ===== PAGE DATE IN ARCHIVE ITEMS ===== */
+.page__date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.page__meta {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* ===== SOCIAL SHARE ===== */
+.page__share-title {
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 0.3rem;
+}
+
+.social-icons .fa, .social-icons .fab, .social-icons .fas, .social-icons .ai {
+  color: #888;
+}
+
 @media print {
   .sidebar { display: none; }
   .site-wrapper { grid-template-columns: 1fr; }
