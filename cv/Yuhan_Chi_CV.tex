@@ -1,6 +1,6 @@
 \documentclass[10pt,letterpaper]{article}
 
-\usepackage[margin=0.68in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[hidelinks]{hyperref}
@@ -13,10 +13,11 @@
 \definecolor{linkblue}{HTML}{1F4E79}
 \hypersetup{colorlinks=true,urlcolor=linkblue,linkcolor=linkblue}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{2pt}
-\setlist[itemize]{leftmargin=1.25em,itemsep=1.5pt,topsep=2pt,parsep=0pt}
+\setlength{\parskip}{1.5pt}
+\setlist[itemize]{leftmargin=1.1em,itemsep=0pt,topsep=1pt,parsep=0pt}
 \titleformat{\section}{\large\bfseries\scshape}{}{0pt}{}[\titlerule]
-\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\section}{0pt}{5pt}{3pt}
+\renewcommand{\baselinestretch}{0.98}
 \pagenumbering{gobble}
 
 \newcommand{\entry}[4]{%
@@ -34,71 +35,82 @@ Undergraduate, School of Mathematical Sciences, Fudan University\\
 \href{https://github.com/Chi-Shan0707}{github.com/Chi-Shan0707} \;|\;
 \href{https://chi-shan0707.github.io/cv}{Online CV}
 
+\small
+
 \section*{Profile}
-First-year undergraduate at Fudan University, majoring in Mathematical Sciences and pursuing a double degree in Information and Computing Science and Artificial Intelligence. My current research direction is math-first AI evaluation and trustworthy sequential decision-making: when model signals are reliable, when they are protocol- or domain-dependent, and how optimization, control, and reinforcement learning can give sharper language for trust and action under uncertainty.
+Undergraduate at \textbf{Fudan University} (School of Mathematical Sciences), pursuing a double degree in \textbf{Information and Computing Science} and \textbf{Artificial Intelligence}.\\[3pt]
+GPA: \textbf{3.96/4.00} (Fall 2025), \textbf{4.00/4.00} (Spring 2026); Cumulative: \textbf{3.98/4.00}; Rank: \textbf{3/213} in cohort.
 
 \section*{Education}
-\entry{Fudan University}{Shanghai, China}{B.S. Candidate, Information and Computing Science \& Artificial Intelligence, School of Mathematical Sciences}{Sep. 2025 -- Present}
-\begin{itemize}
-  \item GPA: \textbf{3.96/4.00} (Fall 2025), \textbf{4.00/4.00} (Spring 2026) (Cumulative GPA: \textbf{3.98/4.00}); Cumulative Rank: \textbf{3/213} in cohort.
-  \item Coursework and self-study interests: mathematical analysis, linear algebra, probability, optimization, algorithms, reinforcement learning, and LLM evaluation.
-\end{itemize}
+\entry{Fudan University}{Shanghai, China}{B.S. Candidate in Information and Computing Science \& Artificial Intelligence (Double Degree), School of Mathematical Sciences.}{Sep. 2025 -- Present}
 
 \section*{Research Interests}
 \begin{itemize}
-  \item \textbf{Mathematical interpretability and AI trust:} grounding claims about model reliability in inspectable mathematical and statistical evidence.
-  \item \textbf{Reasoning verification and evaluation:} studying when trace-level signals are diagnostic, misleading, protocol-dependent, or domain-specific.
-  \item \textbf{Optimization, control, and sequential decision-making:} using mathematical tools to reason about uncertainty, feedback, constraints, and interaction with environments.
+  \item \textbf{Mathematical Interpretability and AI Trust}: grounding claims about model reliability in inspectable mathematical and statistical evidence
+  \item \textbf{Reasoning Verification and Evaluation}: studying when trace-level signals are diagnostic, misleading, protocol-dependent, or domain-specific
+  \item \textbf{Optimization, Control, and Sequential Decision-Making}: using mathematical tools to reason about uncertainty, feedback, constraints, and interaction with environments
 \end{itemize}
 
-\section*{Selected Research and Open-Source Projects}
+\section*{Selected Open-Source Projects}
 
-\project{token-verification-mirage}{\href{https://openreview.net/pdf?id=wRImV3kfR1}{Paper} \;|\; \href{https://github.com/Chi-Shan0707/token-verification-mirage}{GitHub} \;|\; \href{https://ai4math2026.github.io/}{AI4Math Workshop}}
+\project{\href{https://github.com/Chi-Shan0707/token-verification-mirage}{token-verification-mirage}}{\href{https://openreview.net/pdf?id=wRImV3kfR1}{Paper} $\cdot$ \href{https://ai4math2026.github.io/}{AI4Math Workshop}}
 \begin{itemize}
-  \item Solo-author project with full pipeline ownership: dataset selection, model deployment, trace generation, evaluation design, analysis, figures, related-work organization, and writing.
-  \item Poster at the \textbf{ICML 2026 Workshop on AI for Math (AI4Math)}.
-  \item Audits how evaluation protocol choices such as pooling, in-sample scoring, and direction-agnostic AUROC can change apparent token-level verification performance.
-  \item Finds that shallow token statistics can be useful diagnostics, but should not be treated as stable standalone verifiers without within-problem evaluation, fixed-direction baselines, and permutation-null calibration.
+  \item Poster, \textbf{ICML 2026 Workshop on AI for Math (AI4Math)}; solo-authored, full pipeline (dataset selection, generation, evaluation design, analysis, writing)
+  \item Evaluation-protocol choices alone (pooling, in-sample scoring, direction-agnostic AUROC) shift apparent verification AUROC by up to \textbf{0.18}
+  \item Under corrected within-problem, leave-one-run-out, fixed-direction scoring, shallow token statistics cluster at only \textbf{0.60--0.75 AUROC}; final-token entropy drops from 0.72--0.75 to 0.47--0.48 once the direction-agnostic reporting artifact is removed
 \end{itemize}
 
-\project{code-not-text}{\href{https://github.com/Chi-Shan0707/code-not-text}{GitHub} \;|\; \href{https://chi-shan0707.github.io/code-not-text/demo/}{Interactive Demo}}
+\project{\href{https://github.com/chi-shan0707/code-not-text}{code-not-text}}{\href{https://chi-shan0707.github.io/code-not-text/demo}{Demo}}
 \begin{itemize}
-  \item Solo measurement study of cheap CoT-surface and token-trajectory features on \textbf{DeepSeek-R1-0528-Qwen3-8B} across \textbf{31,040} math, science, and coding runs.
-  \item Reports strong math signal (AoA \textbf{0.958}, AUROC@100\% \textbf{0.982}), partial science signal (AoA \textbf{0.799}), and weak coding transfer (AoA \textbf{0.434}).
-  \item Tests coding-side robustness through an 83-scalar feature sweep, grouped ablations, a CoT-only judge, nonlinear MLPs, SSL pre-training, semantic-knot annotation, and token-level de-knotting.
-  \item Frames the result as \textbf{measurement non-invariance}: the same feature family tracks convergence-like behavior in math but not executable correctness in coding.
+  \item Cross-domain measurement study across 31,040 math, science, and coding runs: AoA 0.958 (math), 0.799 (science), 0.434 (coding, below the random-direction baseline)
+  \item Rules out five alternative explanations for the coding failure (model capacity, label scarcity, surface noise, feature coverage, judge framing) --- all converge to the same ceiling; frames the result as measurement non-invariance
 \end{itemize}
 
-\project{TinyLoRA-GRPO-Coder}{\href{https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder}{GitHub}}
+\project{\href{https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder}{TinyLoRA-GRPO-Coder}}{\href{https://deepwiki.com/Chi-Shan0707/TinyLoRA-GRPO-Coder}{DeepWiki} $\cdot$ \textbf{40 stars, 3 forks}}
 \begin{itemize}
-  \item Solo project adapting a small-parameter training idea toward verifiable competitive-programming code generation on Qwen2.5-Coder-3B.
-  \item Uses compile-and-run rewards rather than static heuristics; built as a full research-system exercise covering data processing, training, multi-GPU setup, reward design, evaluation, and validation.
+  \item Adapts \emph{Learning to Reason in 13 Parameters} (Morris et al., 2026) to competitive programming: trains 32 shared scalars via GRPO on Qwen2.5-Coder-3B, rewarded by real \texttt{g++} compile-and-run outcomes
+  \item Controlled A/B test: v4.0 recipe improves Pass@1 by \textbf{+100\%} (1.82\% $\to$ 3.64\%) while cutting training data by 99.8\% and training time by 73\%
+  \item Most-starred solo project on my GitHub; 6 releases, external forks and contributors
 \end{itemize}
 
-\project{microgpt.cpp}{\href{https://github.com/Chi-Shan0707/microgpt.cpp}{GitHub}}
+\project{\href{https://github.com/Chi-Shan0707/microgpt.cpp}{microgpt.cpp}}{\textbf{7 stars, 2 forks}}
 \begin{itemize}
-  \item Minimal GPT implementation from first principles in C++, built to understand model internals without relying on high-level deep-learning frameworks.
+  \item Minimal GPT (autograd, multi-head attention, Adam) from scratch in $\sim$300 lines of C++, inspired by Karpathy's teaching gist
 \end{itemize}
 
-\section*{Academic Service}
+\section*{Academic Service \& Leadership}
+\textbf{Reviewer}, \href{https://ai4math2026.github.io/}{ICML 2026 Workshop on AI for Math (AI4Math)}, 2026\\[3pt]
+\textbf{Founder}, \href{https://github.com/Chi-Shan0707/fdu-opensource-initiative}{Fudan Open Source Initiative (FDU-OSI)} --- \textbf{8 stars}
 \begin{itemize}
-  \item Reviewer, \href{https://ai4math2026.github.io/}{ICML 2026 Workshop on AI for Math (AI4Math)}, 2026.
+  \item Authored and published a repo-naming/topic-tagging convention (\texttt{fdu-course-*}, \texttt{fdu-project-*}) so Fudan students' course notes, project demos, and research prototypes stay discoverable across accounts, with no central registry or approval process
+\end{itemize}
+\textbf{Talk: Reinforcement Learning: From Bandits to PPO} --- \textit{Apr 18, 2026} (\href{https://chi-shan0707.github.io/files/From\%20Bandits\%20to\%20PPO.pdf}{PDF notes})
+\begin{itemize}
+  \item Overview covering multi-armed bandits, MDPs, policy gradient, and PPO
 \end{itemize}
 
-\section*{Technical Skills}
+\section*{Skills}
 \begin{tabularx}{\textwidth}{@{}>{\bfseries}p{0.22\textwidth}X@{}}
 Programming & Python, C++, C, Java, Node.js, Lean 4 \\
-ML / AI & PyTorch, ML experimentation, LLM evaluation, reinforcement-learning basics \\
-Tools & Git, GitHub, Linux, LaTeX, Markdown, VS Code \\
-Other & Mathematical proof writing, technical writing, self-directed research, competitive programming \\
+ML/AI & PyTorch, ML experimentation, LLM evaluation, RL basics \\
+Tools & Git, GitHub, Linux, LaTeX, Markdown \\
 \end{tabularx}
 
-\section*{Community and Additional Information}
+\section*{Selected Course Grades}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llcllc@{}}
+\textbf{Semester} & \textbf{Course} & \textbf{Grade} & \textbf{Semester} & \textbf{Course} & \textbf{Grade} \\ \hline
+\textbf{Fall 2025} & Programming & A & \textbf{Spring 2026} & Mathematical Analysis II & A+ \\
+ & Analytic Geometry & A & & Advanced Algebra II & A \\
+ & Mathematical Analysis I & A & & Foundations of Software for AI & A \\
+ & Advanced Algebra I & A- & & Introduction to AI & A \\
+\end{tabular*}
+
+\section*{Community Involvement}
 \begin{itemize}
-  \item Maintains \href{https://chi-shan0707.github.io/github-unflag-playbook-cn}{github-unflag-playbook-cn}, a Chinese playbook documenting GitHub account flagging, recovery cases, and appeal workflows.
-  \item Contributor to \href{https://github.com/FDUGuideBook/nav-site}{FDUGuideBook/nav-site}, a student-built navigation site for the Fudan community.
-  \item Contributor to \href{https://github.com/victkk/FDU-Sharing}{FDU-Sharing}, contributing course materials, documentation, and small features for an open, mutual-aid course-material sharing project.
-  \item Public work and notes are maintained at \href{https://chi-shan0707.github.io}{chi-shan0707.github.io} and \href{https://github.com/Chi-Shan0707}{github.com/Chi-Shan0707}.
+  \item \textbf{\href{https://chi-shan0707.github.io/github-unflag-playbook-cn}{github-unflag-playbook-cn}} --- Chinese playbook for GitHub account flagging/recovery (19 stars)
+  \item \textbf{\href{https://crys-chen.github.io/ic-guide/}{ic-guide}} --- Open-source self-learning guide for integrated circuits
+  \item \textbf{\href{https://fduguidebook.com/}{FDUGuideBook/nav-site}} --- Student navigation site for the Fudan community
+  \item \textbf{\href{https://fdu-sharing.vercel.app/}{FDU-Sharing}} --- Mutual-aid course-material sharing
 \end{itemize}
 
 \end{document}
