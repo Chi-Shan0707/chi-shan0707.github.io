@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== TWO-COLUMN LAYOUT ===== */
 .site-wrapper {
   display: grid !important;
-  grid-template-columns: 180px 1fr !important;
+  grid-template-columns: 240px 1fr !important;
   max-width: 980px;
   margin: 0 auto;
   min-height: 100vh;
@@ -68,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  padding: 1.5rem 0.9rem 1rem 0.75rem;
+  padding: 3rem 1.8rem 2rem 1.5rem;
   border-right: 1px solid #888;
   position: sticky;
   top: 0;
@@ -168,7 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
-  padding: 1.5rem 1.25rem 1rem;
+  padding: 3rem 2.5rem 2rem;
   min-width: 0;
   grid-column: 2;
   grid-row: 1;
