@@ -59,16 +59,17 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== TWO-COLUMN LAYOUT ===== */
 .site-wrapper {
   display: grid !important;
-  grid-template-columns: 240px 1fr !important;
-  max-width: 980px;
+  grid-template-columns: 220px 1fr !important;
+  max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
   width: 100%;
+  padding: 0 1rem;
 }
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  padding: 3rem 1.8rem 2rem 1.5rem;
+  padding: 3rem 1.2rem 2rem 0.5rem;
   border-right: 1px solid #888;
   position: sticky;
   top: 0;
@@ -84,8 +85,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidebar__avatar {
-  width: 88px;
-  height: 88px;
+  width: 114px;
+  height: 114px;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1.2rem;
@@ -168,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== MAIN CONTENT ===== */
 .main-content {
-  padding: 3rem 2.5rem 2rem;
+  padding: 3rem 1.5rem 2rem 2rem;
   min-width: 0;
   grid-column: 2;
   grid-row: 1;
@@ -480,8 +481,8 @@ details[open] summary {
   }
 
   .sidebar__avatar {
-    width: 56px;
-    height: 56px;
+    width: 73px;
+    height: 73px;
     margin-bottom: 0;
   }
 
@@ -516,7 +517,7 @@ details[open] summary {
   }
 
   .main-content {
-    padding: 2rem 1.2rem 2rem;
+    padding: 1.5rem 1rem 2rem;
   }
 
   .page-title {

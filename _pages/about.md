@@ -22,9 +22,11 @@ they are trustworthy.
 
 ## Research Interests
 
-Mathematical interpretability for AI trust.
-Verification and evaluation of LLM reasoning.
-Optimization, control, and reinforcement learning for sequential decision-making.
+Mathematical interpretability for AI trust.<br>
+
+Optimization, control, and reinforcement learning for sequential decision-making.<br>
+
+Verification and evaluation of LLM reasoning.<br>
 
 </div>
 
@@ -84,7 +86,7 @@ static heuristics.
 
 ## Talks
 
-**[From Bandits to PPO: RL Prerequisite Seminar](/talks/2026-04-18-reinforcement-learning-overview)** --- Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))
+**From Bandits to PPO: RL Prerequisite Seminar** — Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))
 
 </div>
 
