@@ -5,7 +5,7 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js"{% if site.site_theme == "dark" %} data-theme="dark"{% endif %}>
   <head>
     {% include head.html %}
     {% include head/custom.html %}
@@ -13,85 +13,16 @@ layout: compress
 
   <body>
 
-    <div class="site-wrapper">
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
 
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-        <div class="sidebar__inner">
+    {{ content }}
 
-          <div class="sidebar__avatar">
-            {% if site.author.avatar contains "://" %}
-              <img src="{{ site.author.avatar }}" alt="{{ site.author.name }}">
-            {% else %}
-              <img src="{{ site.author.avatar | prepend: '/images/' | prepend: base_path }}" alt="{{ site.author.name }}">
-            {% endif %}
-          </div>
-
-          <h1 class="sidebar__name">{{ site.author.name }}</h1>
-          <div class="sidebar__affiliation">
-            {{ site.author.employer }}<br>
-            {{ site.author.location }}
-          </div>
-
-          <nav class="sidebar__nav">
-            <a href="{{ base_path }}/" {% if page.url == '/' %}class="active"{% endif %}>About</a>
-            {% for link in site.data.navigation.main %}
-              {% if link.url contains 'http' %}
-                {% assign domain = '' %}
-              {% else %}
-                {% assign domain = base_path %}
-              {% endif %}
-              {% assign is_active = false %}
-              {% if link.url and link.url != '/' and page.url contains link.url %}
-                {% assign is_active = true %}
-              {% endif %}
-              {% if link.children %}
-                {% for child in link.children %}
-                  {% if child.url == page.url %}
-                    {% assign is_active = true %}
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-              <a href="{{ domain }}{{ link.url }}" {% if is_active %}class="active"{% endif %}>{{ link.title }}</a>
-              {% if link.children %}
-                {% for child in link.children %}
-                  <a href="{{ domain }}{{ child.url }}" class="sidebar__subnav {% if child.url == page.url %}active{% endif %}">{{ child.title }}</a>
-                {% endfor %}
-              {% endif %}
-            {% endfor %}
-          </nav>
-
-          <div class="sidebar__links">
-            {% if site.author.email %}
-              <a href="mailto:{{ site.author.email }}">Email</a>
-            {% endif %}
-            {% if site.author.github %}
-              <a href="https://github.com/{{ site.author.github }}">GitHub</a>
-            {% endif %}
-            {% if site.author.twitter %}
-              <a href="https://x.com/{{ site.author.twitter }}">X</a>
-            {% endif %}
-            {% if site.author.linkedin %}
-              <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn</a>
-            {% endif %}
-            {% if site.author.googlescholar %}
-              <a href="{{ site.author.googlescholar }}">Scholar</a>
-            {% endif %}
-          </div>
-
-        </div>
-      </aside>
-
-      <!-- MAIN CONTENT -->
-      <div class="main-content">
-        {{ content }}
-
-        <footer class="site-footer">
-          {% include footer/custom.html %}
-          &copy; {{ site.time | date: '%Y' }} {{ site.author.name }}
-        </footer>
-      </div>
-
+    <div class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
     </div>
 
     {% include scripts.html %}
