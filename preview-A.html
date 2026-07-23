@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option A — Distill-inspired</title>
+<style>
+  /* 4 COLORS ONLY:
+     #111111 — text, headings
+     #ffffff — background
+     #666666 — secondary text, borders, captions
+     #1a5276 — links, accent
+  */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 17px; }
+
+  body {
+    font-family: "Literata", "Georgia", serif;
+    color: #111;
+    background: #fff;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: #1a5276; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- NAV ---- */
+  nav {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.4rem 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.6rem;
+  }
+  nav .site-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: 0.01em;
+  }
+  nav .nav-links { display: flex; gap: 1.4rem; }
+  nav .nav-links a {
+    font-size: 0.88rem;
+    color: #666;
+    letter-spacing: 0.02em;
+  }
+  nav .nav-links a:hover { color: #1a5276; }
+
+  /* ---- MAIN ---- */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  /* ---- HEADER / BIO ---- */
+  .bio { margin-bottom: 3.5rem; }
+  .bio h1 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 0.3rem;
+  }
+  .bio .subtitle {
+    font-size: 0.92rem;
+    color: #666;
+    margin-bottom: 1.6rem;
+  }
+  .bio .contact {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 1.2rem;
+  }
+  .bio .contact a { color: #1a5276; }
+
+  /* ---- SECTIONS ---- */
+  section { margin-bottom: 3rem; }
+  section h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #666;
+  }
+
+  /* ---- PROJECTS ---- */
+  .project { margin-bottom: 2rem; }
+  .project h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+  .project .meta {
+    font-size: 0.82rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  .project p {
+    font-size: 0.95rem;
+    line-height: 1.68;
+  }
+
+  /* ---- PUBLICATIONS ---- */
+  .pub { margin-bottom: 1.6rem; }
+  .pub .pub-title {
+    font-weight: 700;
+    font-size: 0.97rem;
+  }
+  .pub .pub-venue {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+  }
+  .pub .pub-links {
+    font-size: 0.82rem;
+    margin-top: 0.25rem;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid #666;
+    font-size: 0.8rem;
+    color: #666;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 600px) {
+    nav { padding-top: 1.5rem; }
+    main { padding: 2rem 1.2rem 3rem; }
+    .bio h1 { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="site-name">Yuhan Chi</span>
+  <div class="nav-links">
+    <a href="#">About</a>
+    <a href="#">CV</a>
+    <a href="#">Posts</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- BIO -->
+  <div class="bio">
+    <h1>Yuhan Chi</h1>
+    <div class="subtitle">
+      School of Mathematical Sciences, Fudan University<br>
+      Information and Computing Science & Artificial Intelligence
+    </div>
+    <p>
+      I am an undergraduate at Fudan University. I study applied mathematics:
+      how to model, reason, and make decisions under uncertainty. This leads me
+      to decision-making by AI systems and robots — when these decisions can be
+      interpreted and when they are trustworthy.
+    </p>
+    <div class="contact">
+      <a href="mailto:masterwuguicyh@163.com">Email</a> &middot;
+      <a href="https://github.com/Chi-Shan0707">GitHub</a> &middot;
+      <a href="#">CV (PDF)</a>
+    </div>
+  </div>
+
+  <!-- RESEARCH INTERESTS -->
+  <section>
+    <h2>Research Interests</h2>
+    <p>
+      Mathematical interpretability for AI trust.
+      Verification and evaluation of LLM reasoning.
+      Optimization, control, and reinforcement learning for sequential decision-making.
+    </p>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section>
+    <h2>Featured Projects</h2>
+
+    <div class="project">
+      <h3><a href="https://github.com/Chi-Shan0707/token-verification-mirage">token-verification-mirage</a></h3>
+      <div class="meta">Solo-author &middot; ICML 2026 AI4Math Workshop Poster</div>
+      <p>
+        Controlled evaluation of token-level verification signals for LLM math reasoning.
+        Shows that protocol choices like global pooling and direction-agnostic AUROC can shift
+        reported performance by up to 0.18. Shallow token statistics are useful diagnostics,
+        not stable standalone verifiers.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3><a href="https://github.com/Chi-Shan0707/code-not-text">code-not-text</a></h3>
+      <div class="meta">Solo measurement study &middot; 31,040 runs across math, science, coding</div>
+      <p>
+        Tests whether cheap hand-crafted features from reasoning traces predict correctness
+        across domains. Strong math signal (AoA 0.958), partial science signal (0.799),
+        weak coding transfer (0.434). The same feature family tracks convergence in math
+        but not executable correctness in code.
+      </p>
+    </div>
+
+    <div class="project">
+      <h3><a href="https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder">TinyLoRA-GRPO-Coder</a></h3>
+      <div class="meta">Solo project &middot; RL for code generation</div>
+      <p>
+        Small-parameter adaptation and GRPO training pipeline for verifiable
+        competitive-programming code generation on Qwen2.5-Coder-3B.
+        Uses compile-and-run rewards rather than static heuristics.
+      </p>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section>
+    <h2>Publications</h2>
+
+    <div class="pub">
+      <div class="pub-title">Token Verification Mirage</div>
+      <div class="pub-venue">ICML 2026 Workshop on AI for Math (AI4Math), 2026</div>
+      <div class="pub-links">
+        <a href="https://openreview.net/pdf?id=wRImV3kfR1">Paper</a> &middot;
+        <a href="https://github.com/Chi-Shan0707/token-verification-mirage">Code</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Yuhan Chi &middot; Fudan University &middot; Shanghai
+</footer>
+
+</body>
+</html>

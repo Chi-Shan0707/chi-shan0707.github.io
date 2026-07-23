@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Option B — Two-column sidebar</title>
+<style>
+  /* 4 COLORS ONLY:
+     #1d1d1d — text, headings
+     #f8f7f4 — background (warm off-white)
+     #888888 — secondary text, borders
+     #3d5a80 — links, accent
+  */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: "Georgia", "Literata", serif;
+    color: #1d1d1d;
+    background: #f8f7f4;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: #3d5a80; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ---- LAYOUT ---- */
+  .wrapper {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  /* ---- SIDEBAR ---- */
+  .sidebar {
+    padding: 3rem 1.8rem 2rem 1.5rem;
+    border-right: 1px solid #888;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  .sidebar .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #888;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: #f8f7f4;
+    font-weight: 700;
+  }
+  .sidebar h1 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+    line-height: 1.3;
+  }
+  .sidebar .affiliation {
+    font-size: 0.78rem;
+    color: #888;
+    line-height: 1.45;
+    margin-bottom: 1.5rem;
+  }
+  .sidebar nav { margin-bottom: 1.8rem; }
+  .sidebar nav a {
+    display: block;
+    font-size: 0.88rem;
+    padding: 0.3rem 0;
+    color: #1d1d1d;
+  }
+  .sidebar nav a:hover { color: #3d5a80; text-decoration: none; }
+  .sidebar .links {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 2;
+  }
+  .sidebar .links a { color: #3d5a80; }
+
+  /* ---- MAIN ---- */
+  .main {
+    padding: 3rem 2.5rem 4rem;
+  }
+
+  /* ---- SECTIONS ---- */
+  section { margin-bottom: 2.8rem; }
+  section h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid #888;
+  }
+  section p, section li {
+    font-size: 0.94rem;
+    line-height: 1.72;
+  }
+
+  .intro { margin-bottom: 2.8rem; }
+  .intro p { font-size: 0.97rem; }
+
+  /* ---- PROJECTS ---- */
+  .project { margin-bottom: 1.8rem; }
+  .project h3 {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+  .project .meta {
+    font-size: 0.78rem;
+    color: #888;
+    margin-bottom: 0.4rem;
+  }
+  .project p { font-size: 0.9rem; }
+
+  /* ---- PUBLICATIONS ---- */
+  .pub { margin-bottom: 1.4rem; }
+  .pub .pub-title { font-weight: 700; font-size: 0.93rem; }
+  .pub .pub-venue { font-size: 0.82rem; color: #888; font-style: italic; }
+  .pub .pub-links { font-size: 0.8rem; margin-top: 0.2rem; }
+
+  /* ---- FOOTER ---- */
+  .footer-text {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #888;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 700px) {
+    .wrapper {
+      grid-template-columns: 1fr;
+    }
+    .sidebar {
+      position: static;
+      height: auto;
+      border-right: none;
+      border-bottom: 1px solid #888;
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 1.5rem;
+      align-items: center;
+    }
+    .sidebar .avatar { width: 64px; height: 64px; font-size: 1.4rem; margin-bottom: 0; }
+    .sidebar nav { display: flex; gap: 1rem; margin-bottom: 0; }
+    .main { padding: 2rem 1.2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="avatar">YC</div>
+    <h1>Yuhan Chi</h1>
+    <div class="affiliation">
+      Fudan University<br>
+      Math &middot; AI
+    </div>
+
+    <nav>
+      <a href="#">About</a>
+      <a href="#">CV</a>
+      <a href="#">Posts</a>
+    </nav>
+
+    <div class="links">
+      <a href="mailto:masterwuguicyh@163.com">Email</a><br>
+      <a href="https://github.com/Chi-Shan0707">GitHub</a><br>
+      <a href="#">CV (PDF)</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <div class="intro">
+      <p>
+        I am an undergraduate at the School of Mathematical Sciences, Fudan University,
+        pursuing a double degree in Information and Computing Science and Artificial Intelligence.
+        I study applied mathematics: how to model, reason, and make decisions under uncertainty.
+        This leads me to AI decision-making — when these decisions can be interpreted and when
+        they are trustworthy.
+      </p>
+    </div>
+
+    <section>
+      <h2>Research Interests</h2>
+      <p>
+        Mathematical interpretability for AI trust.
+        Verification and evaluation of LLM reasoning.
+        Optimization, control, and reinforcement learning for sequential decision-making.
+      </p>
+    </section>
+
+    <section>
+      <h2>Featured Projects</h2>
+
+      <div class="project">
+        <h3><a href="https://github.com/Chi-Shan0707/token-verification-mirage">token-verification-mirage</a></h3>
+        <div class="meta">Solo-author &middot; ICML 2026 AI4Math Workshop Poster</div>
+        <p>
+          Controlled evaluation of token-level verification signals for LLM math reasoning.
+          Protocol choices like global pooling and direction-agnostic AUROC can shift
+          reported performance by up to 0.18.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3><a href="https://github.com/Chi-Shan0707/code-not-text">code-not-text</a></h3>
+        <div class="meta">Solo measurement study &middot; 31,040 runs</div>
+        <p>
+          Tests cheap hand-crafted features from reasoning traces across math, science,
+          and coding. Strong math signal (AoA 0.958), weak coding transfer (0.434).
+          Same features track convergence in math but not executable correctness in code.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3><a href="https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder">TinyLoRA-GRPO-Coder</a></h3>
+        <div class="meta">Solo project &middot; RL for code generation</div>
+        <p>
+          Small-parameter adaptation and GRPO training pipeline for competitive-programming
+          code generation. Uses compile-and-run rewards.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Publications</h2>
+      <div class="pub">
+        <div class="pub-title">Token Verification Mirage</div>
+        <div class="pub-venue">ICML 2026 Workshop on AI for Math (AI4Math), 2026</div>
+        <div class="pub-links">
+          <a href="https://openreview.net/pdf?id=wRImV3kfR1">Paper</a> &middot;
+          <a href="https://github.com/Chi-Shan0707/token-verification-mirage">Code</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-text">
+      Yuhan Chi &middot; Fudan University &middot; Shanghai
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

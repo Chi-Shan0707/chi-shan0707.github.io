@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(which python3 python && python3 -c \"import whisper\" 2>/dev/null && echo \"whisper available\")",
+      "Bash(ls -la _posts/ && find . -name \"*transcript*\" -o -name \"*rational*\" 2>/dev/null | head -20)"
+    ]
+  }
+}

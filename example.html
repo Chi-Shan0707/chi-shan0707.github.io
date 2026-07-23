@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Preview — EB Garamond &amp; Inter &amp; JetBrains Mono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fff;
+    --text: #333;
+    --text-light: #7a8288;
+    --border: #e0e0e0;
+    --link: #2f7f93;
+    --link-hover: #1a5a6a;
+    --code-bg: #fafafa;
+    --code-text: #444;
+    --accent: #2f7f93;
+  }
+
+  html { font-size: 17px; }
+
+  body {
+    font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* Masthead */
+  .masthead {
+    font-family: "Inter", -apple-system, sans-serif;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .masthead h1 {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text);
+  }
+  .masthead .subtitle {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    margin-top: 0.2rem;
+  }
+
+  /* Section labels */
+  .section-label {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+  }
+
+  /* Headings */
+  h1 {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 2.441rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 2rem 0 0.8rem;
+  }
+  h1:first-of-type { margin-top: 0; }
+
+  h2 {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.563rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 2rem 0 0.6rem;
+  }
+
+  h3 {
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 1.6rem 0 0.5rem;
+  }
+
+  /* Body text */
+  p {
+    margin-bottom: 1.2em;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  /* Links */
+  a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+  a:hover {
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+  }
+
+  /* Sidebar-style nav */
+  .sidebar-nav {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.75rem;
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+  }
+  .sidebar-nav li {
+    margin-bottom: 0.4rem;
+  }
+  .sidebar-nav li:last-child { margin-bottom: 0; }
+  .sidebar-nav a {
+    font-size: 0.8rem;
+    color: var(--text);
+    border-bottom: none;
+  }
+  .sidebar-nav a:hover { color: var(--link); }
+
+  /* Code */
+  code, pre {
+    font-family: "JetBrains Mono", Monaco, Consolas, monospace;
+  }
+  code {
+    font-size: 0.85em;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+    border: 1px solid #eee;
+  }
+  pre {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    background: var(--code-bg);
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    overflow-x: auto;
+    margin: 1rem 0 1.5rem;
+  }
+  pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: inherit;
+  }
+
+  /* Blockquote */
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 0.8rem 1.2rem;
+    border-left: 3px solid var(--accent);
+    background: #f8f9fa;
+    font-style: italic;
+    color: #555;
+    font-size: 0.95rem;
+  }
+  blockquote p:last-child { margin-bottom: 0; }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.85rem;
+  }
+  th {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: left;
+    padding: 0.5rem 0.8rem;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-light);
+  }
+  td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    font-family: "EB Garamond", Georgia, serif;
+  }
+
+  /* Font specimen table */
+  .specimen {
+    margin: 1.5rem 0;
+  }
+  .specimen-row {
+    display: flex;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .specimen-label {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-light);
+    width: 140px;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .specimen-sample {
+    font-size: 1.15rem;
+  }
+  .specimen-sample.sans { font-family: "Inter", -apple-system, sans-serif; }
+  .specimen-sample.serif { font-family: "EB Garamond", Georgia, serif; }
+  .specimen-sample.mono  { font-family: "JetBrains Mono", Monaco, monospace; font-size: 1rem; }
+
+  /* Divider */
+  hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* Small caption */
+  .caption {
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.72rem;
+    color: var(--text-light);
+    margin-top: -0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Tag / badge */
+  .tag {
+    display: inline-block;
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.15em 0.5em;
+    border-radius: 3px;
+    background: #eef5f7;
+    color: var(--accent);
+    margin-right: 0.3em;
+  }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <h1>Yuhan Chi</h1>
+  <div class="subtitle">School of Mathematical Sciences, Fudan University</div>
+</div>
+
+<!-- ── Font Specimen ── -->
+<div class="section-label">Font Specimen</div>
+
+<div class="specimen">
+  <div class="specimen-row">
+    <span class="specimen-label">Serif (body)</span>
+    <span class="specimen-sample serif">EB Garamond — The quick brown fox jumps over the lazy dog.</span>
+  </div>
+  <div class="specimen-row">
+    <span class="specimen-label">Sans (UI)</span>
+    <span class="specimen-sample sans">Inter — The quick brown fox jumps over the lazy dog.</span>
+  </div>
+  <div class="specimen-row">
+    <span class="specimen-label">Mono (code)</span>
+    <span class="specimen-sample mono">JetBrains Mono — The quick brown fox jumps over the lazy dog.</span>
+  </div>
+</div>
+
+<!-- ── Heading hierarchy ── -->
+<div class="section-label">Heading Hierarchy</div>
+
+<h1>Do interesting things</h1>
+<p class="caption">h1 · EB Garamond · 2.441rem / 39px · weight 700</p>
+
+<h2>My research interests</h2>
+<p class="caption">h2 · EB Garamond · 1.563rem / 25px · weight 700</p>
+
+<h3>Mathematical foundations of AI trust</h3>
+<p class="caption">h3 · EB Garamond · 1.25rem / 20px · weight 600</p>
+
+<!-- ── Body text ── -->
+<div class="section-label">Body Text</div>
+
+<p>
+  Currently, I am exploring the mathematical foundations of intelligence in large models
+  and sequential decision-making. More specifically, I want to ground the concept of AI trust
+  in <strong>mathematical interpretability</strong> rather than philosophy, and delve deeper
+  into these areas through <a href="#">Reinforcement Learning</a> methods.
+</p>
+
+<p>
+  I enjoy building small but complete research systems, writing technical notes, and turning
+  vague ideas into runnable artifacts. A core probe of five hand-crafted features—token
+  confidence, trajectory continuity, reflection count, novelty, neuron width—predicts
+  solution correctness from the reasoning trace alone.
+</p>
+
+<!-- ── Blockquote ── -->
+<div class="section-label">Blockquote</div>
+
+<blockquote>
+  <p>
+    This declaration calls for action to address the challenges posed by the use of
+    artificial intelligence within mathematics research. It is the result of a community
+    initiative and is endorsed by the International Mathematical Union (IMU).
+  </p>
+</blockquote>
+
+<!-- ── Code ── -->
+<div class="section-label">Code</div>
+
+<p>
+  The canonical pipeline is <code>StandardScaler → TruncatedSVD → LogisticRegression</code>.
+  Here is a minimal example:
+</p>
+
+<pre><code>def svd_predict(X, n_components=50):
+    """Low-rank reasoning quality predictor."""
+    scaler = StandardScaler()
+    svd = TruncatedSVD(n_components=n_components)
+    clf = LogisticRegression(max_iter=1000)
+
+    X_scaled = scaler.fit_transform(X)
+    X_latent = svd.fit_transform(X_scaled)
+    clf.fit(X_latent, y)
+    return clf.predict_proba(X_latent)[:, 1]</code></pre>
+
+<!-- ── Sidebar nav simulation ── -->
+<div class="section-label">Sidebar Navigation (Inter, sans-serif)</div>
+
+<ul class="sidebar-nav">
+  <li><a href="#">📍 &nbsp;China / Shanghai</a></li>
+  <li><a href="#">🏛 &nbsp;Fudan University</a></li>
+  <li><a href="#">✉ &nbsp;masterwuguicyh@163.com</a></li>
+  <li><a href="#">🔗 &nbsp;ORCID</a></li>
+  <li><a href="#">🐙 &nbsp;GitHub</a></li>
+</ul>
+
+<!-- ── Table ── -->
+<div class="section-label">Table</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Domain</th>
+      <th>Method</th>
+      <th>AoA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Math (AIME, HMMT)</td>
+      <td>CoT features</td>
+      <td>0.958</td>
+    </tr>
+    <tr>
+      <td>Science (GPQA)</td>
+      <td>Confidence</td>
+      <td>0.799</td>
+    </tr>
+    <tr>
+      <td>Coding (LiveCodeBench)</td>
+      <td>CoT features</td>
+      <td>0.434</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ── Tags ── -->
+<div class="section-label">Tags &amp; Labels</div>
+
+<p>
+  <span class="tag">ICML 2026</span>
+  <span class="tag">AI4Math</span>
+  <span class="tag">Reviewer</span>
+</p>
+
+<hr>
+
+<p style="font-family: 'Inter', sans-serif; font-size: 0.72rem; color: #999; text-align: center; margin-top: 3rem;">
+  Font preview · EB Garamond + Inter + JetBrains Mono · 17px base
+</p>
+
+</body>
+</html>

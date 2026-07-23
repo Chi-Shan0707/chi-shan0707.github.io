@@ -1,0 +1,770 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{enumitem}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{caption}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black,
+  pdftitle={From Bandits to PPO},
+  pdfauthor={Yuhan Chi},
+  pdfsubject={Lecture notes for a one-hour reinforcement learning seminar},
+  pdfkeywords={reinforcement learning, bandits, policy gradient, GAE, PPO}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=1.7em}
+\setlist[enumerate]{leftmargin=2.1em}
+\linespread{1.03}
+
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\1}{\mathbf{1}}
+\newcommand{\given}{\,|\,}
+\newcommand{\dd}{\,\mathrm{d}}
+\newcommand{\argmax}{\operatorname*{arg\,max}}
+\newcommand{\argmin}{\operatorname*{arg\,min}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\clip}{\mathrm{clip}}
+\newcommand{\eps}{\varepsilon}
+
+\DontPrintSemicolon
+\SetKwComment{tcp}{// }{}
+\SetKwFor{ForEach}{for each}{do}{end}
+\SetKwRepeat{Repeat}{repeat}{until}
+
+\title{From Bandits to PPO\\[0.35em]\large Lecture Notes for a One-Hour Reinforcement Learning Prerequisite Seminar}
+\author{Yuhan Chi\\Fudan University}
+\date{April 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+These notes are organized around a single pedagogical objective: to prepare the audience for a follow-up seminar on PPO-family large-language-model post-training methods such as RLHF, GRPO, and DAPO without spending time on application-specific engineering details. The right stopping point is therefore \emph{PPO}, not reward-model training or Transformer internals. The cleanest thread is to separate two questions: \emph{what object do we learn} and \emph{how do we estimate its learning signal}. Along this thread, Monte Carlo and temporal-difference learning are first presented as two ways to estimate values; they then induce two tabular control branches, namely a pedagogically simplified Monte Carlo policy-iteration scheme and the TD-style family containing SARSA and Q-learning. Once tabular methods become inadequate in large or continuous problems, function approximation splits the story again: approximating a value function leads to DQN, while parameterizing the policy leads to policy gradients. At that point, the same MC-vs.-TD contrast reappears: policy parameterization plus Monte Carlo returns gives REINFORCE, whereas policy parameterization plus a learned critic gives actor--critic, GAE, and finally PPO.
+\end{abstract}
+
+\tableofcontents
+
+\section{Positioning and scope}
+
+These notes inherit the backbone of the handwritten draft and the preliminary typed version: begin from bandits, move through Markov decision processes, and end at PPO. The important adjustment is one of organization. Instead of presenting methods as a flat list, the seminar is structured around two recurring questions:
+\begin{itemize}
+    \item what is the primary object we learn: a value function or a policy?
+    \item how is the learning signal estimated: by Monte Carlo returns or by temporal-difference bootstrapping?
+\end{itemize}
+This simple map turns an otherwise crowded landscape into a coherent development:
+\[
+\begin{aligned}
+\text{MC/TD as value estimators}
+&\rightarrow
+\text{tabular control}
+\rightarrow
+\text{function approximation} \\
+&\rightarrow
+\text{REINFORCE / actor--critic / PPO}.
+\end{aligned}
+\]
+If the next seminar is about GRPO or DAPO, then the present seminar should not stop at REINFORCE; it must continue until the audience understands why modern policy optimization uses baselines, advantage functions, actor--critic structure, GAE, and PPO's clipped objective \cite{SuttonBarto2018,SchulmanGAE2016,SchulmanPPO2017}.
+
+\subsection*{Suggested one-hour oral allocation}
+
+\begin{center}
+\begin{tabular}{p{0.39\linewidth}p{0.13\linewidth}p{0.36\linewidth}}
+\toprule
+Topic & Time & Oral emphasis \\
+\midrule
+Bandits and gradient bandits & 7 min & expand \\
+Contextual bandits & 4 min & brief but keep \\
+MDPs and value functions & 8 min & expand \\
+Dynamic programming & 4 min & compress \\
+MC and TD as two estimators & 6 min & expand \\
+Tabular control: MC basic, SARSA, Q-learning & 6 min & bridge section \\
+Function approximation: DQN vs.~policy parameterization & 5 min & orient the fork \\
+Policy gradient and REINFORCE & 6 min & expand \\
+Baseline, advantage, actor--critic, GAE & 7 min & essential \\
+PPO and handoff & 7 min & endpoint \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Core notation}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.18\linewidth} >{\raggedright\arraybackslash}p{0.73\linewidth}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$S_t, A_t, R_{t+1}$ & state, action, and reward at time $t$ \\
+$\pi_\theta(a\mid s)$ & stochastic policy with parameters $\theta$ \\
+$G_t$ & discounted return from time $t$ onward \\
+$V_\pi(s)$, $Q_\pi(s,a)$ & state-value and action-value under policy $\pi$ \\
+$\delta_t$ & TD residual / TD error \\
+$A_\pi(s,a)$ & advantage function $Q_\pi(s,a)-V_\pi(s)$ \\
+$\hat A_t$ & estimated advantage, often from GAE \\
+$r_t(\theta)$ & PPO importance ratio $\pi_\theta(a_t\mid s_t)/\pi_{\theta_{\mathrm{old}}}(a_t\mid s_t)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Multi-armed bandits}
+
+\subsection{Exploration and exploitation}
+
+A multi-armed bandit is the simplest sequential decision problem. At each round $t$, the learner chooses an action $A_t$ and observes an immediate reward $R_t$. There is no action-induced future state, so the difficulty is not delayed credit assignment but rather the exploration--exploitation dilemma: whether to exploit the action that currently looks best or to explore actions whose true quality is still uncertain \cite{SuttonBarto2018}.
+
+The true action value is
+\begin{equation}
+q_*(a)=\E[R_t \given A_t=a].
+\end{equation}
+A standard incremental estimator is
+\begin{equation}
+Q_{t+1}(a)=Q_t(a)+\alpha\bigl(R_t-Q_t(a)\bigr).
+\end{equation}
+Classical heuristics such as $\eps$-greedy and UCB are useful to mention briefly:
+\begin{equation}
+A_t = \argmax_a\left[Q_t(a)+c\sqrt{\frac{\ln t}{N_t(a)}}\right].
+\end{equation}
+But for this seminar the real bridge is \emph{gradient bandits}.
+
+\subsection{Preferences and softmax policies}
+
+Instead of estimating values and then acting greedily, gradient bandits introduce preferences $H_t(a)$ and map them into a stochastic policy via softmax:
+\begin{equation}
+\pi_t(a)=\frac{\exp(H_t(a))}{\sum_b \exp(H_t(b))}.
+\end{equation}
+The expected reward under the current policy is
+\begin{equation}
+J(H)=\E[R_t]=\sum_a \pi_H(a)q_*(a).
+\end{equation}
+This is already the first appearance of direct policy optimization: the policy itself becomes the object of learning.
+
+\subsection{Why the preference update takes this form}
+
+The derivative of the softmax is
+\begin{equation}
+\frac{\partial \pi(a)}{\partial H(c)} = \pi(a)\bigl(\1\{a=c\}-\pi(c)\bigr).
+\end{equation}
+Differentiating the objective with respect to $H(c)$ yields
+\begin{align}
+\frac{\partial J}{\partial H(c)}
+&= \sum_a q_*(a)\frac{\partial \pi(a)}{\partial H(c)} \\
+&= \sum_a q_*(a)\pi(a)\bigl(\1\{a=c\}-\pi(c)\bigr) \\
+&= \pi(c)\left(q_*(c)-\sum_a \pi(a)q_*(a)\right).
+\end{align}
+So the gradient compares the value of action $c$ against the policy-average value. Replacing the unknown $q_*(c)$ by the sampled reward $R_t$ and the policy-average value by a running baseline $\bar R_t$ gives the stochastic-gradient updates
+\begin{align}
+H_{t+1}(A_t) &= H_t(A_t)+\alpha(R_t-\bar R_t)\bigl(1-\pi_t(A_t)\bigr), \\
+H_{t+1}(a) &= H_t(a)-\alpha(R_t-\bar R_t)\pi_t(a), \qquad a\neq A_t.
+\end{align}
+
+\begin{remark}
+The baseline $\bar R_t$ does not change the expected gradient direction; it reduces variance. Conceptually, this is the bandit ancestor of the value-function baseline and, later, the advantage function.
+\end{remark}
+
+\section{Contextual bandits}
+
+A contextual bandit augments the one-step problem with an observed context $x$. The best action is now conditional on the observed situation, so the policy becomes
+\begin{equation}
+\pi_\theta(a\mid x).
+\end{equation}
+A natural objective is
+\begin{equation}
+J(\theta)=\E_{x\sim \mathcal D,\, a\sim \pi_\theta(\cdot\mid x)}[r(x,a)].
+\end{equation}
+This is already close to supervised input-output mapping, except that the learner only receives feedback for the sampled action. The crucial limitation is that actions still do \emph{not} alter future contexts. Therefore contextual bandits remain a one-step decision problem, not a full Markov decision process \cite{SuttonBarto2018}.
+
+\section{MDPs, trajectories, and value functions}
+
+\subsection{From one-step choice to sequential choice}
+
+A discounted Markov decision process is a tuple
+\begin{equation}
+\mathcal M=(\mathcal S,\mathcal A,P,R,\gamma),
+\end{equation}
+where $\mathcal S$ is the state space, $\mathcal A$ the action space, $P$ the transition kernel, $R$ the reward mechanism, and $\gamma\in[0,1)$ the discount factor. At time $t$, the agent observes $S_t$, chooses $A_t$, receives reward $R_{t+1}$, and the environment transitions according to
+\begin{equation}
+p(s',r\mid s,a).
+\end{equation}
+A trajectory is written as
+\begin{equation}
+\tau=(s_0,a_0,r_1,s_1,a_1,r_2,\dots).
+\end{equation}
+The fundamental new phenomenon is delayed consequence: a locally attractive action can be globally harmful, and vice versa.
+
+\subsection{Return, state value, and action value}
+
+The discounted return from time $t$ onward is
+\begin{equation}
+G_t = \sum_{k=0}^{\infty}\gamma^k R_{t+k+1}.
+\end{equation}
+Under a policy $\pi$, the state-value and action-value functions are
+\begin{equation}
+V_\pi(s)=\E_\pi[G_t\given S_t=s],
+\qquad
+Q_\pi(s,a)=\E_\pi[G_t\given S_t=s,A_t=a].
+\end{equation}
+The Bellman expectation equation for $V_\pi$ is
+\begin{equation}
+V_\pi(s)=\sum_a \pi(a\mid s)\sum_{s',r} p(s',r\mid s,a)\bigl(r+\gamma V_\pi(s')\bigr).
+\end{equation}
+
+\subsection{Finite-state matrix form}
+
+In a finite discounted MDP, let $P_\pi$ denote the transition matrix under policy $\pi$ and $r_\pi$ the expected one-step reward vector. Then
+\begin{equation}
+V_\pi=r_\pi+\gamma P_\pi V_\pi,
+\end{equation}
+so equivalently
+\begin{equation}
+(I-\gamma P_\pi)V_\pi=r_\pi,
+\qquad
+V_\pi=(I-\gamma P_\pi)^{-1}r_\pi.
+\end{equation}
+This matrix viewpoint matches the handwritten notes closely: policy evaluation is a linear system in finite state spaces. It is mathematically elegant, but for large problems it is usually computationally infeasible.
+
+\subsection{Bellman operators and contraction}
+
+Define the Bellman operator by
+\begin{equation}
+(T_\pi V)(s)=\sum_a \pi(a\mid s)\sum_{s',r} p(s',r\mid s,a)\bigl(r+\gamma V(s')\bigr).
+\end{equation}
+
+\begin{proposition}[Contraction of the Bellman expectation operator]
+For any bounded value functions $V$ and $W$,
+\begin{equation}
+\norm{T_\pi V-T_\pi W}_\infty \le \gamma \norm{V-W}_\infty.
+\end{equation}
+Hence $T_\pi$ admits a unique fixed point, namely $V_\pi$.
+\end{proposition}
+
+\begin{proof}
+For each state $s$,
+\begin{align*}
+\bigl|(T_\pi V)(s)-(T_\pi W)(s)\bigr|
+&= \left|\sum_a\pi(a\mid s)\sum_{s',r}p(s',r\mid s,a)\gamma\bigl(V(s')-W(s')\bigr)\right| \\
+&\le \gamma\sum_a\pi(a\mid s)\sum_{s',r}p(s',r\mid s,a)\norm{V-W}_\infty \\
+&= \gamma\norm{V-W}_\infty.
+\end{align*}
+Taking the supremum over $s$ proves the claim.
+\end{proof}
+
+\begin{remark}
+The proof is short, but it is already enough: Bellman operators contract in the discounted tabular setting, which is why iterative evaluation converges.
+\end{remark}
+
+\section{A compressed dynamic-programming detour}
+
+The Bellman optimality equation is
+\begin{equation}
+V_*(s)=\max_a\sum_{s',r}p(s',r\mid s,a)\bigl(r+\gamma V_*(s')\bigr).
+\end{equation}
+It gives rise to two classical exact-control procedures.
+
+
+
+\begin{algorithm}[htbp]
+\caption{Value iteration}
+Initialize a value function $V$\;
+\Repeat{ $V$ stabilizes }{
+    \ForEach{state $s$}{
+        $V(s) \gets \max_a \sum_{s',r} p(s',r\mid s,a)\bigl(r+\gamma V(s')\bigr)$\;
+    }
+}
+Extract a greedy policy from the final value function\;
+\end{algorithm}
+
+\begin{algorithm}[htbp]
+\caption{Policy iteration}
+Initialize a policy $\pi$\;
+\Repeat{the policy no longer changes}{
+    Evaluate $V_\pi$ under the current policy\;
+    Improve the policy by making it greedy with respect to $V_\pi$\;
+}
+\end{algorithm}
+
+
+These methods are conceptually important because they reveal the fixed-point structure of control. But for the present seminar they should be compressed: they assume the model is known and sweep over the whole state space, which is far from the data-driven policy-optimization setting that leads to PPO.
+
+\section{Monte Carlo and temporal-difference learning}\label{sec:mc-td}
+
+Exact dynamic programming is model-based and rarely practical in large environments. Model-free methods learn from sampled trajectories instead \cite{SuttonBarto2018}. The first key pedagogical point is that Monte Carlo and temporal-difference learning are, before anything else, \emph{two ways to estimate values from experience}. They are not yet complete control algorithms by themselves.
+
+\subsection{Monte Carlo evaluation}
+
+Monte Carlo waits until a complete return is observed:
+\begin{equation}
+V(S_t) \leftarrow V(S_t)+\alpha\bigl(G_t-V(S_t)\bigr).
+\end{equation}
+It is conceptually direct and uses a full sampled return, so it avoids bootstrapping bias. The cost is that the target can have large variance, especially when rewards are delayed or episodes are long.
+
+\subsection{TD(0) evaluation}
+
+Temporal-difference learning bootstraps from the next value estimate:
+\begin{equation}
+V(S_t) \leftarrow V(S_t)+\alpha\bigl(R_{t+1}+\gamma V(S_{t+1})-V(S_t)\bigr).
+\end{equation}
+The corresponding TD residual is
+\begin{equation}
+\delta_t = R_{t+1}+\gamma V(S_{t+1})-V(S_t).
+\end{equation}
+This local prediction error becomes the central building block in actor--critic methods and GAE.
+
+\subsection{n-step returns and lambda-return}
+
+TD(0) and Monte Carlo are best viewed as endpoints of a continuum. The $n$-step return is
+\begin{equation}
+G_t^{(n)} = \sum_{k=0}^{n-1}\gamma^k R_{t+k+1} + \gamma^n V(S_{t+n}).
+\end{equation}
+Special cases are immediate:
+\begin{itemize}
+    \item $n=1$ gives the TD(0) target;
+    \item taking $n$ to the episode end gives the Monte Carlo return.
+\end{itemize}
+The $\lambda$-return geometrically averages these horizons:
+\begin{equation}
+G_t^{\lambda}=(1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}G_t^{(n)}, \qquad 0\le \lambda \le 1.
+\end{equation}
+This spectrum from short-horizon bootstrapping to long-horizon Monte Carlo is exactly the conceptual bridge needed before GAE.
+
+\subsection{Bias--variance interpretation}
+
+Monte Carlo and TD are best compared through the bias--variance tradeoff. Monte Carlo uses the complete sampled return and therefore avoids bootstrapping bias, but this long-horizon target can have substantial variance. TD, by contrast, replaces the full return with a bootstrapped target built from the current value estimate. That substitution often reduces variance dramatically, but it introduces bias because the target itself depends on an estimate that is still changing.
+
+It is important to phrase this carefully: TD is not biased because one has ``introduced the Markov assumption.'' The Markov property is part of the modeling framework for the environment. The statistical bias comes specifically from bootstrapping, that is, from replacing a full realized return by a target that already contains an estimated value.
+
+\section{From value estimation to tabular control}
+
+Once a way of estimating values has been chosen, control is obtained by coupling evaluation with policy improvement. This is the point at which the lecture can naturally branch into two very simple tabular families.
+
+\subsection{MC basic control: policy evaluation plus greedy improvement}
+
+In these notes, by \emph{MC basic} we mean the pedagogically simplest Monte Carlo control scheme: fix a policy $\pi$, run it for many complete episodes, estimate $q_\pi(s,a)$ by averaging observed returns, and then improve the policy greedily with respect to those estimates. Conceptually, this is a weakened classroom version of Monte Carlo exploring starts or $\eps$-soft Monte Carlo control. What is omitted is a formal exploration guarantee; what is retained is the core idea that Monte Carlo can serve as the evaluation step inside policy iteration.
+
+If a state-action pair $(s,a)$ is visited at time $t$, one may estimate
+\begin{equation}
+q_\pi(s,a)=\E_\pi[G_t\mid S_t=s,A_t=a]
+\end{equation}
+by sample averaging, and then improve the policy through
+\begin{equation}
+\pi_{\mathrm{new}}(s) \in \argmax_a \hat q_\pi(s,a).
+\end{equation}
+
+\begin{algorithm}[htbp]
+\caption{MC Basic Iteration}
+Initialize a policy $\pi$ and an exploratory behavior rule\;
+\Repeat{the policy stabilizes or the budget is exhausted}{
+    Roll out many complete episodes under $\pi$ or an exploratory version of $\pi$\;
+    \ForEach{visited state-action pair $(s,a)$}{
+        Estimate $\hat q_\pi(s,a)$ by averaging realized returns following occurrences of $(s,a)$\;
+    }
+    Improve the policy by setting $\pi(s) \gets \argmax_a \hat q_\pi(s,a)$ on states with enough data\;
+}
+\end{algorithm}
+
+The point of keeping this branch in the lecture is not that it is the final modern algorithm. Rather, it shows very clearly what Monte Carlo means when turned into control: \emph{evaluate from complete returns, then improve greedily}.
+
+\subsection{SARSA and Q-learning: the TD control branch}
+
+The TD side yields control methods that bootstrap instead of waiting for complete returns. The canonical on-policy update is SARSA:
+\begin{equation}
+Q(S_t,A_t) \leftarrow Q(S_t,A_t)+\alpha\Bigl(R_{t+1}+\gamma Q(S_{t+1},A_{t+1})-Q(S_t,A_t)\Bigr).
+\end{equation}
+Because the target uses the next action $A_{t+1}$ that was actually sampled from the current behavior policy, SARSA is naturally on-policy.
+
+The canonical off-policy update is Q-learning:
+\begin{equation}
+Q(S_t,A_t) \leftarrow Q(S_t,A_t) + \alpha\Bigl(R_{t+1}+\gamma\max_{a'}Q(S_{t+1},a')-Q(S_t,A_t)\Bigr).
+\end{equation}
+Here the target uses the greedy next action whether or not that action was actually taken, so the method is off-policy \cite{WatkinsDayan1992}.
+
+\begin{center}
+\begin{tabular}{p{0.24\linewidth}p{0.26\linewidth}p{0.34\linewidth}}
+\toprule
+Method & Target form & Interpretation \\
+\midrule
+MC Basic Iteration & full sampled return & evaluation by complete episodes, then greedy improvement \\
+SARSA & $r+\gamma Q(s',a')$ & TD control using the action actually sampled next \\
+Q-learning & $r+\gamma \max_{a'}Q(s',a')$ & TD control aiming directly at the greedy target \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Why tabular control eventually becomes insufficient}
+
+At this stage the lecture should explicitly explain what breaks. The issue is not that MC, SARSA, or Q-learning become mathematically meaningless as soon as the state space is ``infinite.'' The issue is that their \emph{tabular form} stops being practical or even representable in large or continuous problems.
+
+Three distinct difficulties should be separated.
+\begin{itemize}
+    \item \textbf{Representation:} a table cannot scale to huge or continuous state spaces, and it cannot generalize from one state to nearby states.
+    \item \textbf{Estimator quality:} Monte Carlo targets can have very large variance, while TD targets trade variance for bootstrapping bias.
+    \item \textbf{Greedy maximization:} the $\max_{a'}$ in Q-learning is convenient for small discrete actions, but it becomes difficult in continuous action spaces and can also introduce overestimation bias.
+\end{itemize}
+These are the real reasons for introducing function approximation.
+
+\section{Function approximation: two directions}
+
+Once tables are no longer viable, there are two natural choices.
+\begin{itemize}
+    \item Approximate a \textbf{value function} such as $V_\phi(s)$ or $Q_\phi(s,a)$.
+    \item Parameterize the \textbf{policy itself} as $\pi_\theta(a\mid s)$.
+\end{itemize}
+This fork is one of the most important structural decisions in reinforcement learning.
+
+\subsection{Approximating a value function: DQN}
+
+When the state space is too large for a table, one may replace $Q$ by a parameterized approximator $Q_\theta(s,a)$. In this sense, DQN is best understood as \emph{Q-learning plus function approximation} together with several stabilizing devices. A standard DQN objective is
+\begin{equation}
+L(\theta)=\E_{(s,a,r,s')\sim \mathcal D}\left[\Bigl(r+\gamma\max_{a'}Q(s',a';\theta^-)-Q(s,a;\theta)\Bigr)^2\right],
+\end{equation}
+where $\theta^-$ denotes a delayed target network for stability \cite{Mnih2015}. Experience replay and target networks are implementation details worth mentioning briefly, but the conceptual slogan is simple: \emph{DQN is the value-based, TD-style, function-approximation branch}.
+
+\subsection{Approximating the policy: the door to policy gradients}
+
+The alternative is to represent the policy directly by parameters $\theta$. This is especially natural when the action space is continuous or when one wishes to optimize stochastic action probabilities directly. Once the policy is parameterized, the old MC-vs.-TD contrast reappears in a new form:
+\begin{center}
+\begin{tabular}{p{0.24\linewidth}p{0.30\linewidth}p{0.30\linewidth}}
+\toprule
+Primary object & Monte Carlo style signal & TD / bootstrapped signal \\
+\midrule
+Value function & MC basic control & SARSA, Q-learning, DQN \\
+Policy & REINFORCE & actor--critic, GAE, PPO \\
+\bottomrule
+\end{tabular}
+\end{center}
+This table is the central navigation map for the rest of the seminar. REINFORCE is what one gets when policy parameterization is combined with Monte Carlo returns; actor--critic is what one gets when policy parameterization is combined with a learned value estimator.
+
+\section{What to optimize: value-based versus policy-based methods}
+
+At this point the strategic fork becomes explicit:
+\begin{itemize}
+    \item \textbf{Value-based methods} learn $V$ or $Q$ first and then derive a policy.
+    \item \textbf{Policy-based methods} optimize the policy parameters directly.
+\end{itemize}
+Since PPO and its descendants are policy-optimization methods, we now switch decisively to the policy-based thread.
+
+\section{Policy gradient and REINFORCE}
+
+If the policy itself is parameterized, there are again two choices for constructing the learning signal. The Monte Carlo branch gives REINFORCE; the bootstrapped branch, developed later, gives actor--critic. We start with the Monte Carlo side because it is algebraically the cleanest.
+
+\subsection{Trajectory objective}
+
+Let $G(\tau)$ denote the return of a trajectory $\tau$. The policy objective is
+\begin{equation}
+J(\theta)=\E_{\tau\sim p_\theta(\tau)}\bigl[G(\tau)\bigr].
+\end{equation}
+The trajectory distribution factorizes as
+\begin{equation}
+p_\theta(\tau)=\rho(s_0)\prod_{t=0}^{T-1} p(s_{t+1}\mid s_t,a_t)\,\pi_\theta(a_t\mid s_t),
+\end{equation}
+where $\rho$ is the initial-state distribution.
+
+\subsection{Score-function identity and the policy-gradient estimator}
+
+The crucial algebraic step is the score-function identity
+\begin{equation}
+\nabla_\theta p_\theta(\tau)=p_\theta(\tau)\nabla_\theta\log p_\theta(\tau).
+\end{equation}
+Therefore
+\begin{align}
+\nabla_\theta J(\theta)
+&= \nabla_\theta \int G(\tau)p_\theta(\tau)\,\dd\tau \\
+&= \int G(\tau)\nabla_\theta p_\theta(\tau)\,\dd\tau \\
+&= \E_{\tau\sim p_\theta}\bigl[G(\tau)\nabla_\theta\log p_\theta(\tau)\bigr].
+\end{align}
+Since the environment dynamics do not depend on $\theta$,
+\begin{equation}
+\nabla_\theta \log p_\theta(\tau)=\sum_{t=0}^{T-1}\nabla_\theta\log\pi_\theta(a_t\mid s_t).
+\end{equation}
+Substituting this factorization gives
+\begin{equation}
+\nabla_\theta J(\theta)=\E_{\tau\sim p_\theta}\left[\sum_{t=0}^{T-1} G(\tau)\nabla_\theta\log\pi_\theta(a_t\mid s_t)\right].
+\end{equation}
+Using the causality refinement, one may replace the trajectory-level return $G(\tau)$ by the reward-to-go $G_t$, which yields the REINFORCE estimator \cite{Williams1992}:
+\begin{equation}
+\hat g = \sum_t \nabla_\theta\log\pi_\theta(a_t\mid s_t)\,G_t.
+\end{equation}
+
+\subsection{Alternative Q-pi form}
+
+In expectation, the same gradient can be written in the standard policy-gradient-theorem form
+\begin{equation}
+\nabla_\theta J(\theta)=\E_{s_t\sim d_{\pi_\theta},\,a_t\sim \pi_\theta(\cdot\mid s_t)}\bigl[Q^{\pi_\theta}(s_t,a_t)\nabla_\theta\log\pi_\theta(a_t\mid s_t)\bigr],
+\end{equation}
+where $d_{\pi_\theta}$ denotes the discounted state visitation distribution. If one suppresses this distributional notation, the expression above is the compact form that underlies the policy-gradient theorem \cite{SuttonMcAllester2000}.
+
+\begin{remark}
+REINFORCE is mathematically clean, but its Monte Carlo estimator can have prohibitively high variance. Modern deep reinforcement learning therefore almost never stops here.
+\end{remark}
+
+\begin{algorithm}[htbp]
+\caption{REINFORCE}
+Initialize policy parameters $\theta$\;
+\Repeat{a stopping criterion is met}{
+    Sample trajectories $\tau$ under $\pi_\theta$\;
+    Compute the reward-to-go $G_t$ for each time step\;
+    $\theta \gets \theta + \alpha \sum_t \nabla_\theta \log \pi_\theta(a_t\mid s_t) G_t$\;
+}
+\end{algorithm}
+
+\section{Baselines, advantage functions, and actor--critic}
+
+\subsection{Why subtracting a baseline helps}
+
+Consider the modified estimator
+\begin{equation}
+\hat g = \sum_t \nabla_\theta\log\pi_\theta(a_t\mid s_t)\bigl(G_t-b(s_t)\bigr).
+\end{equation}
+Any baseline that depends only on the state leaves the expected gradient unchanged.
+
+\begin{proposition}[Baseline invariance]
+For any function $b(s)$,
+\begin{equation}
+\E_{a\sim \pi_\theta(\cdot\mid s)}\bigl[b(s)\nabla_\theta\log\pi_\theta(a\mid s)\bigr]=0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Because $b(s)$ is independent of the sampled action,
+\begin{align*}
+\E_{a\sim \pi_\theta(\cdot\mid s)}\bigl[b(s)\nabla_\theta\log\pi_\theta(a\mid s)\bigr]
+&= b(s)\sum_a \pi_\theta(a\mid s)\nabla_\theta\log\pi_\theta(a\mid s) \\
+&= b(s)\sum_a \nabla_\theta \pi_\theta(a\mid s) \\
+&= b(s)\nabla_\theta \sum_a \pi_\theta(a\mid s) \\
+&= b(s)\nabla_\theta 1 = 0.
+\end{align*}
+\end{proof}
+
+So subtracting a baseline does not change the expected gradient direction, but can reduce variance substantially.
+
+\subsection{Advantage functions}
+
+The most natural state-dependent baseline is the state value itself. This leads to the advantage function
+\begin{equation}
+A_\pi(s,a)=Q_\pi(s,a)-V_\pi(s).
+\end{equation}
+It measures how much better or worse an action is relative to the average value level of its state. Writing the policy gradient in terms of $A_\pi$ makes the estimation problem more localized:
+\begin{equation}
+\nabla_\theta J(\theta)=\E\bigl[A_\pi(S_t,A_t)\nabla_\theta\log\pi_\theta(A_t\mid S_t)\bigr].
+\end{equation}
+
+\subsection{Actor--critic}
+
+The clean conceptual slogan is: \emph{REINFORCE is the Monte Carlo policy-gradient method, whereas actor--critic is the TD policy-gradient method}. Actor--critic methods split the problem into two coupled learners:
+\begin{itemize}
+    \item the \textbf{actor}, which updates the policy $\pi_\theta$;
+    \item the \textbf{critic}, which estimates a value function $V_\phi$.
+\end{itemize}
+The simplest one-step actor--critic uses the TD residual
+\begin{equation}
+\delta_t=R_{t+1}+\gamma V_\phi(S_{t+1})-V_\phi(S_t)
+\end{equation}
+as an estimator of the advantage. A canonical pair of updates is
+\begin{align}
+\theta &\leftarrow \theta + \alpha_\pi\,\delta_t\,\nabla_\theta\log\pi_\theta(A_t\mid S_t), \\
+\phi &\leftarrow \phi - \alpha_v\nabla_\phi\bigl(V_\phi(S_t)-\hat V_t\bigr)^2.
+\end{align}
+The critic loss $\bigl(V_\phi(S_t)-\hat V_t\bigr)^2$ raises a natural question: what should the target $\hat V_t$ be? There are three standard choices, ranging from pure bootstrapping to pure Monte Carlo.
+
+\subsubsection*{Choice 1: One-step TD target (bootstrapped)}
+
+This is the standard choice for one-step actor--critic methods such as the basic form of A2C:
+\begin{equation}
+\hat V_t = R_{t+1} + \gamma\, V_\phi(S_{t+1}).
+\end{equation}
+The idea is that although the true value of $S_t$ is unknown, we can take one step in the environment, observe the real immediate reward $R_{t+1}$, and then add the discounted value estimate of the next state. This combination is a better proxy for the true value than the current estimate $V_\phi(S_t)$ alone. Because the target depends on the parameterized $V_\phi$, this is a bootstrapped estimate: it is low in variance but introduces bias.
+
+\subsubsection*{Choice 2: Monte Carlo return}
+
+If the critic is trained offline after an episode terminates, one can use the full sampled return:
+\begin{equation}
+\hat V_t = G_t = \sum_{k=0}^{\infty}\gamma^k R_{t+k+1}.
+\end{equation}
+Here $G_t$ is the real sum of discounted rewards collected from $S_t$ until the end of the episode. This target has zero bias but typically very high variance, especially in long episodes with delayed rewards.
+
+\subsubsection*{Choice 3: $n$-step TD / GAE target}
+
+In modern deep reinforcement learning algorithms such as PPO and TRPO, the standard practice is to balance bias and variance by using multi-step returns or the $\lambda$-return. In this context, the $\lambda$-return is best viewed as a common target for critic training or as the building block of advantage estimation. Recall from \cref{sec:mc-td} the $\lambda$-return:
+\begin{equation}
+\hat V_t = G_t^{\lambda} = (1-\lambda)\sum_{n=1}^{\infty}\lambda^{n-1}G_t^{(n)},
+\end{equation}
+where $G_t^{(n)}$ is the $n$-step truncated return plus the bootstrapped value at step $n$. When $\lambda=0$ the target reduces to the one-step TD target (low variance, high bias); when $\lambda\approx 1$ it approaches the full Monte Carlo return (low bias, high variance). In practice, $\lambda$ is a hyperparameter that the practitioner tunes to find the best tradeoff for the task at hand.
+
+\begin{algorithm}[htbp]
+\caption{One-step actor--critic}
+Initialize policy parameters $\theta$ and critic parameters $\phi$\;
+\Repeat{a stopping criterion is met}{
+    Sample $(S_t,A_t,R_{t+1},S_{t+1})$ under $\pi_\theta$\;
+    $\delta_t \gets R_{t+1}+\gamma V_\phi(S_{t+1})-V_\phi(S_t)$\;
+    $\theta \gets \theta + \alpha_\pi \, \delta_t \, \nabla_\theta \log \pi_\theta(A_t\mid S_t)$\;
+    Update the critic by descending the squared TD error or value-loss objective\;
+}
+\end{algorithm}
+
+\section{Generalized advantage estimation}
+
+GAE is the standard modern answer to the question: how should one estimate advantages well enough for stable policy optimization? Define the TD residual again as
+\begin{equation}
+\delta_t=r_t+\gamma V(s_{t+1})-V(s_t).
+\end{equation}
+Then generalized advantage estimation is
+\begin{equation}
+\hat A_t^{\mathrm{GAE}(\gamma,\lambda)} = \sum_{l=0}^{\infty}(\gamma\lambda)^l\delta_{t+l}.
+\end{equation}
+This estimator also admits the equivalent relation
+\begin{equation}
+\hat A_t^{\mathrm{GAE}(\gamma,\lambda)} = G_t^{\lambda}-V(s_t),
+\end{equation}
+which makes its connection to the $\lambda$-return explicit \cite{SchulmanGAE2016}.
+
+The key extremes are worth memorizing:
+\begin{itemize}
+    \item $\lambda=0$: mostly one-step TD, lower variance, more bias;
+    \item $\lambda\approx 1$: closer to Monte Carlo, lower bias, higher variance.
+\end{itemize}
+
+\begin{remark}
+GAE is \emph{not} a new optimization objective. It is an advantage estimator. This distinction matters because in PPO the objective is the clipped surrogate, whereas GAE provides the $\hat A_t$ that feeds that objective.
+\end{remark}
+
+\section{PPO: proximal policy optimization}
+
+\subsection{Why plain policy gradient is unstable}
+
+Policy-gradient updates are sensitive to step size. A small movement in parameter space need not correspond to a small movement in action-probability space, and large policy shifts can rapidly invalidate the data used for estimation. TRPO addresses this with a trust-region constraint \cite{SchulmanTRPO2015}, but its second-order machinery is relatively heavy. PPO keeps the spirit of constrained improvement while remaining first-order and simple to implement \cite{SchulmanPPO2017}.
+
+\subsection{Importance ratios and surrogate objectives}
+
+Given samples generated by an old policy $\pi_{\theta_{\mathrm{old}}}$, define the probability ratio
+\begin{equation}
+r_t(\theta)=\frac{\pi_\theta(a_t\mid s_t)}{\pi_{\theta_{\mathrm{old}}}(a_t\mid s_t)}.
+\end{equation}
+If $r_t(\theta)=1$, the new policy agrees with the old one on the sampled action. Deviations away from $1$ measure how much the action probability has changed.
+
+The unclipped surrogate would maximize $r_t(\theta)\hat A_t$, but PPO instead uses the clipped objective
+\begin{equation}
+L^{\mathrm{CLIP}}(\theta)=\hat\E_t\left[\min\Bigl(r_t(\theta)\hat A_t,\,\clip\bigl(r_t(\theta),1-\eps,1+\eps\bigr)\hat A_t\Bigr)\right].
+\end{equation}
+A common practical objective augments this with a value loss and an entropy bonus:
+\begin{equation}
+L^{\mathrm{PPO}}(\theta)=L^{\mathrm{CLIP}}(\theta)-c_vL^{\mathrm{VF}}(\theta)+c_e\,\mathcal H[\pi_\theta].
+\end{equation}
+
+\subsection{Why clipping works}
+
+The clipping mechanism is easiest to understand case by case.
+\begin{itemize}
+    \item If $\hat A_t>0$, the sampled action is better than expected, so we want to increase its probability. But once $r_t(\theta)$ exceeds $1+\eps$, clipping stops rewarding further increase.
+    \item If $\hat A_t<0$, the sampled action is worse than expected, so we want to decrease its probability. But once $r_t(\theta)$ falls below $1-\eps$, clipping stops rewarding further decrease.
+\end{itemize}
+Hence PPO is well summarized as \emph{policy gradient with a safety belt}. It allows multiple minibatch passes over the same batch while discouraging destructive policy drift.
+
+\subsection{The practical PPO loop}
+
+\begin{algorithm}[htbp]
+\caption{PPO}
+Initialize policy parameters $\theta$, critic parameters $\phi$, and set $\theta_{\mathrm{old}}\gets\theta$\;
+\Repeat{a stopping criterion is met}{
+    Collect trajectories under $\pi_{\theta_{\mathrm{old}}}$\;
+    Fit or update the critic $V_\phi$\;
+    Estimate advantages $\hat A_t$, typically with GAE\;
+    \For{several epochs of minibatch optimization}{
+        Update $\theta$ by ascending $L^{\mathrm{CLIP}}$\;
+        Update $\phi$ with a value-loss objective\;
+    }
+    Set $\theta_{\mathrm{old}}\gets\theta$\;
+}
+\end{algorithm}
+
+\section{Why PPO is the right stopping point before GRPO}
+
+At the end of these notes the audience should already understand
+\begin{itemize}
+    \item why policy gradients contain $\nabla\log\pi$,
+    \item why raw Monte Carlo returns are often too noisy,
+    \item why baselines and advantage functions reduce variance,
+    \item why actor--critic is a practical architecture,
+    \item why GAE is the standard modern advantage estimator,
+    \item and why PPO stabilizes policy updates with a ratio-based clipping mechanism.
+\end{itemize}
+This is precisely the level of reinforcement-learning background that makes the next seminar natural. GRPO can then be introduced as a PPO-family variant that modifies how the policy-improvement signal is normalized or baseline-corrected, and DAPO as a further refinement for stable reasoning-oriented policy optimization.
+
+\section*{Acknowledgment of source material}
+
+The thread of these notes follows the user's handwritten pages on bandits, contextual bandits, and MDP matrix forms, together with the preliminary typed draft that already arranged the seminar into the sequence ``Bandits $\rightarrow$ Contextual Bandits $\rightarrow$ MDPs $\rightarrow$ MC/TD $\rightarrow$ Policy Gradient $\rightarrow$ GAE $\rightarrow$ PPO.'' The present version mainly tightens the exposition, formalizes a few proofs, adds algorithm boxes, and supplies references.
+
+I would also like to explicitly acknowledge Shiyu Zhao's book \emph{Mathematical Foundations of Reinforcement Learning} as my main self-study text for reinforcement learning. In a very real sense, the overall organization and much of my understanding were learned from systematically studying that book, so these notes are written with substantial borrowing of perspective and exposition from it, even when the presentation here is shortened and adapted to the needs of this seminar \cite{Zhao2025}.
+
+I am also grateful to the Zhihu platform (\url{https://www.zhihu.com}) and its community of contributors. Many insightful discussions, tutorials, and expository articles on Zhihu have greatly enriched my understanding of reinforcement learning and related topics, and I have benefited enormously from browsing and learning from the wealth of knowledge shared there.
+
+\begin{thebibliography}{99}
+
+\bibitem{SuttonBarto2018}
+Richard S. Sutton and Andrew G. Barto.
+\newblock \emph{Reinforcement Learning: An Introduction}.
+\newblock 2nd edition, MIT Press, 2018.
+\newblock \url{http://incompleteideas.net/book/the-book-2nd.html}.
+
+\bibitem{Williams1992}
+Ronald J. Williams.
+\newblock Simple statistical gradient-following algorithms for connectionist reinforcement learning.
+\newblock \emph{Machine Learning}, 8(3--4):229--256, 1992.
+
+\bibitem{WatkinsDayan1992}
+Christopher J. C. H. Watkins and Peter Dayan.
+\newblock Q-learning.
+\newblock \emph{Machine Learning}, 8(3--4):279--292, 1992.
+
+\bibitem{SuttonMcAllester2000}
+Richard S. Sutton, David McAllester, Satinder Singh, and Yishay Mansour.
+\newblock Policy gradient methods for reinforcement learning with function approximation.
+\newblock In \emph{Advances in Neural Information Processing Systems 12}, pages 1057--1063, 2000.
+
+\bibitem{Mnih2015}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei A. Rusu, Joel Veness, Marc G. Bellemare, Alex Graves, Martin Riedmiller, Andreas K. Fidjeland, Georg Ostrovski, Stig Petersen, Charles Beattie, Amir Sadik, Ioannis Antonoglou, Helen King, Dharshan Kumaran, Daan Wierstra, Shane Legg, and Demis Hassabis.
+\newblock Human-level control through deep reinforcement learning.
+\newblock \emph{Nature}, 518:529--533, 2015.
+
+\bibitem{SchulmanTRPO2015}
+John Schulman, Sergey Levine, Philipp Moritz, Michael Jordan, and Pieter Abbeel.
+\newblock Trust region policy optimization.
+\newblock In \emph{Proceedings of the 32nd International Conference on Machine Learning}, pages 1889--1897, 2015.
+
+\bibitem{SchulmanGAE2016}
+John Schulman, Philipp Moritz, Sergey Levine, Michael Jordan, and Pieter Abbeel.
+\newblock High-dimensional continuous control using generalized advantage estimation.
+\newblock In \emph{Proceedings of the International Conference on Learning Representations}, 2016.
+
+\bibitem{SchulmanPPO2017}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+\newblock Proximal policy optimization algorithms.
+\newblock \emph{arXiv preprint} arXiv:1707.06347, 2017.
+
+\bibitem{Zhao2025}
+Shiyu Zhao.
+\newblock \emph{Mathematical Foundations of Reinforcement Learning}.
+\newblock Springer Press, 2025.
+
+\end{thebibliography}
+
+\end{document}
