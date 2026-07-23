@@ -9,8 +9,9 @@ redirect_from:
 
 <div class="home-intro" markdown="1">
 
-I am an undergraduate at the School of Mathematical Sciences, Fudan University,
+I am Yuhan Chi (pronounced /juːˈhɑːn tʃiː/). I am an undergraduate at the School of Mathematical Sciences, Fudan University,
 pursuing a double degree in Information and Computing Science and Artificial Intelligence.
+
 I study applied mathematics: how to model, reason, and make decisions under uncertainty.
 This leads me to AI decision-making --- when these decisions can be interpreted and when
 they are trustworthy.
@@ -76,6 +77,14 @@ code generation on Qwen2.5-Coder-3B. Uses compile-and-run rewards rather than
 static heuristics.
 
 </div>
+
+</div>
+
+<div class="home-section" markdown="1">
+
+## Talks
+
+**[From Bandits to PPO: RL Prerequisite Seminar](/talks/2026-04-18-reinforcement-learning-overview)** --- Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))
 
 </div>
 
