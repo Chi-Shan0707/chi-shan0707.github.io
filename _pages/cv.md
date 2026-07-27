@@ -60,7 +60,8 @@ B.S. Candidate in Information and Computing Science & Artificial Intelligence (D
 
 **Programming:** Python, C++, C, Java, Node.js, Lean 4 ·
 **ML/AI:** PyTorch, ML experimentation, LLM evaluation, RL basics ·
-**Tools:** Git, GitHub, Linux, LaTeX, Markdown
+**Tools:** Git, GitHub, Linux, LaTeX, Markdown ·
+**Language:** Chinese(native) English(fluent)
 
 ## Selected Course Grades
 
