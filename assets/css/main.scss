@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ===== TWO-COLUMN LAYOUT ===== */
 .site-wrapper {
   display: grid !important;
-  grid-template-columns: 220px 1fr !important;
+  grid-template-columns: 290px 1fr !important;
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  padding: 3rem 1.2rem 2rem 0.5rem;
+  padding: 3rem 0.5rem 2rem 0.5rem;
   border-right: 1px solid #888;
   position: sticky;
   top: 0;
