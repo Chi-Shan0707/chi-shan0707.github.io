@@ -58,7 +58,7 @@ B.S. Candidate in Information and Computing Science & Artificial Intelligence (D
 
 ## Skills
 
-**Programming:** Python, C++, C, Java, Node.js, Lean 4 ·
+**Programming:** Python, C++, C ·
 **ML/AI:** PyTorch, ML experimentation, LLM evaluation, RL basics ·
 **Tools:** Git, GitHub, Linux, LaTeX, Markdown ·
 **Language:** Chinese(native) English(fluent)
