@@ -21,3 +21,8 @@ package-lock.json
 
 # Ignore files created by MacOS
 .DS_Store
+
+# Ignore specific posts locally to exclude them from remote
+_posts/2026-03-15-ai-hackathon-journey.md
+_posts/2026-07-09-isaac-sim-learning-notes.md
+
