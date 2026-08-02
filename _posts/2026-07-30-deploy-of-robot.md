@@ -1,5 +1,5 @@
 ---
-title: "An overview of the deploy code structure"
+title: "From an ONNX policy to a running robot"
 date: 2026-07-30
 permalink: /posts/2026/07/deploy-of-robot/
 tags:
@@ -10,16 +10,75 @@ categories:
 
 
 
-## Core idea, in one sentence
+## What this deployment program does
 
-A real deployment binary is not "the neural network plus a for-loop." It is
-**two loops at two speeds, talking through one shared piece of state**: a slow
-loop (the policy, ~50 Hz) that turns sensor readings into a joint target, and
-a fast loop (the FSM, 1 kHz) that owns the actual DDS wire and never blocks on
-the slow loop finishing. Every design choice below exists to protect that
-separation.
+This post assumes basic familiarity with C++ or machine learning, but not with
+robot hardware. At the highest level, the program implements one path:
 
-## Complete deployment structure
+```text
+robot sensor state
+-> construct the neural-network inputs
+-> run ONNX inference
+-> convert the output into joint targets
+-> apply safety and state-transition checks
+-> send motor commands
+```
+
+Four terms appear throughout the code:
+
+- **LowState** is the latest low-level sensor state received from the robot,
+  including joint positions and IMU readings.
+- A **policy** is the neural network that converts those readings into an
+  action.
+- **LowCmd** is the low-level command sent back to the motors.
+- A **finite state machine (FSM)** decides which operating mode currently owns
+  those commands: passive, fixed standing, velocity control, or mimic control.
+
+The central design is **two loops running at different rates and exchanging the
+latest action**. The policy loop runs at about 50 Hz and produces joint targets.
+The FSM loop runs at 1 kHz, publishes commands over DDS, and checks whether the
+robot should remain in or leave its current operating state. DDS is the
+communication system used here to exchange low-level robot states and commands.
+
+The faster loop must not wait for neural-network inference. Most of the code
+structure exists to preserve that separation.
+
+## A map of the repository
+
+The five directories below are enough to orient a first reading:
+
+```text
+deploy/
+├── include/FSM/       # Operating modes, transitions, and the 1 kHz loop
+├── include/isaaclab/  # Build model inputs, run ONNX, interpret outputs
+├── robots/g1/         # G1-specific code, configuration, and policies
+├── thirdparty/        # ONNX Runtime and other external libraries
+└── tools/             # Utilities for checking a model without a robot
+```
+
+Inside `robots/g1`, `main.cpp` is the program entrance. It loads configuration,
+starts DDS communication, constructs the robot interface, and starts the FSM.
+Shared control logic remains under `include/`; details that apply only to the G1
+remain under `robots/g1/`.
+
+The most relevant files are:
+
+| Path | Responsibility |
+|---|---|
+| `include/FSM/CtrlFSM.h` | Run the fast control loop and change operating states |
+| `include/FSM/State_RLBase.h` | Own the slower policy thread for an RL-controlled state |
+| `include/isaaclab/envs/manager_based_rl_env.h` | Connect observation, inference, and action processing |
+| `include/isaaclab/algorithms/algorithms.h` | Run the exported model through ONNX Runtime |
+| `include/unitree_articulation.h` | Convert Unitree hardware data into policy-facing state |
+| `robots/g1/config/config.yaml` | Select available FSM states and policy directories |
+| `robots/g1/config/policy/` | Store versioned models and deployment parameters |
+| `tools/verify_policy_onnx.cpp` | Check that a policy loads without real hardware |
+
+The complete tree is retained below as a reference; it is not required for
+understanding the runtime flow.
+
+<details markdown="1">
+<summary>Complete deployment structure</summary>
 
 ```text
 deploy/
@@ -135,11 +194,12 @@ deploy/
     └── verify_policy_onnx.cpp         # Load and check a policy without the real robot
 ```
 
+</details>
 
 
 
 
-## Where a ONNX policy belongs
+## Where an ONNX policy belongs
 
 A normal G1 velocity policy should be installed as one self-contained version:
 
@@ -201,7 +261,22 @@ feeding the wrong tensor.<br>
 
 ## Runtime organization
 
-The controller uses two periodic loops with different responsibilities.
+The controller uses two periodic loops with different responsibilities:
+
+| Loop | Typical rate | Responsibility |
+|---|---:|---|
+| Policy thread | 50 Hz | Read observations, run the network, and produce the latest joint targets |
+| FSM thread | 1 kHz | Apply the latest targets, publish motor commands, and check transitions and safety conditions |
+
+The policy thread belongs to an RL state: entering the state starts the thread,
+and leaving the state stops and joins it. The FSM thread belongs to the whole
+process and continues across state changes.
+
+The detailed execution diagram follows. It is useful when tracing the code, but
+the table above contains the main architectural point.
+
+<details markdown="1">
+<summary>Detailed two-thread execution diagram</summary>
 
 ```text
                              G1 LowState over DDS
@@ -219,8 +294,7 @@ The controller uses two periodic loops with different responsibilities.
   │   currentState->run()  ◄─────────────────────┐                     │
   │                                              │                     │
   │   If currentState == Passive/FixStand:       │                     │
-  │    run(), then                               │                     │
-  │    we will have a determinant policy         │                     │
+  │    run() executes a deterministic controller │                     │
   │                                              │                     │
   │   ┌──────────────────────────────────────────┴──────────────────┐  │
   │   │ State_RLBase::enter() => spawn, ::exit() => join            │  │
@@ -241,8 +315,8 @@ The controller uses two periodic loops with different responsibilities.
   │   │   ActionManager -> scaled joint position targets            │  │
   │   │        │                                                    │  │
   │   │   Write to env->action_manager->processed_actions()         │  │
-  │   │   (Lock-free shared variable, one-way read by FSM loop,     │  │
-  │   │    no waiting/sync)                                         │  │
+  │   │   (latest-action handoff, written by the policy thread      │  │
+  │   │    and read by the FSM thread)                               │  │
   │   └──────────────────────────────────────────┬──────────────────┘  │
   │                                              │                     │
   │   State_RLBase::run() reads processed_actions()                    │
@@ -257,6 +331,8 @@ The controller uses two periodic loops with different responsibilities.
   │    Policy thread)                                                  │
   └────────────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ### The policy thread
 
@@ -364,7 +440,7 @@ control timing, state machine, hardware transport, and safety procedure.
 ---
 
 
-## Adding terrain perception: the VideoMimic LiDAR pipeline
+## Advanced: adding terrain perception with the VideoMimic LiDAR pipeline
 
 Everything above assumes the policy already has an observation vector sitting
 in memory. For a **blind** (flat-ground) policy that vector comes entirely
@@ -379,6 +455,10 @@ this exact pipeline on a real Unitree G1. The structure is worth learning even
 if you never touch this codebase, because it is the general pattern for
 **bolting a sensor onto an existing RL deploy stack without touching the
 control loop above**.
+
+This section introduces ROS, LiDAR odometry, point clouds, and elevation maps.
+It is independent of the basic deployment path above and can be skipped on a
+first reading.
 
 ### Why a G1 needs an external sensor at all
 
@@ -527,8 +607,12 @@ Overlay this section onto the runtime diagram from earlier: the elevation-map
 tensor is just one more named entry that has to show up in the
 `ObservationManager`'s output before `OrtRunner` can run. Everything else —
 the 50 Hz/1 kHz split, the shared-state handoff, the FSM owning the DDS
-publish — is unchanged. Terrain perception does not add a third loop; it adds
-one more producer feeding the same slow loop, running at its own pace (mapping
-is far slower than 50 Hz) behind a "keep the last good map" guard so a stale
-or missing map degrades the robot to its already-certified blind behavior
-instead of feeding it garbage.
+publish — is unchanged. Terrain perception does not add a third **control**
+loop; it adds asynchronous perception and mapping processes that feed the policy
+loop at their own rates.
+
+A production system also needs an explicit failure policy for missing or stale
+maps. Depending on how the policy was trained, that may mean holding the last
+valid map for a bounded interval, switching to a separately tested blind policy,
+or returning the FSM to a safe state. Reusing stale terrain indefinitely does
+not by itself produce safe blind behavior.
