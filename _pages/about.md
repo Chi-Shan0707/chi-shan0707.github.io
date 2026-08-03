@@ -12,8 +12,7 @@ redirect_from:
 I am 池裕涵, namely Yuhan Chi (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the School of Mathematical Sciences, Fudan University,
 pursuing a double degree in Information and Computing Science and Artificial Intelligence.
 
-I study applied mathematics: how to model, reason, and make decisions under uncertainty.
-This leads me to AI decision-making --- when these decisions can be interpreted and when
+I study mathematics: how to model, reason, and make decisions under uncertainty. This leads me to AI decision-making --- when these decisions can be interpreted and when
 they are trustworthy.
 
 </div>
@@ -22,9 +21,9 @@ they are trustworthy.
 
 ## Research Interests
 
-Mathematical interpretability for AI trust.<br>
-
 Optimization, control, and reinforcement learning for sequential decision-making.<br>
+
+Mathematical interpretability for AI trust.<br>
 
 Verification and evaluation of LLM reasoning.<br>
 
