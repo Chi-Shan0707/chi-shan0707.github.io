@@ -19,7 +19,11 @@ $monospace: "JetBrains Mono", Monaco, Consolas, monospace;
 
 :root {
   --global-border-color: #888;
-  --global-code-background-color: #1d1d1d;
+  --global-code-background-color: #f1efe9;
+  --code-border-color: #d8d4ca;
+  --code-text-color: #2f3b4a;
+  --code-muted-color: #7a8494;
+  --code-accent-color: #3d5a80;
 }
 
 @import
@@ -254,26 +258,46 @@ h1, h2, h3, h4, h5, h6 {
 .page-body code {
   font-family: "JetBrains Mono", Monaco, Consolas, monospace;
   font-size: 0.85em;
-  background: rgba(0,0,0,0.05);
-  padding: 0.15em 0.35em;
-  border-radius: 3px;
+  color: #334e68;
+  background: #ebe8e0;
+  border: 1px solid #ddd8ce;
+  padding: 0.12em 0.36em;
+  border-radius: 4px;
 }
 
 .page-body pre {
-  background: #1d1d1d;
-  color: #f8f7f4;
-  padding: 1rem 1.2rem;
-  border-radius: 5px;
+  background: var(--global-code-background-color);
+  color: var(--code-text-color);
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--code-border-color);
+  border-left: 3px solid var(--code-accent-color);
+  border-radius: 6px;
   overflow-x: auto;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
   font-size: 0.82rem;
-  line-height: 1.55;
+  line-height: 1.65;
+  tab-size: 2;
+  box-shadow: 0 8px 22px rgba(29, 29, 29, 0.06);
+  scrollbar-color: #b8b2a6 transparent;
+  scrollbar-width: thin;
 }
 
 .page-body pre code {
   background: none;
+  border: 0;
   padding: 0;
   color: inherit;
+  font-size: inherit;
+}
+
+.page-body pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.page-body pre::-webkit-scrollbar-thumb {
+  background: #b8b2a6;
+  border: 2px solid var(--global-code-background-color);
+  border-radius: 999px;
 }
 
 /* ===== ARCHIVE / POST LISTING ===== */

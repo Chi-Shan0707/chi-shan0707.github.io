@@ -4,33 +4,45 @@
 
 div.highlighter-rouge, figure.highlight {
   position: relative;
-  margin-bottom: 1em;
-  padding: 1em;
-  border: 1px solid var(--global-border-color);
-  border-radius: $border-radius;
+  margin: 1.25em 0;
+  padding: 2.25em 0 0;
+  overflow: hidden;
+  border: 1px solid var(--code-border-color);
+  border-radius: 7px;
   background-color: var(--global-code-background-color);
-  box-shadow: $box-shadow;
+  box-shadow: 0 8px 22px rgba(29, 29, 29, 0.06);
   font-size: $type-size-4;
 
   &:before {
     position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5em;
-    background-color: mix(#fff, #7a8288, 90%);
-    content: "\f121";
-    font-family: "Font Awesome 6 Free" !important;
-    font-size: $type-size-6;
+    top: 0.72rem;
+    left: 1rem;
+    padding: 0;
+    background: none;
+    color: #a7a196;
+    content: "\2022\00a0\2022\00a0\2022";
+    font-family: $monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
     line-height: 1;
-    text-transform: none;
-    speak: none;
   }
 
   .highlight {
     margin: 0;
+    border-top: 1px solid var(--code-border-color);
+    background: transparent;
     font-family: $monospace;
     font-size: $type-size-6;
-    line-height: 1.8;
+    line-height: 1.65;
+  }
+
+  pre.highlight,
+  .highlight pre {
+    margin: 0;
+    border: 0;
+    border-left: 3px solid var(--code-accent-color);
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -122,3 +134,53 @@ div.highlighter-rouge, figure.highlight {
 .highlight .vg { color: #22b3eb } /* Name.Variable.Global */
 .highlight .vi { color: #22b3eb } /* Name.Variable.Instance */
 .highlight .il { color: #2aa198 } /* Literal.Number.Integer.Long */
+
+/* Warm-light palette tuned for the site's paper-like background. */
+.highlight { color: var(--code-text-color); }
+.highlight .c,
+.highlight .cm,
+.highlight .c1,
+.highlight .cs,
+.highlight .cp { color: var(--code-muted-color); font-style: italic; }
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .ow { color: #6d28d9; font-weight: 600; }
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .ss { color: #0f766e; }
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il { color: #a14f03; }
+.highlight .nf,
+.highlight .nc,
+.highlight .nd,
+.highlight .ne,
+.highlight .nt { color: #2457a7; }
+.highlight .na,
+.highlight .nb,
+.highlight .no,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi { color: #8a3b12; }
+.highlight .n,
+.highlight .nn,
+.highlight .nx,
+.highlight .p,
+.highlight .o,
+.highlight .w { color: var(--code-text-color); }
