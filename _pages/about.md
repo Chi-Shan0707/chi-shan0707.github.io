@@ -9,7 +9,7 @@ redirect_from:
 
 <div class="home-intro" markdown="1">
 
-I am 池裕涵, namely Yuhan Chi (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the School of Mathematical Sciences, Fudan University,
+I am 池裕涵, namely Yuhan Chi (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the [School of Mathematical Sciences, Fudan University](https://math.fudan.edu.cn/),
 pursuing a double degree in Information and Computing Science and Artificial Intelligence.
 
 I am always thinking about how to model, how to reason, and how to make decisions under uncertainty. This leads me to AI and decision-making.
@@ -25,6 +25,15 @@ Optimization, control, and reinforcement learning for sequential decision-making
 Mathematical interpretability for AI trust.<br>
 
 Verification and evaluation of LLM reasoning.<br>
+
+</div>
+
+<div class="home-section" markdown="1">
+
+## Experience
+
+**Visiting Student**, [Mechanical Systems Control Lab](https://msc.berkeley.edu/), UC Berkeley — *Jul – Aug 2026*<br>
+Engaged in frontier robotics research and experienced modern lab workflows.
 
 </div>
 
