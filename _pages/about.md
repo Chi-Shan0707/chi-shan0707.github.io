@@ -9,7 +9,7 @@ redirect_from:
 
 <div class="home-intro" markdown="1">
 
-I am 池裕涵, namely Yuhan Chi (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the [School of Mathematical Sciences, Fudan University](https://math.fudan.edu.cn/),
+I am 池裕涵, namely Yuhan Chi (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the [School of Mathematical Sciences, Fudan University](https://math.fudan.edu.cn/mathen/main.htm),
 pursuing a double degree in Information and Computing Science and Artificial Intelligence.
 
 I am always thinking about how to model, how to reason, and how to make decisions under uncertainty. This leads me to AI and decision-making.
