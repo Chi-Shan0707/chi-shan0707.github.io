@@ -1,5 +1,5 @@
 ---
-title: "Choice and Alignment: Arrow's Framework"
+title: "Choice and Alignment: Is it possible?"
 date: 2026-08-14
 permalink: /posts/2026/08/choice-and-alignment/
 tags:
@@ -110,21 +110,3 @@ Arrow considered several conditions that appear individually reasonable:
    social preference, regardless of everyone else's views.
 
 ## The impossibility theorem
-
-When there are at least three alternatives, no social welfare function can
-satisfy unrestricted domain, Pareto efficiency, IIA, and non-dictatorship at
-the same time. Equivalently, any aggregation rule satisfying the first three
-conditions must be dictatorial.
-
-Arrow's theorem does not say that collective decision-making is impossible. It
-says that there is no perfectly general aggregation rule with all of these
-properties. Any real institution must restrict the possible preferences,
-weaken an axiom, introduce additional information, or accept some form of
-concentrated authority.
-
-This is also a useful warning for alignment. There may be no neutral procedure
-that compresses a diverse population's values into one coherent objective.
-Choosing the domain, the representation of preferences, and the aggregation
-rule is already a normative decision. Before asking whether a system is aligned,
-we therefore have to ask: aligned with whom, over which alternatives, and by
-what rule of social choice?
