@@ -30,10 +30,10 @@ Verification and evaluation of LLM reasoning.<br>
 
 <div class="home-section" markdown="1">
 
-## Experience
+<!-- ## Experience
 
 **Visiting Student**, [Mechanical Systems Control Lab](https://msc.berkeley.edu/), UC Berkeley — *Jul – Aug 2026*<br>
-Engaged in frontier robotics research and experienced modern lab workflows.
+Engaged in frontier robotics research and experienced modern lab workflows. -->
 
 </div>
 

@@ -179,9 +179,10 @@ $$
 
 ## When social choice becomes alignment
 
-A instinctive idea is whether we can apply this theory to LLM, especially *alignment*.<br>
+An instinctive question is whether this theory applies to large language
+models, and to *alignment* in particular.
 
-We can easily formulate a very simple one-to-one corresponding between AI alignment and Social choice theory.<br>
+There is a simple one-to-one correspondence between the two vocabularies.
 
 | AI alignment | Social choice theory | Notation |
 |---|---|---|
@@ -192,9 +193,16 @@ We can easily formulate a very simple one-to-one corresponding between AI alignm
 | Feedback-aggregation procedure | Social welfare function | $F$ |
 | Collective ordering learned from feedback | Social ranking | $F(R)$ |
 
-The crucial step is still the same: many individual rankings are compressed into one collective target. <br>
-If alignment is meant to incorporate everyone's
-ordering, then the model must somehow turn a profile of diverse human preferences into one coherent ranking of its possible behaviors.
+The crucial step is the same in both columns: many individual rankings are
+compressed into one collective target. If alignment is meant to incorporate
+everyone's ordering, then the model must turn a profile of diverse human
+preferences into one coherent ranking of its possible behaviors.
+
+One row of that table deserves suspicion, and we will return to it: in practice
+the rule is not handed a profile at all. Comparisons from many annotators are
+pooled with their labels discarded, so who said what is lost before aggregation
+begins. That detail turns out to determine which voting rule the system is
+secretly running.
 
 And now an uncomfortable concern arises. Will the model's values be dominated
 by a small group of people who hold the power to define them? More sharply,
@@ -392,23 +400,17 @@ once.
 Before drawing any conclusion about deployed systems, it is worth being precise
 about what the theorem is.
 
-Arrow's theorem is a **conditional**. It says: 
-
-* *if* a rule accepts every profile, 
-* *if* its input is ordinal and interpersonally non-comparable,
-* *if* it obeys IIA, and 
-* *if* it returns one complete transitive ranking over at least
-three alternatives, 
-<br> $\rightarrow$ *then* it has a dictator.<br>
-
-But actually, every real alignment method escapes the conclusion, because every one of them violates a hypothesis. So the interesting question is never "does this system have a dictator?" It is:
+Arrow's theorem is a **conditional**. It says: *if* a rule accepts every
+profile, *if* its input is ordinal and interpersonally non-comparable, *if* it
+obeys IIA, and *if* it returns one complete transitive ranking over at least
+three alternatives, *then* it has a dictator. Every real alignment method
+escapes the conclusion, because every one of them violates a hypothesis. So the
+interesting question is never "does this system have a dictator?" It is:
 
 > Which hypothesis is the system paying to avoid one, and what is the bill?
 
 Three answers follow, and then one that says the bill cannot be avoided by
 refusing to aggregate at all.
-
-
 
 ### What RLHF gives up: independence
 
@@ -420,125 +422,169 @@ $$
 \sigma(t) = \frac{1}{1 + e^{-t}}.
 $$
 
-Here $r$ is a single scalar reward, fit by maximum likelihood on comparisons pooled across annotators. Two of Arrow's hypotheses fail at once: $r$ is
-cardinal, not merely ordinal, and annotator identity is usually discarded, so the rule never sees a profile $R=(\succeq_1,\ldots,\succeq_n)$ — only an
-unlabeled pool of comparisons.
+Here $r$ is a single scalar reward, fit by maximum likelihood on comparisons
+pooled across annotators. Two of Arrow's hypotheses fail at once. The learned
+object is **cardinal**: $r$ carries magnitudes, not merely order. And the
+annotator's identity is usually discarded, so the rule never sees a profile
+$R = (\succeq_1,\ldots,\succeq_n)$ at all — it sees an unlabeled population of
+comparisons.
 
-Cardinality is the classical escape hatch: allow interpersonal comparison, and utilitarian-style rules become available. But we can say more than "the
-theorem does not apply." We can say which rule this is.
+Cardinality is the classical escape hatch. Interpersonal comparison of utility
+is exactly what Arrow's framework forbids, and once it is allowed,
+utilitarian-style rules become available. But we can say something much sharper
+than "the theorem does not apply." We can say which rule you get instead.
 
-Recall Borda count: rank $m$ alternatives, and a candidate's score is how many others it beats on that ballot, summed over voters. Siththaranjan, Laidlaw and
-Hadfield-Menell show that when disagreement comes from **hidden context** —annotator identity, values, labeling criterion — preference learning
-implicitly runs this rule.<br>
-Discarding identity means every comparison already averages over whichever context produced it, so "count wins over all voters" becomes "probability of winning against a random opponent":
+Siththaranjan, Laidlaw and Hadfield-Menell prove that when the source of
+disagreement is **hidden context** — the annotator's identity, their values, the
+criterion they were labeling under — preference learning implicitly aggregates
+by the **Borda count**: the learned reward orders alternatives by
 
 $$
-\mathrm{BC}(y) = \Pr_{y'\sim\rho}(y\succ y'),
+\mathrm{BC}(y) \;=\; \Pr_{y' \sim \rho}\big(y \succ y'\big),
 $$
 
-where $\rho$ is the training comparison distribution. RLHF is not aggregating
-in some unspecified way. It is running a named voting rule from 1770, chosen
-by accident.
+the probability that $y$ is preferred to an alternative drawn at random from the
+comparison distribution $\rho$. RLHF is therefore not aggregating in some
+unspecified way. It is running a specific voting rule from 1770, selected by
+accident rather than by argument.
 
-Two of Borda's known defects transfer directly.
+Everything known about Borda then transfers:
 
-* **IIA fails operationally.** <br>Suppose
+- **IIA fails, and it fails operationally.** Borda's signature defect is the
+  spoiler: introducing or removing a third alternative can reverse the ranking
+  of two others. Here $\rho$ *is* the training distribution. Change which
+  responses get sampled for comparison and you change the learned ordering of
+  responses nobody re-labeled.
+- **The rule is manipulable.** Borda is notoriously easy to game, and the
+  alignment consequence is drawn in the same paper: annotators have an incentive
+  to misreport in order to move the model, which surfaces downstream as
+  jailbreak vulnerability.
 
-  $$
-  \Pr(y_1\succ y_2)=0.6,\qquad \Pr(y_1\succ y_3)=0.4,\qquad \Pr(y_2\succ y_3)=0.7.
-  $$
-
-  | | Pair weights | $\mathrm{BC}(y_1)$ | $\mathrm{BC}(y_2)$ | Winner |
-  |---|---|---|---|---|
-  | **Uniform** | $(y_1 y_2)=\tfrac13,\;(y_1 y_3)=\tfrac13,\;(y_2 y_3)=\tfrac13$ | $0.50$ | $\mathbf{0.55}$ | $y_2$ |
-  | **Oversample $y_1 y_2$** | $(y_1 y_2)=\tfrac{9}{10},\;(y_1 y_3)=\tfrac{1}{20},\;(y_2 y_3)=\tfrac{1}{20}$ | $\mathbf{0.59}$ | $0.42$ | $y_1$ |
-
-  $\Pr(y_1\succ y_2)=0.6$ in both rows. Only $y_3$'s sampling frequency changed; the winner flipped.
-
-* **The rule is manipulable.** <br>
-  Borda is easy to game, and the same paper draws the consequence: annotators have an incentive to misreport in order to move the model, which surfaces downstream as jailbreak vulnerability.
-
-
-
+So the honest version of "IIA need not hold" is stronger and more useful: IIA
+does not hold, the rule you are left with is Borda count, and Borda's classical
+pathologies are alignment failure modes that already have names.
 
 ### What Constitutional AI gives up: universality
 
-Constitutional AI does not aggregate preferences. It fixes a set of principles and trains against them. <br>
-In Arrow's language this restricts the domain: $F$ is defined not on all of $\mathcal{R}(X)^N$ but on a subset $\mathcal{D}\subsetneq\mathcal{R}(X)^N$. <br>
-Profiles that conflict with the constitution are not reconciled; they are ruled inadmissible.
+Constitutional AI does not aggregate preferences. It fixes a set of principles
+and trains against them. In Arrow's language this is a restriction of the
+domain: $F$ is defined not on all of $\mathcal{R}(X)^N$ but on a subset
+$\mathcal{D} \subsetneq \mathcal{R}(X)^N$. Profiles that conflict with the
+constitution are not reconciled; they are ruled inadmissible.
 
 Domain restriction is a genuine escape, not a dodge. Black's theorem is the
-model case.
+model case: if every individual's preference is **single-peaked** with respect
+to one common ordering of the alternatives, then pairwise majority rule yields a
+transitive social ranking, topped by the median voter's ideal point. No cycle,
+no dictator. The price is legible in the hypothesis — somebody has to supply the
+axis along which the peaks are single, and the median voter ends up decisive.
 
-**Definition (Single-peaked).** Preferences are single-peaked with respect to
-a common ordering of $X$ if each individual has an ideal point, and
-satisfaction falls monotonically moving away from it in either direction.<br>
-
-**Theorem (Black, 1948).** If every individual's preference is single-peaked with respect to one common ordering, pairwise majority rule yields a transitive social ranking, topped by the median voter's ideal point.<br>
-
-No cycle, no dictator. The price sits in the hypothesis: someone has to supply the axis along which the peaks are single, and they must be single.<br>
-Besides, the median voter ends up decisive.
-
-Writing a constitution means picking that axis. But this does not make the problem disappear — it just moves it up one level: from combining everyone's opinions about which response is best to intergrating everyone's opinions about which principle is best. That is the same kind of problem.<br>
-
-Plus, you could keep asking the same question again — who decides how we combine opinions about principles? — and again, and again. But this chain of questions is not fatal. You can stop at some point and give a real reason for stopping there. Still, wherever you stop, that stopping point is itself a choice. No level of this process is free of one.<br>
+Writing a constitution is precisely supplying that axis. This is why Collective
+Constitutional AI is the right *shape* of response, and also why it does not
+dissolve the problem: it reinstates an aggregation step one level higher, over
+principles instead of responses, and that step is itself a social welfare
+function with axioms of its own. The regress is not vicious — you may stop at
+some level and defend stopping there — but there is no level at which no choice
+is made.
 
 ### Why personalization is not an exit
 
-A tempting escape is: why don't we give each user their own policy? If nobody shares a ranking, nobody can be a dictator!<br>
+The most tempting escape is to refuse to aggregate at all: give each user their
+own policy. If nobody has to share a ranking, nobody can be a dictator.
 
-Sen's theorem says this is unavailable. It concerns rights rather than rankings.<br>
+Sen's theorem says this is unavailable, and it is the result most worth adding
+to this story, because it is about *rights* rather than rankings.
 
-**Definition (Minimal liberalism).** A rule satisfies minimal liberalism if there exist $i \neq j$ and pairs $\{x,y\}, \{z,w\} \subseteq X$ such that $i$ is decisive over $\{x,y\}$, and $j$ is decisive over $\{z,w\}$.
+**Definition (Minimal liberalism).** A rule satisfies minimal liberalism if
+there exist at least two individuals $i \neq j$ and two pairs
+$\{x,y\}, \{z,w\} \subseteq X$ such that $i$ is decisive over $\{x,y\}$ in both
+directions, and $j$ is decisive over $\{z,w\}$ in both directions.
 
-**Theorem (Sen, 1970).** No rule on the unrestricted domain satisfies both weak Pareto and minimal liberalism while always returning an acyclic social
-preference.
+Read: each of the two has some private sphere — a pair of alternatives that
+differ only in that person's own affairs — over which their preference simply is
+society's.
 
-*Proof.*
+**Theorem (Sen, 1970).** No rule on the unrestricted domain can satisfy both the
+weak Pareto principle and minimal liberalism while always returning an acyclic
+social preference.
+
+*Proof.* Three alternatives, two users, and the model must adopt exactly one
+policy:
 
 $$
-a: \text{model answers user 1}, \quad b: \text{model answers user 2}, \quad c: \text{refuses both}
+\begin{aligned}
+a &: \text{the model answers user } 1\text{'s request},\\
+b &: \text{the model answers user } 2\text{'s request},\\
+c &: \text{the model refuses both.}
+\end{aligned}
 $$
 
-User 1's sphere: $\{a,c\}$. User 2's sphere: $\{b,c\}$.
+User $1$'s private sphere is $\{a,c\}$ — whether the model answers *her*. User
+$2$'s is $\{b,c\}$ — whether it answers *him*. Now take the profile
 
-| | Ranking |
+| Individual | Ranking |
 |---|---|
 | 1 | $c \succ_1 a \succ_1 b$ |
 | 2 | $a \succ_2 b \succ_2 c$ |
 
-$$
-c \succ a \ (\text{sphere}_1), \qquad b \succ c \ (\text{sphere}_2), \qquad a \succ b \ (\text{Pareto})
-$$
+User $1$ is cautious: on her own sphere she would rather be refused,
+$c \succ_1 a$. User $2$ is permissive: on his own sphere he would rather be
+answered, $b \succ_2 c$. And both rank $a \succ b$ — user $1$ because if exactly
+one of them is to receive the answer she trusts herself with it more, user $2$
+because he would rather the cautious user be the one confronted with it.
+
+Then
 
 $$
-\Rightarrow a \succ b \succ c \succ a. \qquad \square
+\begin{aligned}
+c &\succ a && \text{(user 1 is decisive over her own sphere)},\\
+b &\succ c && \text{(user 2 is decisive over his own sphere)},\\
+a &\succ b && \text{(weak Pareto)}.
+\end{aligned}
 $$
 
-Personalization *is* minimal liberalism: letting user $i$ set their own policy is exactly granting $i$ decisiveness over pairs that differ only in
-$i$'s own affairs. The cycle needs **external preferences** — people caring about others' spheres, not just their own; drop that and Pareto has nothing
-to grab onto. Real disputes about model policy are rarely free of external preferences, so the escape is unavailable without also ruling out those
-preferences — itself a value judgment.
+The social preference cycles: $a \succ b \succ c \succ a$. No alternative can be
+chosen. $\square$
+
+The example is Sen's, transposed, and the transposition is what matters. The
+pattern is not exotic; it is the standard shape of every dispute about model
+policy. People hold preferences about what the model does for *strangers*, and
+those preferences are frequently unanimous across the very people whose spheres
+are at stake.
+
+So personalization is minimal liberalism, and it fails as an escape not because
+per-user policies are hard to build but because Pareto and private spheres are
+jointly inconsistent once cross-preferences exist. "Let each user set their own
+policy" is coherent only if we also rule that preferences about other people's
+interactions do not count. And *that* is a value judgment — made by the
+developer, of exactly the kind we were hoping to avoid.
 
 ### Why randomizing does not launder the choice
 
-A decision scheme maps profiles to distributions over $X$: $d: \mathcal{R}(X)^N \to \Delta(X)$.
+A deployed model does not emit a ranking. It samples. The right object is a
+**decision scheme**: a map from profiles to probability distributions over $X$.
+This is a real departure from Arrow's codomain, and it is tempting to hope that
+it spreads authority around — a little of everyone's values, nobody decisive.
 
-**Definition.** Strategyproof: truthful reporting is always weakly optimal. Ex post Pareto optimal: never assigns positive probability to a unanimously
-dominated alternative.
+**Theorem (Gibbard, 1977).** With at least three alternatives, a decision scheme
+that is strategyproof and ex post Pareto optimal is a probability mixture of
+dictatorial schemes: fix a distribution over individuals, draw one, implement
+that individual's top choice.
 
-**Theorem (Gibbard, 1977).** With $\geq 3$ alternatives, any strategyproof,ex post Pareto optimal scheme is a probability mixture of dictatorships: fix
-weights $(w_1,\ldots,w_n)$, draw a person, implement their top choice with certainty.
-
-Why nothing else survives: if probability is set by a continuous score(Borda, weighted average, anything smooth), misreporting shifts the score and
-shifts the odds — the same burying trick that manipulates Borda count manipulates any score-based lottery. Random dictatorship has no such lever:
-the weights are fixed *before* anyone reports, so lying can't change your odds of being drawn, and once drawn, honesty is trivially optimal.
-
-This relocates rather than resolves the question: who is in the lottery, and at what weight? Drop strategyproofness for a smoother blend, and the
-misreporting incentive comes back.
+Sampling among plural values, if we also want the rule to be strategyproof, is a
+**random dictatorship**. This is not a reason to abandon randomization — a random
+dictator is a great deal better than a fixed one, and the mixing weights are a
+real and useful design surface. But it relocates the question instead of
+answering it: who is in the lottery, and with what probability? And the
+incentive problem from the first subsection rides along. Drop strategyproofness
+and annotators can move the weights by misreporting.
 
 ### The shape of the answer
 
+Arrow's dictator is an individual *inside the profile*. A model developer, a
+reward model, or a company is not one in that precise sense, and it is worth
+resisting the slogan that says otherwise. But the disanalogy does not rescue
+much, because the content of these theorems survives it:
 
 | Arrow's hypothesis | Given up by | What replaces it | The bill |
 |---|---|---|---|
@@ -547,12 +593,13 @@ misreporting incentive comes back.
 | One transitive social ranking | Stochastic policies | Decision schemes | Gibbard: strategyproof and efficient $\Rightarrow$ random dictatorship |
 | One ranking for everyone | Personalization | Per-user policies | Sen: collides with Pareto once people care about others' interactions |
 
-Every column on the right is a choice about whose preferences count, in what currency, and over whose affairs. None of them is forced, and none of them is neutral.
+Every column on the right is a choice about whose preferences count, in what
+currency, and over whose affairs. None of them is forced, and none of them is
+neutral.
 
-The goal cannot be to find the neutral rule. It can only be to make the non-neutrality explicit, revisable, and accountable to the people being
+That is the transferable conclusion, and it is narrower than "alignment is
+impossible" and much sharper than "value pluralism is hard." There is no
+aggregation procedure that is simultaneously universal, faithful, independent
+and anonymous. So the goal cannot be to find the neutral rule. It can only be to
+make the non-neutrality explicit, revisable, and accountable to the people being
 ranked.
-
-
-***
-
-So: can we please everyone? No — but we can be honest about whom we don't, and answerable to them for it.
