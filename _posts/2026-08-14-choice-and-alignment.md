@@ -1,5 +1,5 @@
 ---
-title: "Choice and Alignment: Is it possible to please everyone?"
+title: "Choice and Alignment"
 date: 2026-08-14
 permalink: /posts/2026/08/choice-and-alignment/
 tags:
@@ -10,11 +10,16 @@ categories:
   - tech
 ---
 
-In a society, we all have our own preferences, yet we often need to reach a
-collective decision or ranking. This is the basic question of social choice
-theory. It also resembles a central problem in AI alignment: a system may need
-to act on behalf of many people whose values are neither identical nor easy to
-compare.
+
+
+Is it possible to please everyone?
+
+
+
+
+
+In a society, we all have our own preferences, yet we often need to reach a collective decision or ranking. This is the basic question of social choice
+theory. It also resembles a central problem in AI alignment: a system may need to act on behalf of many people whose values are neither identical nor easy to compare.<br>
 
 Arrow's framework makes this question precise.
 

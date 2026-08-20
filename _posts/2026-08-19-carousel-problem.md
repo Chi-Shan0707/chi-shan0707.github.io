@@ -10,11 +10,13 @@ categories:
   - tech
 ---
 
-## An airport observation
-
 Waiting for luggage at the airport, I noticed something interesting around the carousel.<br>
 
-> Baggage falls from a fixed chute onto the loop. Ahead of the chute sits a detector that can tell whether the short stretch of belt currently passing beneath it carries anything.<br> 
+
+
+## An airport observation
+
+The pick-up place is a carousel. Baggage falls from a fixed chute onto the loop. Ahead of the chute sits a detector that can tell whether the short stretch of belt currently passing beneath it carries anything.<br> 
 
 
 A natural idea suggests itself: when the detector says "empty," drop. The rule sounds very correct. But in fact, I stood there and found many suitcases bumping into others.
@@ -102,9 +104,7 @@ The problem is
 
 $$\min_{\tau} \;\; \mathbb{P}\big(W > A_\tau\big).$$
 
-Note the asymmetry: the collision event is governed by $A_\tau$, but the policy may
-only depend on the censored $G_\tau$. You are optimising against a quantity you can
-only partially see.
+Note the asymmetry: **the collision event is governed by $A_\tau$, but the policy may only depend on the censored $G_\tau$**. You are optimizing against a quantity you can only partially observe.
 
 ### Bellman recursion
 
@@ -123,10 +123,13 @@ and the recursion is
 $$V_0(g) = c(g), \qquad
 V_k(g) = \min\Big\{\, c(g), \;\; \mathbb{E}\big[V_{k-1}(G_{t+1}) \,\big|\, G_t = g\big] \Big\}.$$
 
-The forced drop at $k = 0$ is what makes waiting costly; without it, $V_k \equiv 0$
-in the limit and the problem is empty.
+The boundary condition $V_0(g) = c(g)$ is the hard deadline: the bag must be dropped immediately now! 
 
-### A minimal instance
+
+
+
+
+<!-- ### A minimal instance
 
 To make every quantity explicit, take the belt in stationarity with each cell independently occupied with probability $p$. Then $A \sim \mathrm{Geom}(p)$ and
 
@@ -134,7 +137,7 @@ $$\mathbb{P}(G = g) = (1-p)^g p \ \ (g < \ell), \qquad \mathbb{P}(G = \ell) = (1
 
 Take $W \sim \mathrm{Geom}(q)$ on $\{1,2,\dots\}$. Both $c(g)$ and the transition law of $G_t$ are then closed-form, and the recursion above can be iterated by hand.
 This is the smallest instance in which all three effects — censoring, unknown
-width, and the deadline — are simultaneously present.
+width, and the deadline — are simultaneously present. -->
 
 <!-- ### Two questions
 

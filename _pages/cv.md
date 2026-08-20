@@ -71,7 +71,7 @@ B.S. Candidate in Information and Computing Science & Artificial Intelligence (D
 | | Foundations of Software for AI | A |
 | | Introduction to AI | A |
 
-## Community Involvement {: #community}
+## Community Involvement
 
 - **[github-unflag-playbook-cn](https://chi-shan0707.github.io/github-unflag-playbook-cn)** --- Chinese playbook for GitHub account flagging/recovery
 - **[ic-guide](https://crys-chen.github.io/ic-guide/)** --- Open-source self-learning guide for integrated circuits

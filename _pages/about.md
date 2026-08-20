@@ -11,11 +11,22 @@ redirect_from:
 
 I am 池裕涵, namely **Yuhan Chi** (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the [School of Mathematical Sciences, Fudan University](https://math.fudan.edu.cn/mathen/main.htm).<br>
 
+
 I am interested in *distilling complex engineering problems into elegant mathematical models*. Besides, I am always thinking about how to *make decisions under uncertainty*. <br>
+
 
 I am also deeply concerned about socioeconomic issues and hope to leave the world a better place.<br>
 
-- I have begun working toward that goal by building and contributing to open-source projects that support guiding, learning, sharing, and community life.<br>
+<details markdown="1">
+<summary>I have begun working toward that goal through open-source projects for learning, sharing, and community life.</summary>
+
+- [github-unflag-playbook-cn](https://chi-shan0707.github.io/github-unflag-playbook-cn) — Chinese playbook for GitHub account flagging and recovery 
+- [ic-guide](https://crys-chen.github.io/ic-guide/) — Open-source self-learning guide for integrated circuits
+- [FDUGuideBook/nav-site](https://fduguidebook.com/) — Student navigation site for the Fudan community
+- [FDU-Sharing](https://fdu-sharing.vercel.app/) — Mutual-aid course-material sharing
+- [Fudan Open Source Initiative (FDU-OSI)](https://github.com/Chi-Shan0707/fdu-opensource-initiative)
+
+</details>
 
 </div>
 
