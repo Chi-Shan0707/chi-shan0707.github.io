@@ -6,7 +6,7 @@ redirect_from:
   - /resume
 ---
 
-[**Download PDF version**](/files/Yuhan_Chi_CV.pdf)
+[**PDF**](/files/Yuhan_Chi_CV.pdf)
 
 ## Profile
 
@@ -38,20 +38,15 @@ B.S. Candidate in Information and Computing Science & Artificial Intelligence (D
 - Cross-domain measurement study across 31,040 math, science, and coding runs: AoA 0.958 (math), 0.799 (science), 0.434 (coding, below the random-direction baseline)
 - Rules out five alternative explanations for the coding failure (model capacity, label scarcity, surface noise, feature coverage, judge framing) --- all converge to the same ceiling; frames the result as measurement non-invariance
 
-**[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)** --- [DeepWiki](https://deepwiki.com/Chi-Shan0707/TinyLoRA-GRPO-Coder) · **40 stars, 3 forks**
+**[TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)** --- [DeepWiki](https://deepwiki.com/Chi-Shan0707/TinyLoRA-GRPO-Coder)
 - Adapts *Learning to Reason in 13 Parameters* (Morris et al., 2026) to competitive programming: trains 32 shared scalars via GRPO on Qwen2.5-Coder-3B, rewarded by real `g++` compile-and-run outcomes
-- Controlled A/B test: v4.0 recipe improves Pass@1 by **+100%** (1.82% → 3.64%) while cutting training data by 99.8% and training time by 73%
-- Most-starred solo project on my GitHub; 6 releases, external forks and contributors
 
-**[microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)** --- **7 stars, 2 forks**
+**[microgpt.cpp](https://github.com/Chi-Shan0707/microgpt.cpp)**
 - Minimal GPT (autograd, multi-head attention, Adam) from scratch in ~300 lines of C++, inspired by Karpathy's teaching gist
 
-## Academic Service & Leadership
+## Academic Service
 
 **Reviewer**, [ICML 2026 Workshop on AI for Math (AI4Math)](https://ai4math2026.github.io/), 2026
-
-**Founder**, [Fudan Open Source Initiative (FDU-OSI)](https://github.com/Chi-Shan0707/fdu-opensource-initiative) 
-- Authored and published a repo-naming/topic-tagging convention (`fdu-course-*`, `fdu-project-*`) so Fudan students' course notes, project demos, and research prototypes stay discoverable across accounts, with no central registry or approval process
 
 **Talk: Reinforcement Learning: From Bandits to PPO** --- *Apr 18, 2026* ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))
 - Overview covering multi-armed bandits, MDPs, policy gradient, and PPO
@@ -76,9 +71,10 @@ B.S. Candidate in Information and Computing Science & Artificial Intelligence (D
 | | Foundations of Software for AI | A |
 | | Introduction to AI | A |
 
-## Community Involvement
+## Community Involvement {: #community}
 
-- **[github-unflag-playbook-cn](https://chi-shan0707.github.io/github-unflag-playbook-cn)** --- Chinese playbook for GitHub account flagging/recovery (19 stars)
+- **[github-unflag-playbook-cn](https://chi-shan0707.github.io/github-unflag-playbook-cn)** --- Chinese playbook for GitHub account flagging/recovery
 - **[ic-guide](https://crys-chen.github.io/ic-guide/)** --- Open-source self-learning guide for integrated circuits
 - **[FDUGuideBook/nav-site](https://fduguidebook.com/)** --- Student navigation site for the Fudan community
 - **[FDU-Sharing](https://fdu-sharing.vercel.app/)** --- Mutual-aid course-material sharing
+- **[Fudan Open Source Initiative (FDU-OSI)](https://github.com/Chi-Shan0707/fdu-opensource-initiative)** --- Founder; an initiative to promote the establishment and exchange of Fudan's open-source community through standardization

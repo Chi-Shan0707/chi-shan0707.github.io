@@ -26,3 +26,8 @@ package-lock.json
 _posts/2026-03-15-ai-hackathon-journey.md
 _posts/2026-07-09-isaac-sim-learning-notes.md
 
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+

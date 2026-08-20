@@ -9,10 +9,13 @@ redirect_from:
 
 <div class="home-intro" markdown="1">
 
-I am 池裕涵, namely Yuhan Chi (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the [School of Mathematical Sciences, Fudan University](https://math.fudan.edu.cn/mathen/main.htm),
-pursuing a double degree in Information and Computing Science and Artificial Intelligence.
+I am 池裕涵, namely **Yuhan Chi** (pronounced /juːˈhɑːn tʃiː/) in English. I am an undergraduate at the [School of Mathematical Sciences, Fudan University](https://math.fudan.edu.cn/mathen/main.htm).<br>
 
-I am always thinking about how to model, how to reason, and how to make decisions under uncertainty. This leads me to AI and decision-making.
+I am interested in *distilling complex engineering problems into elegant mathematical models*. Besides, I am always thinking about how to *make decisions under uncertainty*. <br>
+
+I am also deeply concerned about socioeconomic issues and hope to leave the world a better place.<br>
+
+- I have begun working toward that goal by building and contributing to open-source projects that support guiding, learning, sharing, and community life.<br>
 
 </div>
 
@@ -22,18 +25,17 @@ I am always thinking about how to model, how to reason, and how to make decision
 
 Optimization, control, and reinforcement learning for sequential decision-making.<br>
 
-Mathematical interpretability for AI trust.<br>
+Mathematical modeling for real-world problems.<br>
 
-Verification and evaluation of LLM reasoning.<br>
 
 </div>
 
 <div class="home-section" markdown="1">
 
-<!-- ## Experience
+## Experience
 
 **Visiting Student**, [Mechanical Systems Control Lab](https://msc.berkeley.edu/), UC Berkeley — *Jul – Aug 2026*<br>
-Engaged in frontier robotics research and experienced modern lab workflows. -->
+Engaged in frontier robotics research workflows.
 
 </div>
 
@@ -79,7 +81,7 @@ but not executable correctness in code.
 
 ### [TinyLoRA-GRPO-Coder](https://github.com/Chi-Shan0707/TinyLoRA-GRPO-Coder) <span class="github-stars" data-github-stars="Chi-Shan0707/TinyLoRA-GRPO-Coder" aria-label="GitHub stars"></span>
 
-<div class="meta">Solo project &middot; RL for code generation</div>
+<div class="meta">Solo project &middot; RL post-training for code generation</div>
 
 Small-parameter adaptation and GRPO training pipeline for competitive-programming
 code generation on Qwen2.5-Coder-3B. Uses compile-and-run rewards rather than
@@ -93,11 +95,11 @@ static heuristics.
 
 ## Talks
 
-**From Bandits to PPO: RL Prerequisite Seminar** — Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))
-
-</div>
+**From Bandits to PPO: RL Prerequisite Seminar** — Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))</div>
 
 <div class="home-section" markdown="1">
+
+
 
 ## Publications
 
@@ -111,5 +113,7 @@ static heuristics.
 </div>
 
 </div>
+
+
 
 </div>
