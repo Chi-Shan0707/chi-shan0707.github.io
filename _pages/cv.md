@@ -22,9 +22,9 @@ B.S. Candidate in Information and Computing Science & Artificial Intelligence (D
 
 ## Research Interests
 
-- **Reasoning Verification and Evaluation**: studying when trace-level signals are diagnostic, misleading, protocol-dependent, or domain-specific
-- **Optimization, Control, and Sequential Decision-Making**: using mathematical tools to reason about uncertainty, feedback, constraints, and interaction with environments
-- **Mathematical Interpretability and AI Trust**: grounding claims about model reliability in inspectable mathematical and statistical evidence
+Optimization, control, and reinforcement learning for sequential decision-making.<br>
+
+Mathematical modeling for real-world problems.<br>
 
 
 ## Selected Open-Source Projects

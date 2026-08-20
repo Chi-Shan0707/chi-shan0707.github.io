@@ -15,9 +15,10 @@ I am 池裕涵, namely **Yuhan Chi** (pronounced /juːˈhɑːn tʃiː/) in Engli
 I am interested in *distilling complex engineering problems into elegant mathematical models*. Besides, I am always thinking about how to *make decisions under uncertainty*. <br>
 
 
-I am also deeply concerned about socioeconomic issues and hope to leave the world a better place.<br>
+I am also deeply concerned about socioeconomic issues and hope to leave the world a better place. (In fact, I've already started working towards this.)<br>
 
-<details markdown="1">
+
+<!-- <details markdown="1">
 <summary>I have begun working toward that goal through open-source projects for learning, sharing, and community life.</summary>
 
 - [github-unflag-playbook-cn](https://chi-shan0707.github.io/github-unflag-playbook-cn) — Chinese playbook for GitHub account flagging and recovery 
@@ -26,7 +27,7 @@ I am also deeply concerned about socioeconomic issues and hope to leave the worl
 - [FDU-Sharing](https://fdu-sharing.vercel.app/) — Mutual-aid course-material sharing
 - [Fudan Open Source Initiative (FDU-OSI)](https://github.com/Chi-Shan0707/fdu-opensource-initiative)
 
-</details>
+</details> -->
 
 </div>
 
@@ -106,7 +107,7 @@ static heuristics.
 
 ## Talks
 
-**From Bandits to PPO: RL Prerequisite Seminar** — Fudan University, Apr 2026 ([PDF notes](/files/From%20Bandits%20to%20PPO.pdf))</div>
+**From Bandits to PPO: RL Prerequisite Seminar** — Fudan University, Apr 2026 ([PDF](/files/From%20Bandits%20to%20PPO.pdf))</div>
 
 <div class="home-section" markdown="1">
 
